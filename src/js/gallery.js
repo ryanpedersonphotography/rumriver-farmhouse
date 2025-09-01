@@ -134,12 +134,12 @@ function loadImages(filter, append = false, isInitial = false) {
       // Initialize masonry after images are loaded
       masonryInstance = new Masonry(galleryGrid, {
         itemSelector: '.gallery-item',
-        columnWidth: 200,
+        columnWidth: 220,
         percentPosition: false, // Use pixel positioning
-        horizontalOrder: false, // Allow scattered placement
+        horizontalOrder: true, // Keep items in order for 4-across layout
         transitionDuration: 0,
-        gutter: 30, // Positive gutter for spacing
-        fitWidth: true,
+        gutter: 20, // Tighter gutter for 4-across
+        fitWidth: false, // Full width to fit 4 across
         originLeft: true,
         originTop: true
       });
@@ -245,14 +245,89 @@ function createGalleryItem(image, index) {
   item.dataset.index = index;
   item.dataset.imageId = image.id; // Add unique identifier (data-image-id in HTML)
   
+  // Random rotation for the polaroid card (-3 to 3 degrees)
+  const cardRotation = (Math.random() * 6 - 3).toFixed(2);
+  
+  // Store initial transform values for hover animation
+  const initialRotation = parseFloat(cardRotation);
+  const initialTranslateY = 0;
+  const initialScale = 1;
+  
+  // Apply initial transform
+  item.style.transform = `rotate(${cardRotation}deg) translateY(${initialTranslateY}px) scale(${initialScale})`;
+  item.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease';
+  
+  // More consistent pushpin position (45% to 55% from left) 
+  const pinPosition = 45 + Math.random() * 10;
+  item.style.setProperty('--pin-position', `${pinPosition}%`);
+  
+  // Slight random rotation for pushpin (-15 to 15 degrees)
+  const pinRotation = (Math.random() * 30 - 15).toFixed(0);
+  item.style.setProperty('--pin-rotation', `${pinRotation}deg`);
+  
   item.innerHTML = `
-    <div class="gallery-item-inner">
-      <img src="${image.src}" alt="${image.description}" loading="lazy">
-      <div class="gallery-overlay">
-        <h3 class="gallery-title">${image.title}</h3>
-      </div>
-    </div>
+    <img src="${image.src}" alt="${image.description}" loading="lazy">
+    <h3 class="gallery-title">${image.title}</h3>
   `;
+  
+  // Apply random text styling after element is created
+  const titleElement = item.querySelector('.gallery-title');
+  if (titleElement) {
+    // Random text rotation (-2 to 2 degrees)
+    const textRotation = (Math.random() * 4 - 2).toFixed(2);
+    // Random text skew (-2 to 2 degrees)
+    const textSkew = (Math.random() * 4 - 2).toFixed(2);
+    // Random font size (0.88rem to 1.02rem)
+    const fontSize = (0.88 + Math.random() * 0.14).toFixed(2);
+    // Random font weight (500, 600, 700, or 800)
+    const fontWeights = [500, 600, 700, 800];
+    const fontWeight = fontWeights[Math.floor(Math.random() * fontWeights.length)];
+    // Random letter spacing (0.2px to 0.8px)
+    const letterSpacing = (0.2 + Math.random() * 0.6).toFixed(1);
+    // Random italic (30% chance)
+    const fontStyle = Math.random() < 0.3 ? 'italic' : 'normal';
+    
+    titleElement.style.transform = `rotate(${textRotation}deg) skew(${textSkew}deg)`;
+    titleElement.style.fontSize = `${fontSize}rem`;
+    titleElement.style.fontWeight = fontWeight;
+    titleElement.style.letterSpacing = `${letterSpacing}px`;
+    titleElement.style.fontStyle = fontStyle;
+  }
+  
+  // Add hover animations
+  item.addEventListener('mouseenter', () => {
+    item.style.transform = `rotate(${initialRotation}deg) translateY(-20px) scale(1.08)`;
+    item.style.boxShadow = `
+      inset 0 0 4px rgba(0, 0, 0, 0.06),
+      0 10px 20px rgba(0, 0, 0, 0.25),
+      0 15px 30px rgba(0, 0, 0, 0.2)
+    `;
+    item.style.zIndex = '100';
+    
+    // Slight brightness increase on image
+    const img = item.querySelector('img');
+    if (img) {
+      img.style.filter = 'brightness(1.02)';
+    }
+  });
+  
+  item.addEventListener('mouseleave', () => {
+    item.style.transform = `rotate(${initialRotation}deg) translateY(${initialTranslateY}px) scale(${initialScale})`;
+    item.style.boxShadow = `
+      inset 0 0 4px rgba(0, 0, 0, 0.06),
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 4px 8px rgba(0, 0, 0, 0.1),
+      0 8px 16px rgba(0, 0, 0, 0.1),
+      0 16px 32px rgba(0, 0, 0, 0.05)
+    `;
+    item.style.zIndex = '1';
+    
+    // Reset image brightness
+    const img = item.querySelector('img');
+    if (img) {
+      img.style.filter = 'brightness(1)';
+    }
+  });
   
   item.addEventListener('click', () => {
     const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
