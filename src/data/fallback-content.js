@@ -1,93 +1,93 @@
 // Fallback content when Sanity is unavailable
 export const fallbackContent = {
   property: {
-    name: "Breezy Point Lakeview Cottage",
-    tagline: "Experience the serenity of lakeside living",
+    name: "Lorem Ipsum Vacation Rental",
+    tagline: "Lorem ipsum dolor sit amet consectetur",
     address: {
-      street: "30539 N Lakeview Dr",
-      city: "Breezy Point",
-      state: "MN",
-      zip: "56472"
+      street: "123 Lorem Street",
+      city: "Ipsum City",
+      state: "XX",
+      zip: "12345"
     },
     contact: {
-      phone: "+1 (612) 801-0546",
-      email: "breezylakeviewcottage@gmail.com"
+      phone: "+1 (555) 123-4567",
+      email: "lorem@ipsum.com"
     },
     features: [
       {
         icon: "🏠",
-        title: "Spacious Living",
-        description: "4 bedrooms, 2 bathrooms<br>Sleeps up to 8 guests"
+        title: "Lorem Ipsum",
+        description: "Lorem ipsum dolor<br>Consectetur adipiscing"
       },
       {
         icon: "🌊",
-        title: "Waterfront Access", 
-        description: "Private beach & dock<br>Stunning lake views"
+        title: "Dolor Sit", 
+        description: "Amet consectetur<br>Adipiscing elit"
       },
       {
         icon: "🔥",
-        title: "Cozy Comfort",
-        description: "Fireplace & fire pit<br>Perfect for gatherings"
+        title: "Consectetur",
+        description: "Elit sed do<br>Eiusmod tempor"
       },
       {
         icon: "🍳",
-        title: "Full Kitchen",
-        description: "Modern appliances<br>Everything for meal prep"
+        title: "Tempor Incididunt",
+        description: "Ut labore et<br>Dolore magna"
       }
     ],
     amenities: [
-      "High-Speed WiFi",
-      "Smart TV with Streaming", 
-      "Washer & Dryer",
-      "Air Conditioning",
-      "Outdoor Grill",
-      "Kayaks & Paddleboards",
-      "Board Games",
-      "Coffee Maker",
-      "Parking for 4 Cars",
-      "Pet-Friendly",
-      "Beach Towels",
-      "First Aid Kit"
+      "Lorem Ipsum",
+      "Dolor Sit Amet", 
+      "Consectetur Adipiscing",
+      "Elit Sed Do",
+      "Eiusmod Tempor",
+      "Incididunt Ut",
+      "Labore Et Dolore",
+      "Magna Aliqua",
+      "Ut Enim Ad",
+      "Minim Veniam",
+      "Quis Nostrud",
+      "Exercitation"
     ]
   },
   hero: {
     type: "video",
     videoSource: "/videos/site_video_no_audio.mp4",
-    fallbackImage: "/stills/breezy_4.jpeg"
+    fallbackImage: "/stills/hero-placeholder.jpg"
   },
   galleryImages: [], // Will be populated by existing gallery.js
   bookingLinks: {
-    airbnb: "https://airbnb.com/h/lakeview-cottage-breezy-point",
-    vrbo: "https://t.vrbo.io/S09ELUREbVb"
+    airbnb: "https://airbnb.com/h/lorem-ipsum-rental",
+    vrbo: "https://vrbo.com/lorem-ipsum"
   },
   virtualTour: {
-    matterport: "https://my.matterport.com/show/?m=TWdSds3vn6p",
-    youtube: "https://youtu.be/tjoNyDYm1do"
+    matterport: "https://my.matterport.com/show/?m=LoremIpsum123",
+    youtube: "https://youtu.be/LoremIpsum123"
   },
   socialMedia: {
-    instagram: "https://instagram.com/breezylakeviewcottage",
-    facebook: "https://facebook.com/breezylakeviewcottage", 
-    tiktok: "https://www.tiktok.com/@breezylakeviewcottage"
+    instagram: "https://instagram.com/loremipsum",
+    facebook: "https://facebook.com/loremipsum", 
+    tiktok: "https://www.tiktok.com/@loremipsum"
   },
   testimonials: [
     {
-      guestName: "Sarah & Mike",
-      location: "Minneapolis, MN",
-      review: "Perfect getaway! The cottage exceeded our expectations with its stunning lake views and cozy atmosphere. We'll definitely be back!",
+      guestName: "Lorem & Ipsum",
+      location: "Dolor City, XX",
+      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       rating: 5,
       order: 1
     },
     {
-      guestName: "The Johnson Family",
-      location: "Chicago, IL", 
-      review: "Amazing family vacation spot. The kids loved the kayaks and the adults enjoyed the peaceful mornings on the dock.",
+      guestName: "The Consectetur Family",
+      location: "Adipiscing, XX", 
+      review: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       rating: 5,
       order: 2
     },
     {
-      guestName: "Emily R.",
-      location: "Des Moines, IA",
-      review: "Clean, comfortable, and beautifully decorated. The kitchen had everything we needed and the fire pit nights were magical.",
+      guestName: "Sed D.",
+      location: "Tempor City, XX",
+      review: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       rating: 5,
       order: 3
     }
