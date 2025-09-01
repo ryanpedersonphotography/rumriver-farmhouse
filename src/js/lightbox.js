@@ -42,7 +42,7 @@ export function initLightbox() {
     // Use the original image directly
     lightboxImage.src = image.src;
     lightboxImage.alt = image.description;
-    lightboxCaption.textContent = image.description;
+    lightboxCaption.textContent = image.title;
     currentIndex = index;
     
     // Update navigation buttons

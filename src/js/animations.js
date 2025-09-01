@@ -140,14 +140,24 @@ function setupDataAnimateElements() {
   elements.forEach(el => observer.observe(el));
 }
 
-// Gallery with staggered wave effect
+// Gallery with flying polaroid cards from alternating sides
 function setupGalleryAnimations() {
   const galleryItems = document.querySelectorAll('.gallery-item');
+  
+  // Set initial positions for flying animation
+  galleryItems.forEach((item, index) => {
+    // Alternate between left and right sides
+    const isFromLeft = index % 2 === 0;
+    const flyDirection = isFromLeft ? 'fly-from-left' : 'fly-from-right';
+    item.classList.add('gallery-fly-initial', flyDirection);
+  });
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        const delay = Math.floor(index / 4) * 100 + (index % 4) * 50;
+        const delay = Math.floor(index / 4) * 150 + (index % 4) * 75;
         setTimeout(() => {
+          entry.target.classList.remove('gallery-fly-initial');
           entry.target.classList.add('gallery-animate-in');
         }, delay);
         observer.unobserve(entry.target);
@@ -155,7 +165,7 @@ function setupGalleryAnimations() {
     });
   }, {
     threshold: 0.1,
-    rootMargin: '-100px 0px'
+    rootMargin: '-50px 0px'
   });
   
   galleryItems.forEach(item => observer.observe(item));
@@ -288,7 +298,7 @@ function setupWaveSeparators() {
   separators.forEach(separator => observer.observe(separator));
 }
 
-// Hero parallax with performance optimization
+// Hero parallax with fade out effect
 function setupHeroParallax() {
   const heroContent = document.querySelector('.hero-content');
   if (!heroContent) return;
@@ -297,8 +307,20 @@ function setupHeroParallax() {
   let scrollY = 0;
   
   function updateParallax() {
+    const heroHeight = window.innerHeight;
+    const scrollPercent = Math.min(scrollY / heroHeight, 1);
+    
+    // Parallax movement
     const rate = scrollY * -animationConfig.parallaxSpeed;
+    
+    // Fade out effect - starts fading at 10% scroll, fully faded at 60%
+    let opacity = 1;
+    if (scrollPercent > 0.1) {
+      opacity = Math.max(0, 1 - ((scrollPercent - 0.1) / 0.5));
+    }
+    
     heroContent.style.transform = `translateY(${rate}px)`;
+    heroContent.style.opacity = opacity;
     ticking = false;
   }
   

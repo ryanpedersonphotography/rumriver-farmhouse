@@ -62,7 +62,19 @@ body.lightbox-active {
 }
 
 .lightbox-caption {
-  display: none;
+  display: block;
+  color: var(--bone);
+  font-size: 1.25rem;
+  font-family: 'Kalam', cursive;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  max-width: 80%;
+  font-style: italic;
 }
 
 /* Lightbox Controls */
@@ -153,7 +165,9 @@ body.lightbox-active {
   }
   
   .lightbox-caption {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-top: 0.75rem;
+    max-width: 90%;
+    padding: 0.5rem 0.75rem;
   }
 }
