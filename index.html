@@ -167,14 +167,12 @@
   <section class="section scrim-hero hero" style="background-image: url('/stills/rum-river-farmhouse-21.jpg');">
     <div class="hero-content">
       <h1 class="hero-title">Northwoods Farmhouse Retreat</h1>
-      <div class="hero-divider"></div>
       <p class="hero-subtitle">Wake to pines, lakes, and quiet skies—your modern farmhouse escape in northern Minnesota.</p>
-      <a class="btn btn-primary" href="#book">Book Your Stay</a>
-    </div>
-    <div class="scroll-indicator" onclick="document.getElementById('property-details').scrollIntoView({ behavior: 'smooth' });">
-      <svg viewBox="0 0 24 24">
-        <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <a href="#amenities" style="width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; padding: 0; font-size: 2rem; color: var(--bone); text-decoration: none; background: none; border: none; transition: transform 0.3s ease;">
+        <svg viewBox="0 0 24 24" width="30" height="30" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+          <path d="M7 10l5 5 5-5"></path>
+        </svg>
+      </a>
     </div>
   </section>
 
@@ -246,108 +244,46 @@
   </section>
 
   <!-- 4) Amenities -->
-  <section id="amenities" class="section bg-pine-grad-deep seam" style="padding: 40px 0;">
+  <section id="amenities" class="section bg-pine-grad-deep seam" style="padding: 40px 0; position: relative; z-index: 10; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(139, 111, 71, 0.2);">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2 class="section-title">Amenities</h2>
         <p>Everything you need for the perfect Northwoods getaway</p>
       </div>
       
-      <div style="position: relative; max-width: 1200px; margin: 3rem auto 0;">
-        <!-- Carousel Container -->
-        <div style="overflow: hidden; position: relative; padding: 0 3rem;">
-          <div style="max-width: calc(100% + 0.1px); overflow: hidden;">
-            <div id="amenities-carousel" style="display: flex; transition: transform 0.5s ease;">
-              <!-- All amenities in one continuous row -->
-              <div style="display: flex;">
-              
-              <!-- Amenity 1 -->
-              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
-                <div class="amenity-card">
-                  <h3>Cozy Spaces</h3>
-                  <ul>
-                    <li><span class="checkmark">✓</span> Open living & dining</li>
-                    <li><span class="checkmark">✓</span> Wood-burning fireplace</li>
-                    <li><span class="checkmark">✓</span> Smart TV & WiFi</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <!-- Amenity 2 -->
-              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
-                <div class="amenity-card">
-                  <h3>Full Kitchen</h3>
-                  <ul>
-                    <li><span class="checkmark">✓</span> Modern appliances</li>
-                    <li><span class="checkmark">✓</span> Coffee & gas grill</li>
-                    <li><span class="checkmark">✓</span> Seats 8 guests</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <!-- Amenity 3 -->
-              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
-                <div class="amenity-card">
-                  <h3>Lake Life</h3>
-                  <ul>
-                    <li><span class="checkmark">✓</span> Private fire pit</li>
-                    <li><span class="checkmark">✓</span> Lake access nearby</li>
-                    <li><span class="checkmark">✓</span> Screened porch</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <!-- Amenity 4 -->
-              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
-                <div class="amenity-card">
-                  <h3>Peaceful Retreat</h3>
-                  <ul>
-                    <li><span class="checkmark">✓</span> Quiet rural setting</li>
-                    <li><span class="checkmark">✓</span> Stargazing deck</li>
-                    <li><span class="checkmark">✓</span> Nature trails nearby</li>
-                  </ul>
-                </div>
-              </div>
-              
-            </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          
+          <!-- Amenity 1 -->
+          <div class="testimonial-card">
+            <h3 style="font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.75rem; font-weight: 600; text-align: center;">Cozy Spaces</h3>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0; text-align: left;">
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Open living & dining</li>
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Wood-burning fireplace</li>
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Smart TV & WiFi</li>
+            </ul>
           </div>
-        </div>
-        
-        <!-- Navigation Buttons -->
-        <button onclick="moveAmenities(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.3); color: var(--charcoal); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255, 255, 255, 1)'; this.style.transform='translateY(-50%) scale(1.1)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-50%) scale(1)';">‹</button>
-        <button onclick="moveAmenities(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.3); color: var(--charcoal); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255, 255, 255, 1)'; this.style.transform='translateY(-50%) scale(1.1)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-50%) scale(1)';">›</button>
-        
+          
+          <!-- Amenity 2 -->
+          <div class="testimonial-card">
+            <h3 style="font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.75rem; font-weight: 600; text-align: center;">Full Kitchen</h3>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0; text-align: left;">
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Modern appliances</li>
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Coffee & gas grill</li>
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Seats 8 guests</li>
+            </ul>
+          </div>
+          
+          <!-- Amenity 3 -->
+          <div class="testimonial-card">
+            <h3 style="font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.75rem; font-weight: 600; text-align: center;">Lake Life</h3>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0; text-align: left;">
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Private fire pit</li>
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Lake access nearby</li>
+              <li style="padding: 0.3rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem; font-size: 0.9rem;"><span style="position: absolute; left: 0; color: var(--sage); font-weight: bold;">✓</span> Screened porch</li>
+            </ul>
+          </div>
+          
       </div>
-      
-      <script>
-        let currentAmenityIndex = 0;
-        
-        function moveAmenities(direction) {
-          const track = document.getElementById('amenities-carousel');
-          const cards = track.querySelectorAll(':scope > div > div');
-          const container = track.parentElement;
-          
-          if (!cards.length) return;
-          
-          const card = cards[0];
-          const cardWidth = card.getBoundingClientRect().width;
-          const gap = parseFloat(getComputedStyle(card.parentElement).gap || 24);
-          
-          const visible = Math.max(1, Math.floor(container.getBoundingClientRect().width / (cardWidth + gap)));
-          const maxIndex = Math.max(0, cards.length - visible);
-          currentAmenityIndex = Math.max(0, Math.min(maxIndex, currentAmenityIndex + direction));
-          
-          const translateX = -currentAmenityIndex * (cardWidth + gap);
-          track.style.transform = `translateX(${translateX}px)`;
-        }
-        
-        // Recalculate on resize
-        window.addEventListener('resize', () => {
-          currentAmenityIndex = 0;
-          const track = document.getElementById('amenities-carousel');
-          if (track) track.style.transform = 'translateX(0)';
-        });
-      </script>
     </div>
   </section>
 
@@ -391,7 +327,7 @@
   </section>
 
   <!-- 5) Rooms & Rates -->
-  <section id="testimonials" class="section bg-lake-grad-deep seam" style="padding: 40px 0;">
+  <section id="testimonials" class="section bg-lake-grad-deep seam" style="padding: 40px 0; position: relative; z-index: 10; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(139, 111, 71, 0.2);">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2 class="section-title">Rooms & Rates</h2>
@@ -437,14 +373,31 @@
         <p>30539 N Lakeview Dr, Breezy Point, MN 56472</p>
       </div>
       
-      <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); margin: 3rem 0; position: relative;">
-        <div id="location-map" style="height: 450px; width: 100%; border-radius: var(--radius-lg);"></div>
+      <div style="width: 100%; max-width: 900px; height: 500px; margin: 3rem auto; position: relative; border-radius: 16px; overflow: hidden; border: 4px solid #8B6F47; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(139, 111, 71, 0.3);">
+        <div id="location-map" style="height: 100%; width: 100%; border-radius: 12px; position: relative;"></div>
       </div>
       
       <style>
-        /* Custom Leaflet styles for blue theme */
+        /* Custom Leaflet styles with gradient overlay */
+        #location-map {
+          position: relative;
+        }
+        
+        #location-map::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(42, 31, 21, 0.3) 0%, rgba(26, 18, 9, 0.2) 30%, rgba(15, 9, 6, 0.4) 70%, rgba(42, 31, 21, 0.3) 100%);
+          pointer-events: none;
+          z-index: 1000;
+          border-radius: 12px;
+        }
+        
         #location-map .leaflet-tile-pane {
-          filter: sepia(100%) saturate(150%) hue-rotate(170deg) brightness(0.95) contrast(1.2);
+          filter: sepia(30%) saturate(120%) hue-rotate(15deg) brightness(0.9) contrast(1.1);
         }
         
         /* Make water/lakes powder blue */
