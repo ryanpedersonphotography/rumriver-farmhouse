@@ -145,7 +145,7 @@
   <header class="site-header">
     <nav class="nav-container">
       <div class="nav-logo">
-        <a href="/">Breezy Point Lakeview Cottage</a>
+        <a href="/">Rum River Farmhouse</a>
       </div>
       <div class="nav-menu">
         <a href="#gallery" class="nav-link">Gallery</a>
@@ -370,7 +370,7 @@
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2 class="section-title">Find Us</h2>
-        <p>30539 N Lakeview Dr, Breezy Point, MN 56472</p>
+        <p>30539 N Lakeview Dr, Rum River, MN 56472</p>
       </div>
       
       <div style="width: 100%; max-width: 900px; height: 500px; margin: 3rem auto; position: relative; border-radius: 16px; overflow: hidden; border: 4px solid #8B6F47; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(139, 111, 71, 0.3);">
@@ -486,7 +486,7 @@
           // Check if we're in the location section
           const mapElement = document.getElementById('location-map');
           if (mapElement) {
-            // Breezy Point Lakeview Cottage coordinates
+            // Rum River Farmhouse coordinates
             const lat = 46.623456;
             const lng = -94.212345;
             
@@ -541,7 +541,7 @@
             
             // Add marker for the cottage
             const marker = L.marker([lat, lng], {icon: cottageIcon}).addTo(map);
-            marker.bindPopup('<b style="color: var(--powder); font-size: 1.1rem;">Breezy Point Lakeview Cottage</b><br>30539 N Lakeview Dr<br>Breezy Point, MN 56472');
+            marker.bindPopup('<b style="color: var(--powder); font-size: 1.1rem;">Rum River Farmhouse</b><br>30539 N Lakeview Dr<br>Rum River, MN 56472');
             
             // Add circle to highlight the area
             L.circle([lat, lng], {
@@ -559,7 +559,7 @@
           <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">🏖️</span>
             <div>
-              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">5 minutes to Breezy Point Resort</h3>
+              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">5 minutes to Rum River Resort</h3>
               <p style="color: var(--charcoal); line-height: 1.6; font-family: var(--font-sans); font-size: 0.95rem;">World-class amenities including marina, restaurants, beach access, spa services, and the famous Dockside Lounge.</p>
             </div>
           </div>
@@ -784,8 +784,8 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h4>Breezy Point Lakeview Cottage</h4>
-          <p>30539 N Lakeview Dr<br>Breezy Point, MN 56472</p>
+          <h4>Rum River Farmhouse</h4>
+          <p>30539 N Lakeview Dr<br>Rum River, MN 56472</p>
           <div class="social-links">
             <a href="https://instagram.com/breezylakeviewcottage" target="_blank" rel="noopener" aria-label="Instagram">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -822,7 +822,10 @@
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; 2024 Breezy Point Lakeview Cottage. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> Rum River Farmhouse. All rights reserved.</p>
+        <script>
+          document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
       </div>
     </div>
   </footer>
