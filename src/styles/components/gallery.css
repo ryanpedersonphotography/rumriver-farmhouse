@@ -1,10 +1,8 @@
 /* Gallery Section */
 .gallery-section {
-  background: linear-gradient(180deg, var(--cream) 0%, var(--sand-light) 100%);
   position: relative;
-  padding: 5rem 0 5rem 0;
-  margin-top: 0 !important;
   z-index: 1;
+  margin: 0 !important;
 }
 
 /* Override overflow only for gallery section, not affecting body */
@@ -54,11 +52,29 @@
   box-shadow: 0 2px 6px rgba(139, 58, 58, 0.2);
 }
 
-/* Gallery Grid - Masonry Layout */
+/* Gallery Grid - Scattered Layout */
 .gallery-grid {
   margin: 0 auto 3rem;
   position: relative;
   width: 100%;
+  min-height: 800px;
+  /* Cork board background */
+  background: 
+    url('/src/assets/cork-texture.svg'),
+    linear-gradient(135deg, #8B6F47 0%, #6B5637 50%, #8B6F47 100%);
+  background-size: 400px 400px, 100% 100%;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.3),
+    0 5px 20px rgba(0, 0, 0, 0.3);
+  border: 3px solid #5A4A3A;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
 }
 
 .gallery-grid:after {
@@ -67,22 +83,110 @@
   clear: both;
 }
 
+/* Ensure flush bottom alignment */
+.gallery-grid.masonry-complete {
+  padding-bottom: 30px;
+}
+
 /* Gallery sizer for masonry grid */
-.gallery-sizer,
-.gallery-item {
-  width: calc(25% - 15px);
+.gallery-sizer {
+  width: 1px;
+  height: 0;
 }
 
 .gallery-item {
-  margin-bottom: 20px;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(74, 60, 40, 0.1);
+  width: 200px;
+  margin: 15px;
+  padding: 4px;
+  padding-bottom: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s;
   opacity: 0;
-  border: 2px solid var(--wheat-light);
-  background: var(--white);
+  position: relative;
+  background: #ffffff;
+  border: none;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.1),
+    0 16px 32px rgba(0, 0, 0, 0.05);
+  transform: rotate(var(--rotation, 0deg)) translateZ(0);
+  will-change: transform;
+}
+
+/* More dramatic rotations for scattered look */
+.gallery-item:nth-child(odd) {
+  --rotation: -5deg;
+  z-index: 1;
+}
+
+.gallery-item:nth-child(even) {
+  --rotation: 3deg;
+  z-index: 2;
+}
+
+.gallery-item:nth-child(3n) {
+  --rotation: -3deg;
+  z-index: 3;
+}
+
+.gallery-item:nth-child(4n) {
+  --rotation: 7deg;
+  z-index: 2;
+}
+
+.gallery-item:nth-child(5n) {
+  --rotation: -4deg;
+  z-index: 4;
+}
+
+.gallery-item:nth-child(7n) {
+  --rotation: 2deg;
+  z-index: 3;
+}
+
+.gallery-item:nth-child(11n) {
+  --rotation: -6deg;
+  z-index: 5;
+}
+
+/* Pushpin on each polaroid */
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 35px;
+  background: url('/src/assets/pushpin.svg') no-repeat center;
+  background-size: contain;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* All polaroids same size - no variations */
+
+/* Inner content wrapper - square aspect ratio like real polaroids */
+.gallery-item-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* 1:1 aspect ratio for square photos */
+  background: #f5f5f5;
+  margin-bottom: 5px; /* Small space before caption */
+}
+
+/* Make images fill their containers */
+.gallery-item-inner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .gallery-item.visible {
@@ -91,45 +195,85 @@
 }
 
 .gallery-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(74, 60, 40, 0.18);
-  border-color: var(--sage);
+  transform: rotate(0deg) scale(1.15) translateZ(50px);
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.19),
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 40px 80px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
 
 
 .gallery-item:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.05) saturate(1.1);
+  filter: brightness(1.02);
 }
 
 .gallery-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(74, 60, 40, 0.95) 0%, transparent 100%);
-  color: var(--cream);
-  padding: 1.5rem 1rem 1rem;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
-}
-
-.gallery-item:hover .gallery-overlay {
-  transform: translateY(0);
+  bottom: 5px;
+  left: 4px;
+  right: 4px;
+  background: transparent;
+  padding: 0;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
 }
 
 .gallery-title {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 400;
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: -0.02em;
+  font-family: 'Kalam', cursive;
+  letter-spacing: 0.2px;
+  color: #000000;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  transform: rotate(-0.5deg);
+  text-shadow: none;
+  text-transform: capitalize;
+  line-height: 1;
+}
+
+.gallery-item:hover .gallery-title {
+  opacity: 1;
+}
+
+/* Vary handwriting slightly for each photo */
+.gallery-item:nth-child(odd) .gallery-title {
+  transform: rotate(0.3deg);
+  font-size: 0.7rem;
+}
+
+.gallery-item:nth-child(even) .gallery-title {
+  transform: rotate(-0.2deg);
+  font-size: 0.75rem;
+}
+
+.gallery-item:nth-child(3n) .gallery-title {
+  transform: rotate(0.1deg);
+  font-size: 0.72rem;
+}
+
+.gallery-item:nth-child(4n) .gallery-title {
+  transform: rotate(-0.4deg);
+  font-size: 0.73rem;
+}
+
+.gallery-item:nth-child(5n) .gallery-title {
+  font-size: 0.71rem;
 }
 
 /* Load More Button */
 .load-more-btn {
   display: block;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   padding: 1rem 2.5rem;
   background-color: var(--barn-red);
   color: var(--cream);
@@ -160,34 +304,36 @@
 .gallery-item img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 192px; /* Fixed height for consistent polaroid look */
   object-fit: cover;
   transition: all 0.4s ease;
-  border-radius: 10px;
+  border-radius: 2px;
   filter: brightness(0.98);
+  position: relative;
+  z-index: 1;
 }
 
 /* Desktop medium */
 @media (max-width: 1200px) {
-  .gallery-sizer,
   .gallery-item {
-    width: calc(33.333% - 13.333px);
+    width: 180px;
   }
 }
 
 /* Tablet Styles */
 @media (max-width: 1024px) {
-  .gallery-sizer,
+  .gallery-grid {
+    padding: 20px;
+  }
+  
   .gallery-item {
-    width: calc(50% - 10px);
+    width: 160px;
+    margin: 10px;
   }
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .gallery-section {
-    padding: 3rem 1rem;
-  }
   
   .gallery-filters {
     gap: 0.5rem;
@@ -201,29 +347,41 @@
   }
   
   .gallery-grid {
-    padding: 0;
-    margin: 0 -0.5rem;
-  }
-  
-  .gallery-sizer,
-  .gallery-item {
-    width: calc(100% - 1rem);
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    padding: 15px;
+    margin: 0;
+    justify-content: center;
   }
   
   .gallery-item {
-    margin-bottom: 1rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    width: 140px;
+    margin: 8px;
+    padding: 3px;
+    padding-bottom: 20px;
   }
   
-  .gallery-item img {
-    border-radius: var(--radius-md);
+  /* Less dramatic rotations on mobile */
+  .gallery-item:nth-child(odd) {
+    --rotation: -3deg;
+  }
+  
+  .gallery-item:nth-child(even) {
+    --rotation: 2deg;
+  }
+  
+  .gallery-item:nth-child(4n) {
+    --rotation: 4deg;
+  }
+  
+  .gallery-title {
+    font-size: 0.75rem;
   }
   
   .gallery-overlay {
-    display: none;
+    display: flex;
+  }
+  
+  .gallery-title {
+    opacity: 1; /* Always show on mobile */
   }
   
   .gallery-title {

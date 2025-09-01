@@ -1,0 +1,510 @@
+/* ==========================================================================
+   Northwoods Farmhouse Design System
+   Complete design system with exact colors, typography, and components
+   ========================================================================== */
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap");
+
+:root {
+  /* Colors - Exact Hex Values */
+  --linen: #F8F6F1;
+  --parchment: #EFEAE1;
+  --bone: #FFFFFF;
+  --charcoal: #2E3230;
+
+  --sage-200: #E8EFE9;
+  --sage-500: #BCC9BF;
+  --pine-800: #2F4A3C;
+
+  --sky-100: #E6F0F6;
+  --lake-600: #4E6E7E;
+
+  --wheat-300: #E8C88F;
+  --barn-700: #8E3B2F;
+  --copper-600: #B66A4B;
+
+  /* Typography */
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --h1-size: 56px;
+  --h1-lh: 1.1;
+  --h1-trk: -0.015em;
+  --h2-size: 36px;
+  --h2-lh: 1.2;
+  --h2-trk: -0.01em;
+  --h3-size: 24px;
+  --h3-lh: 1.25;
+  --h3-trk: -0.005em;
+
+  --p-size: 18px;
+  --p-lh: 1.6;
+  --small-size: 15px;
+  --small-lh: 1.5;
+
+  /* Layout rhythm */
+  --section-pad-d: 96px;
+  --section-pad-m: 64px;
+  --container: 1120px;
+  --radius: 14px;
+  --border: 1px;
+  --ring-w: 2px;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--charcoal);
+  background: var(--linen);
+  font-size: var(--p-size);
+  line-height: var(--p-lh);
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+h1 {
+  font-size: var(--h1-size);
+  line-height: var(--h1-lh);
+  letter-spacing: var(--h1-trk);
+}
+
+h2 {
+  font-size: var(--h2-size);
+  line-height: var(--h2-lh);
+  letter-spacing: var(--h2-trk);
+}
+
+h3 {
+  font-size: var(--h3-size);
+  line-height: var(--h3-lh);
+  letter-spacing: var(--h3-trk);
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+small, .small {
+  font-size: var(--small-size);
+  line-height: var(--small-lh);
+}
+
+/* Links */
+a {
+  color: var(--lake-600);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Sections (background helpers) */
+.section {
+  padding: var(--section-pad-d) 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-pad-m) 0;
+  }
+}
+
+/* Text color overrides for dark backgrounds */
+.bg-pine h2,
+.bg-pine h3,
+.bg-pine p,
+.bg-pine a {
+  color: var(--bone);
+}
+
+.bg-barn h2,
+.bg-barn h3,
+.bg-barn p,
+.bg-barn a {
+  color: var(--bone);
+}
+
+.bg-charcoal h2,
+.bg-charcoal h3,
+.bg-charcoal p,
+.bg-charcoal a {
+  color: var(--bone);
+}
+
+/* Hairlines/Dividers */
+.hr-copper {
+  height: var(--border);
+  background: var(--copper-600);
+  border: 0;
+  margin: 24px 0;
+}
+
+/* Buttons */
+.btn {
+  --btn-bg: var(--barn-700);
+  --btn-fg: var(--bone);
+  --btn-br: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 16px/1.1 var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  border: 2px solid var(--btn-br);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  transition: background .2s ease, color .2s ease, border-color .2s ease, opacity .2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--ring-w) var(--wheat-300);
+}
+
+.btn:disabled {
+  opacity: .48;
+  pointer-events: none;
+}
+
+/* Button Variants */
+.btn-primary {
+  --btn-bg: var(--barn-700);
+  --btn-fg: var(--bone);
+}
+
+.btn-primary:hover {
+  background: #7A342A;
+}
+
+.btn-primary:active {
+  background: #6A2E25;
+}
+
+.btn-primary-inverse {
+  --btn-bg: var(--bone);
+  --btn-fg: var(--barn-700);
+  background: var(--bone);
+  color: var(--barn-700);
+  border: 2px solid var(--bone);
+}
+
+.btn-primary-inverse:hover {
+  background: var(--wheat-300);
+  color: var(--barn-700);
+  border-color: var(--wheat-300);
+  transform: translateY(-2px);
+}
+
+/* Override for dark backgrounds */
+.bg-barn .btn-primary-inverse,
+.bg-pine .btn-primary-inverse,
+.bg-charcoal .btn-primary-inverse {
+  background: var(--bone);
+  color: var(--barn-700);
+  border: 2px solid var(--bone);
+}
+
+.bg-barn .btn-primary-inverse:hover,
+.bg-pine .btn-primary-inverse:hover,
+.bg-charcoal .btn-primary-inverse:hover {
+  background: var(--wheat-300);
+  color: var(--barn-700);
+  border-color: var(--wheat-300);
+}
+
+.btn-secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--pine-800);
+  --btn-br: var(--pine-800);
+}
+
+.btn-secondary:hover {
+  --btn-bg: var(--pine-800);
+  --btn-fg: var(--bone);
+  background: var(--pine-800);
+  color: var(--bone);
+}
+
+.btn-tertiary {
+  --btn-bg: transparent;
+  --btn-fg: var(--lake-600);
+  border: none;
+  padding: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+.btn-tertiary:hover {
+  text-decoration: underline;
+}
+
+/* Utility */
+.round {
+  border-radius: var(--radius);
+}
+
+.scrim-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.scrim-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(46, 50, 48, 0.6); /* 60% charcoal */
+  z-index: 0;
+}
+
+.scrim-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Background Helpers with tokens */
+/* 1) Give every bg helper a --section-bg token */
+.bg-linen    { background: var(--linen);    color: var(--charcoal); --section-bg: var(--linen); }
+.bg-parchment{ background: var(--parchment);color: var(--charcoal); --section-bg: var(--parchment); }
+.bg-bone     { background: var(--bone);     color: var(--charcoal); --section-bg: var(--bone); }
+.bg-sage     { background: var(--sage-200); color: var(--charcoal); --section-bg: var(--sage-200); }
+.bg-sky      { background: var(--sky-100);  color: var(--charcoal); --section-bg: var(--sky-100); }
+.bg-wheat    { background: var(--wheat-300);color: var(--charcoal); --section-bg: var(--wheat-300); }
+.bg-pine     { background: var(--pine-800); color: var(--bone);     --section-bg: var(--pine-800); }
+.bg-barn     { background: var(--barn-700); color: var(--bone);     --section-bg: var(--barn-700); }
+.bg-charcoal { background: var(--charcoal); color: var(--bone);     --section-bg: var(--charcoal); }
+
+/* Section-specific text adjustments for better readability */
+.bg-wheat .section-header p,
+.bg-wheat p {
+  color: var(--pine-800) !important;
+  font-weight: 500;
+}
+
+.bg-wheat h2,
+.bg-wheat h3 {
+  color: var(--pine-800) !important;
+}
+
+/* 2) Seam utility for smooth transitions */
+.section.seam { position: relative; }
+.section.seam::after {
+  content: "";
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  bottom: -1px;
+  height: 48px; 
+  pointer-events: none;
+  /* fade the current section color to transparent so the next section shows through */
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--section-bg) 100%, transparent) 0%,
+    color-mix(in srgb, var(--section-bg) 60%,  transparent) 40%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+@media (min-width: 900px) { 
+  .section.seam::after { 
+    height: 56px; 
+  } 
+}
+
+/* Section helpers */
+.section-title {
+  margin-bottom: 8px;
+}
+
+.section-kicker {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 700;
+  opacity: .7;
+  margin-bottom: 8px;
+  font-size: var(--small-size);
+}
+
+/* Icons with Pine color */
+.icon-pine {
+  color: var(--pine-800);
+}
+
+/* Cards - Section-specific styling per Northwoods guidelines */
+.card {
+  background: var(--bone);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(46, 50, 48, 0.08);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Section-specific card backgrounds */
+
+/* Linen sections - use Bone cards */
+.bg-linen .card {
+  background: var(--bone);
+  border: 1px solid var(--copper-600);
+}
+
+/* Bone sections - use Parchment or Sage 200 cards */
+.bg-bone .card {
+  background: var(--parchment);
+  border: 1px solid var(--sage-500);
+}
+
+.bg-bone .card.card-sage {
+  background: var(--sage-200);
+  border: 1px solid var(--sage-500);
+}
+
+/* Sage sections - use Bone cards (never sage-on-sage) */
+.bg-sage .card {
+  background: var(--bone);
+  border: 1px solid var(--copper-600);
+}
+
+/* Sky sections - use Bone cards */
+.bg-sky .card {
+  background: var(--bone);
+  border: 1px solid var(--sage-500);
+}
+
+/* Wheat sections - use Bone or Parchment cards */
+.bg-wheat .card {
+  background: var(--bone);
+  border: 1px solid var(--copper-600);
+}
+
+/* Dark sections (Barn, Charcoal, Pine) - use Bone cards for readability */
+.bg-barn .card,
+.bg-charcoal .card,
+.bg-pine .card {
+  background: var(--bone);
+  color: var(--charcoal);
+  border: 1px solid var(--wheat-300);
+}
+
+.bg-barn .card h2,
+.bg-barn .card h3,
+.bg-barn .card p,
+.bg-charcoal .card h2,
+.bg-charcoal .card h3,
+.bg-charcoal .card p,
+.bg-pine .card h2,
+.bg-pine .card h3,
+.bg-pine .card p {
+  color: var(--charcoal);
+}
+
+/* Special card variants */
+.card-sky {
+  background: var(--sky-100);
+  border: 1px solid var(--lake-600);
+}
+
+.card-parchment {
+  background: var(--parchment);
+  border: 1px solid var(--copper-600);
+}
+
+/* Card hover states */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 50, 48, 0.12);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+  
+  h3 {
+    font-size: 20px;
+  }
+}
+
+/* Navigation overrides for Northwoods theme */
+.site-header {
+  background: var(--bone);
+  border-bottom: 1px solid var(--parchment);
+}
+
+.nav-link {
+  color: var(--charcoal);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: var(--lake-600);
+}
+
+.nav-cta {
+  background: var(--barn-700);
+  color: var(--bone);
+  padding: 10px 20px;
+  border-radius: var(--radius);
+}
+
+.nav-cta:hover {
+  background: #7A342A;
+  color: var(--bone);
+}
+
+/* Footer specific */
+.site-footer {
+  background: var(--charcoal);
+  color: var(--bone);
+  padding: var(--section-pad-d) 0;
+}
+
+.site-footer a {
+  color: var(--bone);
+  opacity: 0.8;
+}
+
+.site-footer a:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: var(--section-pad-m) 0;
+  }
+}

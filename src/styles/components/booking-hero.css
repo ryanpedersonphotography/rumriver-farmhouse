@@ -1,0 +1,331 @@
+/* ==========================================================================
+   Booking Hero Section - Enhanced Design
+   ========================================================================== */
+
+.booking-hero-section {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add decorative background pattern */
+.booking-hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(135, 169, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(245, 222, 179, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(135, 169, 107, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.booking-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Badge */
+.booking-badge {
+  display: inline-block;
+  background: var(--sage-500);
+  color: var(--bone);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+/* Title */
+.booking-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--bone);
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Subtitle */
+.booking-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  color: var(--wheat-300);
+  margin: 0 0 3rem 0;
+  font-weight: 400;
+  opacity: 0.95;
+  animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+/* Features */
+.booking-features {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 3rem 0 4rem;
+  flex-wrap: wrap;
+}
+
+.booking-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--wheat-300);
+  font-size: 1rem;
+  font-weight: 500;
+  animation: fadeIn 0.8s ease 0.2s both;
+}
+
+.booking-feature svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--sage-500);
+  flex-shrink: 0;
+}
+
+/* Platform Cards */
+.booking-platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.booking-platform-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--bone);
+  padding: 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.booking-platform-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sage-500), var(--pine-800));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.booking-platform-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.booking-platform-card:hover::before {
+  transform: scaleX(1);
+}
+
+.platform-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--sage-200);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.booking-platform-card:hover .platform-icon {
+  background: var(--sage-500);
+  transform: rotate(-5deg);
+}
+
+.platform-icon svg {
+  color: var(--pine-800);
+  transition: color 0.3s ease;
+}
+
+.booking-platform-card:hover .platform-icon svg {
+  color: var(--bone);
+}
+
+.platform-info {
+  flex: 1;
+}
+
+.platform-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--pine-800);
+  margin: 0 0 0.25rem 0;
+}
+
+.platform-info p {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--charcoal);
+  margin: 0;
+  opacity: 0.8;
+}
+
+.platform-arrow {
+  font-size: 1.5rem;
+  color: var(--sage-500);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.booking-platform-card:hover .platform-arrow {
+  transform: translateX(5px);
+  color: var(--pine-800);
+}
+
+/* Contact Section */
+.booking-contact {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245, 222, 179, 0.2);
+  animation: fadeIn 0.8s ease 0.4s both;
+}
+
+.contact-label {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  color: var(--wheat-300);
+  margin: 0 0 1.5rem 0;
+}
+
+.contact-options {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  border: 2px solid var(--wheat-300);
+  border-radius: 8px;
+  color: var(--bone);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: var(--wheat-300);
+  color: var(--barn-700);
+  transform: translateY(-2px);
+}
+
+.contact-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .booking-hero-section {
+    padding: 4rem 0;
+  }
+  
+  .booking-title {
+    font-size: 2rem;
+  }
+  
+  .booking-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+  
+  .booking-features {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 2rem 0 3rem;
+  }
+  
+  .booking-platforms {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .booking-platform-card {
+    padding: 1.5rem;
+  }
+  
+  .platform-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .platform-info h3 {
+    font-size: 1.125rem;
+  }
+  
+  .contact-options {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

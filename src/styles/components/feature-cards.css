@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Feature Cards - Northwoods Farmhouse Design
+   ========================================================================== */
+
+/* Grid Layout */
+.feature-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Feature Card Base */
+.feature-card {
+  padding: 2.5rem;
+  text-align: center;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add subtle texture overlay */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pine-800), var(--sage-500));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+/* Icon Container */
+.feature-card-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  padding: 1rem;
+  background: var(--pine-800);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.feature-card-icon::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--wheat-300);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.feature-card-icon svg {
+  width: 36px;
+  height: 36px;
+  stroke: var(--bone);
+  stroke-width: 1.5;
+  transition: all 0.4s ease;
+}
+
+/* Typography */
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--pine-800);
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+  transition: color 0.4s ease;
+}
+
+.feature-card p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin: 0;
+  max-width: 280px;
+}
+
+/* Hover Effects */
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 12px 24px rgba(46, 50, 48, 0.12),
+    0 20px 40px rgba(46, 50, 48, 0.08);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card:hover .feature-card-icon {
+  background: var(--barn-700);
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.feature-card:hover .feature-card-icon::after {
+  opacity: 1;
+}
+
+.feature-card:hover .feature-card-icon svg {
+  stroke: var(--wheat-300);
+  transform: scale(1.1);
+}
+
+.feature-card:hover h3 {
+  color: var(--barn-700);
+}
+
+/* Section-specific overrides following Northwoods rules */
+
+/* On bg-bone sections, sage cards get sage-500 borders */
+.bg-bone .card-sage.feature-card {
+  background: var(--sage-200);
+  border-color: var(--sage-500);
+}
+
+.bg-bone .card-sage.feature-card .feature-card-icon {
+  background: var(--pine-800);
+}
+
+/* Alternative card variant */
+.bg-bone .card-parchment.feature-card {
+  background: var(--parchment);
+  border-color: var(--sage-500);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .feature-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .feature-card {
+    padding: 2rem;
+    min-height: auto;
+  }
+  
+  .feature-card-icon {
+    width: 60px;
+    height: 60px;
+    padding: 0.875rem;
+  }
+  
+  .feature-card-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .feature-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .feature-cards-grid {
+    gap: 1.5rem;
+  }
+  
+  .feature-card {
+    padding: 2rem;
+  }
+}
+
+/* Animation delays for staggered entrance */
+[data-delay="100"] {
+  animation-delay: 100ms;
+}
+
+[data-delay="200"] {
+  animation-delay: 200ms;
+}

@@ -7,44 +7,33 @@ const imagesPerLoad = 12;
 let masonryInstance = null;
 let showingAll = false;
 
-// Image categories and titles for our stills
+// Image categories and titles for our stills (reversed order)
 const imageData = [
-  { id: 1, src: '/stills/breezy_4.jpeg', category: 'exterior', title: 'Aerial Lake View', description: 'Aerial view of the property and surrounding lake with islands' },
-  { id: 2, src: '/stills/breezy_5.jpeg', category: 'exterior', title: 'Cottage Exterior', description: 'Beautiful cottage nestled among the trees' },
-  { id: 3, src: '/stills/breezy_6.jpeg', category: 'exterior', title: 'Aerial Property View', description: 'Aerial view showing the cottage nestled in the wooded neighborhood' },
-  { id: 4, src: '/stills/breezy_7.jpeg', category: 'exterior', title: 'Front View of Cottage', description: 'Modern two-story cottage with carport' },
-  { id: 5, src: '/stills/breezy_8.jpeg', category: 'exterior', title: 'Side View of Cottage', description: 'Another angle showing the modern architecture' },
-  { id: 6, src: '/stills/breezy_9.jpg', category: 'exterior', title: 'Back View with Patio', description: 'Rear view of cottage showing covered patio and yard' },
-  { id: 7, src: '/stills/breezy_10.jpg', category: 'amenity', title: 'Outdoor Covered Patio', description: 'Covered patio area with outdoor seating' },
-  { id: 8, src: '/stills/breezy_12.jpg', category: 'amenity', title: 'Backyard Fire Pit', description: 'Modern cottage exterior with fire pit area and Adirondack chairs' },
-  { id: 9, src: '/stills/breezy_13.jpg', category: 'amenity', title: 'Fire Pit Circle', description: 'Cozy fire pit surrounded by comfortable Adirondack chairs' },
-  { id: 10, src: '/stills/breezy_14.jpg', category: 'amenity', title: 'Another Fire Pit View', description: 'Additional seating area with Adirondack chairs around fire pit' },
-  { id: 11, src: '/stills/breezy_15.jpg', category: 'living', title: 'Open Living & Dining', description: 'Open concept living room with dining area and stone fireplace' },
-  { id: 12, src: '/stills/breezy_16.jpg', category: 'living', title: 'Lower Level Living Area', description: 'Cozy living space with stone fireplace and modern amenities' },
-  { id: 13, src: '/stills/breezy_17.jpg', category: 'kitchen', title: 'Kitchen Galley', description: 'Well-equipped galley kitchen with sage green cabinets' },
-  { id: 14, src: '/stills/breezy_18.jpg', category: 'living', title: 'Upper Level Living Room', description: 'Spacious living room with comfortable recliners and sectional' },
-  { id: 15, src: '/stills/breezy_19.jpg', category: 'living', title: 'Additional Living Space', description: 'Another comfortable living area with sectional sofa' },
-  { id: 16, src: '/stills/breezy_20.jpg', category: 'living', title: 'Upper Level TV Area', description: 'Cozy TV viewing area with recliners near staircase' },
-  { id: 17, src: '/stills/breezy_21.jpg', category: 'exterior', title: 'Screened Porch', description: 'Covered screened porch with Adirondack chairs' },
-  { id: 18, src: '/stills/breezy_22.jpg', category: 'bedroom', title: 'Bedroom with Orange Bedding', description: 'Bedroom with southwestern style orange bedding and metal bed frame' },
-  { id: 19, src: '/stills/breezy_23.jpg', category: 'bedroom', title: 'Bedroom with Desk', description: 'Comfortable bedroom with queen bed and work desk' },
-  { id: 20, src: '/stills/breezy_24.jpg', category: 'living', title: 'Entertainment Center', description: 'Smart TV with streaming services' },
-  { id: 21, src: '/stills/breezy_25.jpg', category: 'living', title: 'Living Room with Patio Access', description: 'Living room with sectional sofa and sliding door to patio' },
-  { id: 22, src: '/stills/breezy_26.jpg', category: 'bedroom', title: 'Bedroom with Star Decor', description: 'Cozy bedroom with star-themed bedding and desk area' },
-  { id: 23, src: '/stills/breezy_27.jpg', category: 'amenity', title: 'BBQ Grill', description: 'Gas grill for outdoor cooking' },
-  { id: 24, src: '/stills/breezy_28.jpg', category: 'exterior', title: 'Another Screened Porch View', description: 'Screened porch seating area with outdoor rug' },
-  { id: 25, src: '/stills/breezy_29.jpg', category: 'living', title: 'Reading Nook', description: 'Quiet corner for reading' },
-  { id: 26, src: '/stills/breezy_30.jpg', category: 'bathroom', title: 'Cabin-Themed Bathroom', description: 'Half bathroom with cabin sweet cabin decor' },
-  { id: 27, src: '/stills/breezy_31.jpg', category: 'amenity', title: 'Game Room', description: 'Board games and entertainment' },
-  { id: 28, src: '/stills/breezy_32.jpg', category: 'living', title: 'Main Living Room', description: 'Living room with stone fireplace and comfortable seating' },
-  { id: 29, src: '/stills/breezy_33.jpg', category: 'living', title: 'Dining Room', description: 'Dining area with round table adjacent to living room' },
-  { id: 30, src: '/stills/breezy_34.jpg', category: 'living', title: 'Fireplace', description: 'Cozy fireplace for cool evenings' },
-  { id: 31, src: '/stills/breezy_35.jpg', category: 'kitchen', title: 'Pantry', description: 'Well-stocked pantry area' },
-  { id: 32, src: '/stills/breezy_36.jpg', category: 'kitchen', title: 'Kitchen and Dining View', description: 'Full kitchen view showing dining area in background' },
-  { id: 33, src: '/stills/breezy_37.jpg', category: 'amenity', title: 'Laundry Room', description: 'Washer and dryer available' },
-  { id: 34, src: '/stills/breezy_38.jpg', category: 'living', title: 'Living Room Fireplace View', description: 'Living room with stone fireplace and wall-mounted TV' },
-  { id: 35, src: '/stills/breezy_39.jpg', category: 'bathroom', title: 'Full Bathroom', description: 'Full bathroom with tub/shower combination' },
-  { id: 36, src: '/stills/breezy_40.jpg', category: 'living', title: 'Window Views', description: 'Panoramic windows throughout' }
+  { id: 1, src: '/stills/rum-river-farmhouse-25.jpg', category: 'amenity', title: 'Property Amenities', description: 'Everything you need for a perfect stay' },
+  { id: 2, src: '/stills/rum-river-farmhouse-24.jpg', category: 'living', title: 'Interior Details', description: 'Farmhouse style interior design' },
+  { id: 3, src: '/stills/rum-river-farmhouse-23.jpg', category: 'exterior', title: 'Landscape', description: 'Beautiful natural landscaping' },
+  { id: 4, src: '/stills/rum-river-farmhouse-22.jpg', category: 'amenity', title: 'Farmhouse Features', description: 'Special touches throughout' },
+  { id: 5, src: '/stills/rum-river-farmhouse-21.jpg', category: 'kitchen', title: 'Dining & Kitchen', description: 'Open concept kitchen and dining' },
+  { id: 6, src: '/stills/rum-river-farmhouse-20.jpg', category: 'living', title: 'Gathering Space', description: 'Perfect for family and friends' },
+  { id: 7, src: '/stills/rum-river-farmhouse-19.jpg', category: 'exterior', title: 'Outdoor Views', description: 'Natural beauty surrounding the farmhouse' },
+  { id: 8, src: '/stills/rum-river-farmhouse-18.jpg', category: 'bathroom', title: 'Guest Bath', description: 'Additional bathroom facilities' },
+  { id: 9, src: '/stills/rum-river-farmhouse-17.jpg', category: 'bedroom', title: 'Cozy Bedroom', description: 'Another comfortable sleeping space' },
+  { id: 10, src: '/stills/rum-river-farmhouse-16.jpg', category: 'living', title: 'Common Area', description: 'Welcoming common spaces' },
+  { id: 11, src: '/stills/rum-river-farmhouse-15.jpg', category: 'amenity', title: 'Special Features', description: 'Unique farmhouse amenities' },
+  { id: 12, src: '/stills/rum-river-farmhouse-14.jpg', category: 'exterior', title: 'Property View', description: 'Scenic views of the surrounding property' },
+  { id: 13, src: '/stills/rum-river-farmhouse-13.jpg', category: 'living', title: 'Living Space', description: 'Open and airy living area' },
+  { id: 14, src: '/stills/rum-river-farmhouse-12.jpg', category: 'bedroom', title: 'Bedroom', description: 'Peaceful bedroom retreat' },
+  { id: 15, src: '/stills/rum-river-farmhouse-11.jpg', category: 'kitchen', title: 'Kitchen Details', description: 'Thoughtfully designed kitchen features' },
+  { id: 16, src: '/stills/rum-river-farmhouse-10.jpg', category: 'living', title: 'Family Room', description: 'Comfortable family gathering space' },
+  { id: 17, src: '/stills/rum-river-farmhouse-09.jpg', category: 'amenity', title: 'Outdoor Space', description: 'Relaxing outdoor seating area' },
+  { id: 18, src: '/stills/rum-river-farmhouse-08.jpg', category: 'exterior', title: 'Backyard View', description: 'Beautiful backyard with natural surroundings' },
+  { id: 19, src: '/stills/rum-river-farmhouse-07.jpg', category: 'living', title: 'Dining Area', description: 'Spacious dining area perfect for gatherings' },
+  { id: 20, src: '/stills/rum-river-farmhouse-06.jpg', category: 'bathroom', title: 'Bathroom', description: 'Clean and modern bathroom facilities' },
+  { id: 21, src: '/stills/rum-river-farmhouse-05.jpg', category: 'bedroom', title: 'Guest Bedroom', description: 'Inviting guest bedroom with warm decor' },
+  { id: 22, src: '/stills/rum-river-farmhouse-04.jpg', category: 'bedroom', title: 'Master Bedroom', description: 'Comfortable master bedroom with rustic touches' },
+  { id: 23, src: '/stills/rum-river-farmhouse-03.jpg', category: 'kitchen', title: 'Kitchen', description: 'Modern farmhouse kitchen with quality appliances' },
+  { id: 24, src: '/stills/rum-river-farmhouse-02.jpg', category: 'living', title: 'Living Room', description: 'Cozy living space with farmhouse charm' },
+  { id: 25, src: '/stills/rum-river-farmhouse-01.jpg', category: 'exterior', title: 'Farmhouse Exterior', description: 'Charming farmhouse with welcoming front entrance' }
 ];
 
 export function initGallery() {
@@ -145,11 +134,14 @@ function loadImages(filter, append = false, isInitial = false) {
       // Initialize masonry after images are loaded
       masonryInstance = new Masonry(galleryGrid, {
         itemSelector: '.gallery-item',
-        columnWidth: '.gallery-sizer',
+        columnWidth: 200,
         percentPosition: false, // Use pixel positioning
-        horizontalOrder: true,
+        horizontalOrder: false, // Allow scattered placement
         transitionDuration: 0,
-        gutter: 20
+        gutter: 30, // Positive gutter for spacing
+        fitWidth: true,
+        originLeft: true,
+        originTop: true
       });
       
       // Force layout
@@ -247,14 +239,18 @@ function loadAllImages(filter) {
 
 function createGalleryItem(image, index) {
   const item = document.createElement('div');
+  
+  // All polaroids are the same size now
   item.className = 'gallery-item';
   item.dataset.index = index;
   item.dataset.imageId = image.id; // Add unique identifier (data-image-id in HTML)
   
   item.innerHTML = `
-    <img src="${image.src}" alt="${image.description}" loading="lazy">
-    <div class="gallery-overlay">
-      <h3 class="gallery-title">${image.title}</h3>
+    <div class="gallery-item-inner">
+      <img src="${image.src}" alt="${image.description}" loading="lazy">
+      <div class="gallery-overlay">
+        <h3 class="gallery-title">${image.title}</h3>
+      </div>
     </div>
   `;
   

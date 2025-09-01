@@ -97,11 +97,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@400&family=Raleway:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@400&family=Raleway:wght@600&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
   
   <!-- Styles -->
   <link rel="stylesheet" href="/src/styles/main.css">
-  <link rel="stylesheet" href="/src/styles/components/farmhouse-dividers.css">
+  <link rel="stylesheet" href="/src/styles/components/northwoods-farmhouse.css">
   
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DY58N5WC3B"></script>
@@ -164,66 +164,32 @@
   </header>
 
   <!-- Hero Section with Video Background -->
-  <section class="hero">
-    <h1 class="sr-only">Breezy Point Lakeview Cottage - Luxury Vacation Rental in Minnesota</h1>
-    <div class="hero-video-wrapper">
-      <img class="hero-fallback" src="/stills/hero-placeholder.jpg" alt="{{PROPERTY_NAME}} {{PROPERTY_VIEW_DESCRIPTION}}">
-      <div id="video-placeholder"></div>
-      <div class="hero-overlay"></div>
+  <section class="section scrim-hero hero" style="background-image: url('/stills/rum-river-farmhouse-21.jpg');">
+    <div class="hero-content">
+      <h1 class="hero-title">Northwoods Farmhouse Retreat</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtitle">Wake to pines, lakes, and quiet skies—your modern farmhouse escape in northern Minnesota.</p>
+      <a class="btn btn-primary" href="#book">Book Your Stay</a>
     </div>
-    <div class="hero-scroll-indicator">
-      <svg width="30" height="50" viewBox="0 0 30 50">
-        <rect x="10" y="10" width="10" height="20" rx="5" stroke="white" stroke-width="2" fill="none"/>
-        <circle cx="15" cy="20" r="3" fill="white" class="scroll-dot"/>
+    <div class="scroll-indicator" onclick="document.getElementById('property-details').scrollIntoView({ behavior: 'smooth' });">
+      <svg viewBox="0 0 24 24">
+        <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
   </section>
 
-  <!-- Property Details -->
-  <section id="property-details" class="section section--antique-cream">
+  <!-- 2) Featured Gallery -->
+  <section id="gallery" class="gallery-section section bg-walnut-grad seam">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2>Lake Life Awaits You</h2>
-        <p>Our Lakeview Cottage located in Breezy Point Resort is the perfect escape from busy city life. Here you can golf all day and count the stars at night while sitting near a crackling campfire.</p>
-      </div>
-      
-      <!-- Content container with generic classes -->
-      <div class="highlight-cards-content">
-        <div class="highlight-cards-grid">
-          <div class="highlight-card highlight-card--circle" data-animate="fade-up">
-            <div class="highlight-icon">🏡</div>
-            <h3>Perfect for Groups</h3>
-            <p>Newly remodeled home for up to 8 guests with modern amenities</p>
-          </div>
-          
-          <div class="highlight-card highlight-card--circle" data-animate="fade-up">
-            <div class="highlight-icon">🏖️</div>
-            <h3>Resort Access</h3>
-            <p>Pelican Lake beach, 3 golf courses, dining and entertainment</p>
-          </div>
-          
-          <div class="highlight-card highlight-card--circle" data-animate="fade-up">
-            <div class="highlight-icon">🔥</div>
-            <h3>Natural Beauty</h3>
-            <p>Private backyard for bonfires and screened balcony with views</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Image Gallery -->
-  <section id="gallery" class="gallery-section section section--warm-linen">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2>Photo Gallery</h2>
-        <p>Explore every corner of your vacation home</p>
+        <div class="section-kicker">YOUR ESCAPE</div>
+        <h2 class="section-title">Miles from Everything, Close to Perfect</h2>
       </div>
       
       <div class="gallery-filters">
         <button class="filter-btn active" data-filter="all">All Photos</button>
         <button class="filter-btn" data-filter="exterior">Exterior</button>
-        <button class="filter-btn" data-filter="living">Living Areas</button>
+        <button class="filter-btn" data-filter="interior">Living Areas</button>
         <button class="filter-btn" data-filter="bedroom">Bedrooms</button>
         <button class="filter-btn" data-filter="kitchen">Kitchen</button>
         <button class="filter-btn" data-filter="bathroom">Bathrooms</button>
@@ -240,16 +206,55 @@
     </div>
   </section>
 
-  <!-- Amenities Section -->
-  <section id="amenities" class="section section--photo-overlay">
+  <!-- 3) Property Details Section -->
+  <section id="property-details" class="section bg-bone-grad seam">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2>Our Amenities</h2>
-        <p>Everything You Need for the Perfect Stay</p>
+        <div class="section-kicker">Welcome</div>
+        <h2 class="section-title">A cozy, design-forward stay</h2>
+        <p>Where thoughtful design meets untamed wilderness</p>
+      </div>
+      
+      <!-- Split Section 1: Image Left, Text Right -->
+      <div class="split-section" data-animate="fade-up">
+        <div class="split-content">
+          <div class="split-image">
+            <img src="/stills/rum-river-farmhouse-07.jpg" alt="Spacious dining area with farmhouse charm" loading="lazy">
+          </div>
+          <div class="split-text">
+            <h3>Gather Around the Table</h3>
+            <p>The heart of the farmhouse beats strongest in our sun-drenched dining room, where handcrafted furniture meets panoramic views of the Rum River valley. Here, morning coffee becomes a meditation and evening meals transform into lasting memories.</p>
+            <p>With seating for eight and a rustic farm table that's hosted countless celebrations, this space invites connection. The original wood beams overhead tell stories of generations past, while modern amenities ensure every comfort for today's gatherings.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Split Section 2: Text Left, Image Right -->
+      <div class="split-section reverse" data-animate="fade-up" data-delay="100">
+        <div class="split-content">
+          <div class="split-text">
+            <h3>Rest in Rural Luxury</h3>
+            <p>Each bedroom is a sanctuary designed for deep sleep and peaceful mornings. Wake to birdsong filtering through vintage lace curtains, with views that stretch across wildflower meadows to the forest beyond.</p>
+            <p>Premium linens, memory foam mattresses, and carefully curated antiques create an atmosphere of refined comfort. Whether you're here for adventure or escape, these rooms offer the perfect retreat after days spent exploring the untamed beauty that surrounds you.</p>
+          </div>
+          <div class="split-image">
+            <img src="/stills/rum-river-farmhouse-18.jpg" alt="Serene bedroom with rustic elegance" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Amenities -->
+  <section id="amenities" class="section bg-sage-grad seam">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title">Amenities</h2>
+        <p>Everything you need for the perfect Northwoods getaway</p>
       </div>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
-        <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm);" data-animate="fade-up">
+        <div class="card" style="text-align: center;" data-animate="fade-up">
           <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🏠</div>
           <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Living Spaces</h3>
           <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
@@ -261,7 +266,7 @@
           </ul>
         </div>
         
-        <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm);" data-animate="fade-up">
+        <div class="card" style="text-align: center;" data-animate="fade-up">
           <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🍳</div>
           <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Kitchen & Dining</h3>
           <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
@@ -273,7 +278,7 @@
           </ul>
         </div>
         
-        <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm);" data-animate="fade-up">
+        <div class="card" style="text-align: center;" data-animate="fade-up">
           <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🛏️</div>
           <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Bedrooms & Bath</h3>
           <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
@@ -285,7 +290,7 @@
           </ul>
         </div>
         
-        <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm);" data-animate="fade-up">
+        <div class="card" style="text-align: center;" data-animate="fade-up">
           <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🌊</div>
           <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Outdoor & Lake</h3>
           <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
@@ -300,12 +305,12 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="section section--antique-cream">
+  <!-- 5) Rooms & Rates -->
+  <section id="testimonials" class="section bg-sky-grad seam">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2>Reviews From Real People</h2>
-        <p>Based on recent guest reviews from Airbnb and VRBO</p>
+        <h2 class="section-title">Rooms & Rates</h2>
+        <p>Cozy spaces designed for your comfort</p>
       </div>
       
       <div style="position: relative; max-width: 1200px; margin: 3rem auto 0;">
@@ -317,7 +322,7 @@
               <div style="display: flex;">
               <!-- Review 1 -->
               <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); height: 100%;">
+                <div class="card card-sky" style="height: 100%;">
                 <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
                 <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">First Airbnb Experience - Exceptional!</h3>
                 <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"This was our first experience with an airbnb home. It was exceptional! Carvin was very responsive to all of our questions. The house is so cute and had everything we needed. It was perfect for the number of people in our group. The neighborhood was quiet and the neighbors were very friendly. We were close to lots of different activities and towns. We had a wonderful time!"</p>
@@ -327,7 +332,7 @@
               
               <!-- Review 2 -->
               <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); height: 100%;">
+                <div class="card card-sky" style="height: 100%;">
                   <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
                   <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Quiet Spot with Resort Access</h3>
                   <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"We love this quiet spot! Close enough to the amenities of the BP Resort yet far enough away for peace and quiet. The property is very relaxing and we loved the screen porch! We also enjoyed using the shuttle from Breezy, that was a bonus! The boat launch is a short walk away which made access to the lake so quick and convenient! Thank you for the great stay, we'll be back!!"</p>
@@ -337,7 +342,7 @@
               
               <!-- Review 3 -->
               <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); height: 100%;">
+                <div class="card card-sky" style="height: 100%;">
                   <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
                   <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Absolute GEM!</h3>
                   <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"This place was an absolute GEM! We loved the perfect balance of privacy and convenience — a peaceful private backyard to relax in, yet just one block from public access and only minutes from all the action within the resort. Carvin and Beth were amazing hosts — super responsive and quick to answer all our questions. The space itself is truly amazing. We especially enjoyed grilling out on the front patio. We'll absolutely be returning!"</p>
@@ -347,7 +352,7 @@
               
               <!-- Review 4 -->
               <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div style="background: var(--white); border: 1px solid rgba(46, 110, 142, 0.15); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); height: 100%;">
+                <div class="card card-sky" style="height: 100%;">
                   <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
                   <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Great Family Getaway!</h3>
                   <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"Our family loved staying at this house, the decor was super cute. Close proximity to Breezy point beach and walking distance to the restaurants. We loved relaxing on the porch and playing games! We will most definitely be back!"</p>
@@ -398,12 +403,12 @@
     </div>
   </section>
 
-  <!-- Prime Location Section -->
-  <section id="location" class="section section--warm-linen">
+  <!-- 6) Location & Map -->
+  <section id="location" class="section bg-bone-grad seam">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2 style="color: var(--white);">Prime Location</h2>
-        <p style="color: var(--pearl);">30539 N Lakeview Dr, Breezy Point, MN 56472</p>
+        <h2 class="section-title">Find Us</h2>
+        <p>30539 N Lakeview Dr, Breezy Point, MN 56472</p>
       </div>
       
       <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); margin: 3rem 0; position: relative;">
@@ -571,62 +576,62 @@
       </script>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
-        <div style="background: linear-gradient(135deg, var(--powder) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: 2rem; transition: all 0.3s ease; box-shadow: var(--shadow-lg); color: initial;" data-animate="fade-left">
+        <div class="card" data-animate="fade-left">
           <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">🏖️</span>
             <div>
-              <h3 style="font-size: 1.25rem; color: var(--ocean-dark); margin-bottom: 0.5rem; font-family: 'Lora', serif; font-weight: 500;">5 minutes to Breezy Point Resort</h3>
-              <p style="color: var(--ocean-dark); line-height: 1.6; font-family: 'Source Sans 3', sans-serif; font-weight: 400; font-size: 0.95rem;">World-class amenities including marina, restaurants, beach access, spa services, and the famous Dockside Lounge.</p>
+              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">5 minutes to Breezy Point Resort</h3>
+              <p style="color: var(--charcoal); line-height: 1.6; font-family: var(--font-sans); font-size: 0.95rem;">World-class amenities including marina, restaurants, beach access, spa services, and the famous Dockside Lounge.</p>
             </div>
           </div>
         </div>
         
-        <div style="background: linear-gradient(135deg, var(--powder) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: 2rem; transition: all 0.3s ease; box-shadow: var(--shadow-lg); color: initial;" data-animate="fade-right">
+        <div class="card" data-animate="fade-right">
           <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">⛳</span>
             <div>
-              <h3 style="font-size: 1.25rem; color: var(--ocean-dark); margin-bottom: 0.5rem; font-family: 'Lora', serif; font-weight: 500;">10 minutes to Golf Courses</h3>
-              <p style="color: var(--ocean-dark); line-height: 1.6; font-family: 'Source Sans 3', sans-serif; font-weight: 400; font-size: 0.95rem;">Deacon's Lodge (#1 in MN), The Traditional, Whitebirch, and three more championship courses within 20 minutes.</p>
+              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">10 minutes to Golf Courses</h3>
+              <p style="color: var(--charcoal); line-height: 1.6; font-family: var(--font-sans); font-size: 0.95rem;">Deacon's Lodge (#1 in MN), The Traditional, Whitebirch, and three more championship courses within 20 minutes.</p>
             </div>
           </div>
         </div>
         
-        <div style="background: linear-gradient(135deg, var(--powder) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: 2rem; transition: all 0.3s ease; box-shadow: var(--shadow-lg); color: initial;" data-animate="fade-left">
+        <div class="card" data-animate="fade-left">
           <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">🌲</span>
             <div>
-              <h3 style="font-size: 1.25rem; color: var(--ocean-dark); margin-bottom: 0.5rem; font-family: 'Lora', serif; font-weight: 500;">10 minutes to Crosslake</h3>
-              <p style="color: var(--ocean-dark); line-height: 1.6; font-family: 'Source Sans 3', sans-serif; font-weight: 400; font-size: 0.95rem;">Historic town with unique shops, restaurants, and the famous Whitefish Chain of 14 interconnected lakes.</p>
+              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">10 minutes to Crosslake</h3>
+              <p style="color: var(--charcoal); line-height: 1.6; font-family: var(--font-sans); font-size: 0.95rem;">Historic town with unique shops, restaurants, and the famous Whitefish Chain of 14 interconnected lakes.</p>
             </div>
           </div>
         </div>
         
-        <div style="background: linear-gradient(135deg, var(--powder) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: 2rem; transition: all 0.3s ease; box-shadow: var(--shadow-lg); color: initial;" data-animate="fade-right">
+        <div class="card" data-animate="fade-right">
           <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">🛍️</span>
             <div>
-              <h3 style="font-size: 1.25rem; color: var(--ocean-dark); margin-bottom: 0.5rem; font-family: 'Lora', serif; font-weight: 500;">15 minutes to Downtown Pequot Lakes</h3>
-              <p style="color: var(--ocean-dark); line-height: 1.6; font-family: 'Source Sans 3', sans-serif; font-weight: 400; font-size: 0.95rem;">Charming downtown with antique shops, boutiques, cafes, farmers market, and the Paul Bunyan Trail.</p>
+              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">15 minutes to Downtown Pequot Lakes</h3>
+              <p style="color: var(--charcoal); line-height: 1.6; font-family: var(--font-sans); font-size: 0.95rem;">Charming downtown with antique shops, boutiques, cafes, farmers market, and the Paul Bunyan Trail.</p>
             </div>
           </div>
         </div>
         
-        <div style="background: linear-gradient(135deg, var(--powder) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: 2rem; transition: all 0.3s ease; box-shadow: var(--shadow-lg); color: initial;" data-animate="fade-left">
+        <div class="card" data-animate="fade-left">
           <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">🏙️</span>
             <div>
-              <h3 style="font-size: 1.25rem; color: var(--ocean-dark); margin-bottom: 0.5rem; font-family: 'Lora', serif; font-weight: 500;">20 minutes to Brainerd</h3>
-              <p style="color: var(--ocean-dark); line-height: 1.6; font-family: 'Source Sans 3', sans-serif; font-weight: 400; font-size: 0.95rem;">Larger city with shopping, dining, entertainment, hospitals, and year-round events and attractions.</p>
+              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">20 minutes to Brainerd</h3>
+              <p style="color: var(--charcoal); line-height: 1.6; font-family: var(--font-sans); font-size: 0.95rem;">Larger city with shopping, dining, entertainment, hospitals, and year-round events and attractions.</p>
             </div>
           </div>
         </div>
         
-        <div style="background: linear-gradient(135deg, var(--powder) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: 2rem; transition: all 0.3s ease; box-shadow: var(--shadow-lg); color: initial;" data-animate="fade-right">
+        <div class="card" data-animate="fade-right">
           <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">🎿</span>
             <div>
-              <h3 style="font-size: 1.25rem; color: var(--ocean-dark); margin-bottom: 0.5rem; font-family: 'Lora', serif; font-weight: 500;">25 minutes to Nisswa</h3>
-              <p style="color: var(--ocean-dark); line-height: 1.6; font-family: 'Source Sans 3', sans-serif; font-weight: 400; font-size: 0.95rem;">Popular destination with boutique shopping, dining, Gull Lake, and year-round outdoor activities.</p>
+              <h3 style="font-size: 1.25rem; color: var(--pine-800); margin-bottom: 0.5rem; font-family: var(--font-display); font-weight: 600;">25 minutes to Nisswa</h3>
+              <p style="color: var(--charcoal); line-height: 1.6; font-family: var(--font-sans); font-size: 0.95rem;">Popular destination with boutique shopping, dining, Gull Lake, and year-round outdoor activities.</p>
             </div>
           </div>
         </div>
@@ -634,12 +639,12 @@
     </div>
   </section>
 
-  <!-- YouTube Video Section -->
-  <section class="section section--sage-pine">
+  <!-- 7) Seasons / Things to Do -->
+  <section id="seasons" class="section bg-walnut-grad seam" data-animate="fade-up">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2>See The Property In Action</h2>
-        <p>Take a virtual walk through your future vacation home</p>
+        <h2 class="section-title">Seasons & Activities</h2>
+        <p>Kayak in June, leaf-peep in October, snowshoe in January</p>
       </div>
       <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); margin: 3rem auto; max-width: 900px;">
         <iframe 
@@ -655,8 +660,8 @@
     </div>
   </section>
 
-  <!-- 3D Virtual Tour -->
-  <section id="virtual-tour" class="section section--photo-overlay">
+  <!-- Virtual Tour (bonus) -->
+  <section id="virtual-tour" class="section bg-sage-grad">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>3D Virtual Tour</h2>
@@ -676,12 +681,35 @@
     </div>
   </section>
 
-  <!-- Booking CTAs -->
-  <section id="book" class="section section--sage-pine">
+  <!-- 8) Book Now (Primary CTA) -->
+  <section id="book" class="section bg-barn-grad">
     <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2>Ready to Book Your Stay?</h2>
-        <p>Check availability and book directly through your preferred platform</p>
+      <div class="booking-hero-content" data-animate="fade-up">
+        <h2 class="booking-title">Your Wilderness Retreat Awaits</h2>
+        <p class="booking-subtitle">Where memories are made and time slows down</p>
+        
+        <!-- Feature highlights -->
+        <div class="booking-features">
+          <div class="booking-feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span>5.0 Star Reviews</span>
+          </div>
+          <div class="booking-feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            <span>Instant Booking</span>
+          </div>
+          <div class="booking-feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 11H3m16 0h-6m-4-7v6m0 4v6"/>
+            </svg>
+            <span>Flexible Dates</span>
+          </div>
+        </div>
       </div>
       
       <style>
@@ -692,29 +720,29 @@
         
         .booking-jump-card {
           display: block;
-          background: var(--white);
-          border: 2px solid var(--powder);
-          border-radius: var(--radius-lg);
+          background: var(--bone);
+          border: 1px solid var(--wheat-300);
+          border-radius: var(--radius);
           padding: 2.5rem;
           text-align: center;
           transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
           text-decoration: none;
           position: relative;
           overflow: visible;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 8px rgba(46, 50, 48, 0.08);
         }
         
         .booking-jump-card:hover {
           animation: jump 0.5s ease-in-out;
-          box-shadow: 0 15px 30px rgba(46, 110, 142, 0.3);
-          border-color: var(--ocean);
+          box-shadow: 0 4px 12px rgba(46, 50, 48, 0.12);
+          border-color: var(--copper-600);
         }
         
         .booking-jump-icon {
           width: 120px;
           height: 120px;
           margin: 0 auto 1.5rem;
-          background: var(--powder);
+          background: var(--sage-200);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -723,7 +751,7 @@
         }
         
         .booking-jump-card:hover .booking-jump-icon {
-          background: var(--ocean);
+          background: var(--pine-800);
           transform: scale(1.1);
         }
         
@@ -736,49 +764,65 @@
         }
       </style>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 700px; margin: 3rem auto;">
+      <!-- Booking platforms -->
+      <div class="booking-platforms">
         <a href="https://airbnb.com/h/lakeview-cottage-breezy-point" 
-           class="booking-jump-card"
+           class="booking-platform-card airbnb"
            target="_blank" 
-           rel="noopener" 
-           data-animate="fade-up">
-          <div class="booking-jump-icon">
-            <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width: 80px; height: 80px;">
-              <path d="M499.3 736.7c-51-64-81-120.1-91-168.1-10-39-6-70 11-93 18-27 45-40 80-40s62 13 80 40c17 23 21 54 11 93-11 49-41 105-91 168.1zm362.2 43c-7 47-39 86-83 105-85 37-169.1-22-241.1-102 119.1-149.1 141.1-265.1 90-340.2-30-43-73-64-128.1-64-55 0-98.1 21-128.1 64-51 75-29 191 90 340.2-72 80-156.1 139-241.1 102-43-19-75-58-83-105-20-98 10-222 134.1-340.2 92-87 174.1-131 262.1-131 88 0 170.1 44 262.1 131 124.1 118 154.1 242 134.1 340.2z" fill="#FF5A5F" style="transition: fill 0.3s ease;"/>
+           rel="noopener">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm1.2 4.8c0 .7-.5 1.2-1.2 1.2s-1.2-.5-1.2-1.2.5-1.2 1.2-1.2 1.2.5 1.2 1.2zm-1.2 2.4c1.3 0 2.4 1.1 2.4 2.4v1.2c0 .2 0 .3-.1.5l-2.3 6c-.1.2-.3.3-.5.3s-.4-.1-.5-.3l-2.3-6c-.1-.2-.1-.3-.1-.5V9.6c0-1.3 1.1-2.4 2.4-2.4h1z"/>
             </svg>
           </div>
-          <h3 style="color: var(--ocean-dark); margin-bottom: 0.5rem; font-size: 1.5rem;">Book on Airbnb</h3>
-          <p style="color: var(--slate); font-size: 0.95rem; margin: 0;">Instant booking available</p>
+          <div class="platform-info">
+            <h3>Book on Airbnb</h3>
+            <p>Superhost property • Instant confirmation</p>
+          </div>
+          <span class="platform-arrow">→</span>
         </a>
         
         <a href="https://t.vrbo.io/S09ELUREbVb" 
-           class="booking-jump-card"
+           class="booking-platform-card vrbo"
            target="_blank" 
-           rel="noopener" 
-           data-animate="fade-up">
-          <div class="booking-jump-icon">
-            <svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" style="width: 100px; height: 60px;">
-              <text x="10" y="35" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#005CA9" style="transition: fill 0.3s ease;">VRBO</text>
+           rel="noopener">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
             </svg>
           </div>
-          <h3 style="color: var(--ocean-dark); margin-bottom: 0.5rem; font-size: 1.5rem;">Book on VRBO</h3>
-          <p style="color: var(--slate); font-size: 0.95rem; margin: 0;">Flexible cancellation options</p>
+          <div class="platform-info">
+            <h3>Book on VRBO</h3>
+            <p>Premier host • Family-friendly</p>
+          </div>
+          <span class="platform-arrow">→</span>
         </a>
       </div>
       
-      <div style="text-align: center; padding: 2rem 0; border-top: 1px solid var(--pearl);">
-        <p style="color: var(--charcoal); margin-bottom: 1rem; font-family: 'Source Sans 3', sans-serif;">Questions? Contact us directly:</p>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <a href="tel:+16128010546" style="color: var(--ocean); font-weight: 600; text-decoration: none; font-size: 1.1rem;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">+1 (612) 801-0546</a>
-          <span style="color: var(--sky);">|</span>
-          <a href="mailto:breezylakeviewcottage@gmail.com" style="color: var(--ocean); font-weight: 600; text-decoration: none; font-size: 1.1rem;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">breezylakeviewcottage@gmail.com</a>
+      <!-- Direct contact -->
+      <div class="booking-contact">
+        <p class="contact-label">Prefer to book directly?</p>
+        <div class="contact-options">
+          <a href="tel:+16128010546" class="contact-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Call (612) 801-0546
+          </a>
+          <a href="mailto:breezylakeviewcottage@gmail.com" class="contact-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Send Email
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="site-footer section--iron-black">
+  <!-- 9) Footer -->
+  <footer class="site-footer bg-charcoal-grad">
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
@@ -890,6 +934,20 @@
 
     // Call the function on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', loadDesktopVideo);
+  </script>
+  
+  <!-- Gradient System Intersection Observer -->
+  <script>
+    (() => {
+      const opts = { root: null, rootMargin: '0px', threshold: 0.35 };
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) e.target.classList.add('in-view');
+          else e.target.classList.remove('in-view');
+        }
+      }, opts);
+      document.querySelectorAll('.section').forEach(s => io.observe(s));
+    })();
   </script>
 </body>
 </html>

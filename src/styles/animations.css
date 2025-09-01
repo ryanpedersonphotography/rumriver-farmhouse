@@ -88,25 +88,7 @@
 }
 
 /* Gallery Items - Rustic Reveal */
-.gallery-item {
-  opacity: 0;
-  transform: translateY(60px) scale(0.92);
-  transition: all 0.9s var(--anim-easing-gentle);
-}
-
-.gallery-item:nth-child(even) {
-  transform: translateY(60px) scale(0.92);
-  transition-delay: 0.1s;
-}
-
-.gallery-item.gallery-animate-in {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.gallery-item.gallery-animate-in:hover {
-  animation: farmhouseSway 3s ease-in-out infinite;
-}
+/* Removed conflicting gallery-item animations - now handled in gallery.css */
 
 /* Feature Cards - Barn Door Slide */
 .feature-card {
@@ -418,11 +400,7 @@ html {
     transform: none !important;
   }
   
-  /* Simplify animations */
-  .gallery-item,
-  .gallery-item:nth-child(even) {
-    transform: translateY(40px) scale(0.95);
-  }
+  /* Gallery animations now in gallery.css */
   
   .feature-card,
   .feature-card:nth-child(even) {

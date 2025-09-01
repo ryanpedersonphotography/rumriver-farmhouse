@@ -7,7 +7,8 @@
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(30, 77, 107, 0.95); /* Navy blue with opacity */
+  background-color: var(--charcoal); /* Charcoal from Northwoods palette */
+  background-color: rgba(46, 50, 48, 0.97); /* Charcoal with slight transparency */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,7 +60,7 @@ body.lightbox-active {
   height: 50px;
   background: none;
   border: none;
-  color: var(--white);
+  color: var(--bone);
   font-size: 2.5rem;
   cursor: pointer;
   transition: var(--transition);
@@ -71,7 +72,7 @@ body.lightbox-active {
 
 .lightbox-close:hover {
   transform: rotate(90deg);
-  color: var(--powder);
+  color: var(--wheat-300);
 }
 
 .lightbox-prev,
@@ -81,7 +82,7 @@ body.lightbox-active {
   transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
-  color: var(--white);
+  color: var(--bone);
   font-size: 3rem;
   width: 60px;
   height: 60px;

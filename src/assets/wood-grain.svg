@@ -1,0 +1,52 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Wood grain pattern -->
+    <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="600" height="400">
+      <!-- Base wood color -->
+      <rect width="600" height="400" fill="#4A3426"/>
+      
+      <!-- Wood grain lines - varying opacity and thickness -->
+      <path d="M0,20 Q150,25 300,15 T600,20" stroke="#3A2618" stroke-width="1.5" opacity="0.3" fill="none"/>
+      <path d="M0,45 Q200,50 400,40 T600,45" stroke="#2F1F14" stroke-width="2" opacity="0.25" fill="none"/>
+      <path d="M0,80 Q180,85 360,75 T600,80" stroke="#3A2618" stroke-width="1" opacity="0.4" fill="none"/>
+      <path d="M0,110 Q220,115 440,105 T600,110" stroke="#2F1F14" stroke-width="3" opacity="0.2" fill="none"/>
+      <path d="M0,150 Q160,155 320,145 T600,150" stroke="#3A2618" stroke-width="1.5" opacity="0.35" fill="none"/>
+      <path d="M0,185 Q240,190 480,180 T600,185" stroke="#2F1F14" stroke-width="2.5" opacity="0.22" fill="none"/>
+      <path d="M0,220 Q170,225 340,215 T600,220" stroke="#3A2618" stroke-width="1" opacity="0.45" fill="none"/>
+      <path d="M0,255 Q210,260 420,250 T600,255" stroke="#2F1F14" stroke-width="2" opacity="0.28" fill="none"/>
+      <path d="M0,290 Q190,295 380,285 T600,290" stroke="#3A2618" stroke-width="1.5" opacity="0.32" fill="none"/>
+      <path d="M0,325 Q230,330 460,320 T600,325" stroke="#2F1F14" stroke-width="3" opacity="0.18" fill="none"/>
+      <path d="M0,360 Q150,365 300,355 T600,360" stroke="#3A2618" stroke-width="1" opacity="0.38" fill="none"/>
+      <path d="M0,390 Q200,395 400,385 T600,390" stroke="#2F1F14" stroke-width="2" opacity="0.25" fill="none"/>
+      
+      <!-- Wood knots -->
+      <ellipse cx="120" cy="180" rx="25" ry="15" fill="#2F1F14" opacity="0.2" transform="rotate(15 120 180)"/>
+      <ellipse cx="120" cy="180" rx="15" ry="8" fill="#261811" opacity="0.3" transform="rotate(15 120 180)"/>
+      
+      <ellipse cx="450" cy="280" rx="30" ry="18" fill="#2F1F14" opacity="0.15" transform="rotate(-20 450 280)"/>
+      <ellipse cx="450" cy="280" rx="18" ry="10" fill="#261811" opacity="0.25" transform="rotate(-20 450 280)"/>
+      
+      <ellipse cx="280" cy="90" rx="20" ry="12" fill="#2F1F14" opacity="0.18" transform="rotate(45 280 90)"/>
+      <ellipse cx="280" cy="90" rx="12" ry="7" fill="#261811" opacity="0.28" transform="rotate(45 280 90)"/>
+      
+      <!-- Subtle vertical grain -->
+      <path d="M50,0 Q52,100 48,200 T50,400" stroke="#3A2618" stroke-width="0.5" opacity="0.2" fill="none"/>
+      <path d="M150,0 Q148,120 152,240 T150,400" stroke="#3A2618" stroke-width="0.5" opacity="0.15" fill="none"/>
+      <path d="M250,0 Q252,80 248,160 T250,400" stroke="#3A2618" stroke-width="0.5" opacity="0.18" fill="none"/>
+      <path d="M350,0 Q348,110 352,220 T350,400" stroke="#3A2618" stroke-width="0.5" opacity="0.12" fill="none"/>
+      <path d="M450,0 Q452,90 448,180 T450,400" stroke="#3A2618" stroke-width="0.5" opacity="0.16" fill="none"/>
+      <path d="M550,0 Q548,130 552,260 T550,400" stroke="#3A2618" stroke-width="0.5" opacity="0.14" fill="none"/>
+    </pattern>
+    
+    <!-- Overlay gradient for depth -->
+    <linearGradient id="woodOverlay" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.1"/>
+      <stop offset="50%" style="stop-color:#000000;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Apply the pattern -->
+  <rect width="600" height="400" fill="url(#woodGrain)"/>
+  <rect width="600" height="400" fill="url(#woodOverlay)"/>
+</svg>

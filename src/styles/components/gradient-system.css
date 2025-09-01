@@ -1,0 +1,230 @@
+/* =========================
+  FARMHOUSE GRADIENT SYSTEM
+  - subtle tonal blends for each bg
+  - scroll-in + (desktop) hover motion
+  - respects prefers-reduced-motion
+========================= */
+
+/* 0) Base tokens (keep your existing ones; these are just referenced) */
+:root{
+  --linen:#F8F6F1; --parchment:#EFEAE1; --bone:#FFFFFF; --charcoal:#2E3230;
+  --sage-200:#E8EFE9; --sage-500:#BCC9BF; --pine-800:#2F4A3C;
+  --sky-100:#E6F0F6; --lake-600:#4E6E7E;
+  --wheat-300:#E8C88F; --barn-700:#8E3B2F; --copper-600:#B66A4B;
+
+  /* gradient motion control */
+  --grad-angle: 180deg;          /* default vertical */
+  --grad-shift: 0%;              /* animated from 0% → 100% */
+  --grad-scale: 100%;            /* slight zoom on hover/scroll */
+}
+
+/* 1) Core section scaffold (you already have .section) */
+.section {
+  position: relative;
+  overflow: clip; /* keeps gradient effects tidy at edges */
+  will-change: background-position;
+  margin: 0 !important;
+  padding: var(--section-pad-d) 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-pad-m) 0;
+  }
+}
+
+/* 2) Subtle motion: only if user allows animation */
+@media (prefers-reduced-motion: no-preference){
+  /* animate gradient position/size when section is in view */
+  .section.in-view {
+    --grad-shift: 100%;
+    --grad-scale: 102%;
+    transition:
+      --grad-shift 1400ms cubic-bezier(.2,.6,.2,1),
+      --grad-scale 1200ms cubic-bezier(.2,.6,.2,1);
+  }
+  /* desktop hover enhances the effect slightly */
+  @media (hover:hover){
+    .section:hover {
+      --grad-scale: 104%;
+    }
+  }
+}
+
+/* 3) GRADIENT VARIANTS
+   Each is a tasteful tonal blend with good type contrast.
+   Swap your bg-* helpers with these bg-*-grad classes.
+*/
+
+/* 3a) Neutrals */
+.bg-linen-grad {
+  /* paper cream → bone highlight */
+  background:
+    radial-gradient( 160% 120% at 80% 10%,
+      color-mix(in srgb, var(--bone) 80%, transparent) 0%,
+      transparent 35%),
+    linear-gradient(var(--grad-angle),
+      color-mix(in srgb, var(--linen) 100%, transparent) calc(0% + var(--grad-shift)/6),
+      color-mix(in srgb, var(--parchment) 60%, transparent) 60%,
+      var(--linen) 100%);
+  color: var(--charcoal);
+  background-size: var(--grad-scale) var(--grad-scale);
+}
+
+.bg-bone-grad {
+  /* bone → parchment floor (barely there) */
+  background:
+    linear-gradient(var(--grad-angle),
+      var(--bone) 0%,
+      color-mix(in srgb, var(--parchment) 35%, var(--bone)) 100%);
+  color: var(--charcoal);
+}
+
+/* 3b) Nature tints */
+.bg-sky-grad {
+  /* cool lake air */
+  background:
+    radial-gradient(140% 90% at 20% 0%,
+      color-mix(in srgb, var(--bone) 70%, transparent) 0%,
+      transparent 40%),
+    linear-gradient(var(--grad-angle),
+      color-mix(in srgb, var(--sky-100) 100%, transparent) 0%,
+      color-mix(in srgb, #D9E8F3 70%, transparent) 55%,
+      var(--sky-100) 100%);
+  color: var(--charcoal);
+}
+
+.bg-sage-grad {
+  /* garden shade */
+  background:
+    radial-gradient(130% 85% at 80% 10%,
+      color-mix(in srgb, var(--bone) 65%, transparent) 0%,
+      transparent 38%),
+    linear-gradient(var(--grad-angle),
+      color-mix(in srgb, var(--sage-200) 100%, transparent) 0%,
+      color-mix(in srgb, var(--sage-500) 35%, var(--sage-200)) 100%);
+  color: var(--charcoal);
+}
+
+/* 3c) Deep brand tones */
+.bg-barn-grad {
+  /* weathered barn red */
+  background:
+    radial-gradient(180% 120% at 20% 0%,
+      color-mix(in srgb, #A64537 28%, transparent) 0%,
+      transparent 45%),
+    linear-gradient(var(--grad-angle),
+      color-mix(in srgb, var(--barn-700) 96%, #6A2E25 4%) 0%,
+      #6A2E25 100%);
+  color: var(--bone);
+}
+
+.bg-pine-grad {
+  /* evergreen canopy */
+  background:
+    radial-gradient(170% 120% at 80% 0%,
+      color-mix(in srgb, #3C5E4B 26%, transparent) 0%,
+      transparent 46%),
+    linear-gradient(var(--grad-angle),
+      color-mix(in srgb, var(--pine-800) 94%, #254035 6%) 0%,
+      #23382F 100%);
+  color: var(--bone);
+}
+
+.bg-charcoal-grad {
+  /* charcoal → softer nightfall */
+  background:
+    radial-gradient(150% 110% at 70% 5%,
+      color-mix(in srgb, #4A4E4C 22%, transparent) 0%,
+      transparent 42%),
+    linear-gradient(var(--grad-angle),
+      #2E3230 0%,
+      #252827 100%);
+  color: var(--bone);
+}
+
+/* 3d) Warm brown (your "Walnut" idea) - with burnt edges and wood grain */
+.bg-walnut-grad {
+  /* darker, more burnt walnut */
+  background-color: #4A3426; /* Fallback solid color - darker */
+  background:
+    url('/src/assets/wood-grain.svg'),
+    radial-gradient(160% 120% at 15% 0%,
+      color-mix(in srgb, #6B4B37 22%, transparent) 0%,
+      transparent 48%),
+    linear-gradient(var(--grad-angle),
+      #5B3E2C 0%,
+      #3A2618 100%);
+  background-size: 600px 400px, var(--grad-scale) var(--grad-scale), var(--grad-scale) var(--grad-scale);
+  background-position: 0 0, center, center;
+  background-blend-mode: overlay, normal, normal;
+  color: var(--bone);
+  /* Add raised effect with shadow - no transform */
+  position: relative;
+  z-index: 10;
+  box-shadow: 
+    0 -10px 30px rgba(0, 0, 0, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    inset 0 0 80px rgba(0, 0, 0, 0.4); /* Inner shadow for burnt effect */
+  transition: box-shadow 0.3s ease;
+}
+
+/* Enhanced hover effect for walnut section */
+.bg-walnut-grad:hover {
+  box-shadow: 
+    0 -15px 40px rgba(0, 0, 0, 0.3),
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+/* 4) Type/link/accessibility adjustments on dark gradients */
+.bg-barn-grad a,
+.bg-pine-grad a,
+.bg-charcoal-grad a,
+.bg-walnut-grad a { color: var(--bone); text-decoration-thickness: 2px; }
+.bg-barn-grad .btn-primary-inverse,
+.bg-pine-grad .btn-primary-inverse,
+.bg-charcoal-grad .btn-primary-inverse,
+.bg-walnut-grad .btn-primary-inverse { --btn-bg: var(--bone); --btn-fg: var(--barn-700); }
+
+/* Ensure text readability on walnut gradient */
+.bg-walnut-grad h2,
+.bg-walnut-grad h3,
+.bg-walnut-grad p,
+.bg-walnut-grad .section-header p {
+  color: var(--bone) !important;
+}
+
+/* 5) Section title underline contrasts:
+   - darker anchor on light gradients, light anchor on dark ones */
+.section-title::after{ background: var(--pine-800); }
+.bg-barn-grad .section-title::after,
+.bg-pine-grad .section-title::after,
+.bg-charcoal-grad .section-title::after,
+.bg-walnut-grad .section-title::after{ background: var(--bone); opacity:.9; }
+
+/* 6) Seam fade - DISABLED for seamless transitions */
+/* Remove the seam effect to allow gradients to flow into each other */
+.section.seam::after {
+  display: none !important;
+}
+
+.bg-linen-grad    { --section-bg: var(--linen); }
+.bg-bone-grad     { --section-bg: var(--bone); }
+.bg-sage-grad     { --section-bg: var(--sage-200); }
+.bg-sky-grad      { --section-bg: var(--sky-100); }
+.bg-barn-grad     { --section-bg: var(--barn-700); }
+.bg-pine-grad     { --section-bg: var(--pine-800); }
+.bg-charcoal-grad { --section-bg: var(--charcoal); }
+.bg-walnut-grad   { --section-bg: #5A4636; }
+
+/* 7) Optional: parallax-ish nudge for hero only (safe + tiny) */
+.hero-grad {
+  background-attachment: fixed;          /* supported on desktop, ignored on iOS */
+  background-size: cover;
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-grad { background-attachment: scroll; }
+}

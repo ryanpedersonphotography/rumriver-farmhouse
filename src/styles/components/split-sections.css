@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Split Sections - Alternating Image/Text Layout
+   ========================================================================== */
+
+.split-section {
+  margin: 4rem 0;
+  position: relative;
+}
+
+.split-section:first-of-type {
+  margin-top: 2rem;
+}
+
+.split-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Reverse layout for alternating sections */
+.split-section.reverse .split-image {
+  order: 2;
+}
+
+.split-section.reverse .split-text {
+  order: 1;
+}
+
+/* Image Styling */
+.split-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(46, 50, 48, 0.12);
+}
+
+.split-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.split-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Add decorative border */
+.split-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--sage-500);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.split-image:hover::after {
+  opacity: 0.3;
+}
+
+/* Text Styling */
+.split-text {
+  padding: 2rem;
+}
+
+.split-text h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--pine-800);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.split-text h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--sage-500);
+  border-radius: 2px;
+}
+
+.split-text p {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--charcoal);
+  margin-bottom: 1.25rem;
+}
+
+.split-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .split-section {
+    margin: 3rem 0;
+  }
+  
+  .split-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  /* Reset reverse layout on mobile - always show image first */
+  .split-section.reverse .split-image {
+    order: -1;
+  }
+  
+  .split-section.reverse .split-text {
+    order: 1;
+  }
+  
+  .split-image {
+    order: -1; /* Always show image first on mobile */
+  }
+  
+  .split-text {
+    padding: 1.5rem 0;
+  }
+  
+  .split-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .split-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .split-content {
+    gap: 3rem;
+  }
+  
+  .split-text {
+    padding: 1.5rem;
+  }
+  
+  .split-text h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Animation on scroll */
+[data-animate="fade-up"] .split-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-animate="fade-up"].aos-animate .split-section,
+.split-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation for multiple sections */
+.split-section[data-delay="100"] {
+  transition-delay: 100ms;
+}
+
+.split-section[data-delay="200"] {
+  transition-delay: 200ms;
+}

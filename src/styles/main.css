@@ -5,13 +5,20 @@
 @import './utilities/variables.css';
 @import './utilities/animations.css';
 
+/* Import Northwoods Farmhouse Design System */
+@import './components/northwoods-farmhouse.css';
+@import './components/gradient-system.css';
+
 /* Import components */
 @import './components/navigation.css';
 @import './components/hero.css';
 @import './components/property.css';
 @import './components/property-details.css';
 @import './components/highlight-cards.css';
+@import './components/feature-cards.css';
 @import './components/gallery.css';
+@import './components/split-sections.css';
+@import './components/booking-hero.css';
 @import './components/sections.css';
 @import './components/footer.css';
 @import './components/lightbox.css';
@@ -140,11 +147,8 @@ section {
   position: relative;
 }
 
-/* Section Styles */
-section {
-  padding: var(--section-padding);
-  margin: 0 !important; /* Reset all section margins to prevent gaps */
-}
+/* Section Styles - moved to gradient-system.css for consistency */
+/* section styles are now handled by gradient-system.css */
 
 /* GLOBAL: Force disable ALL divider animations */
 .section-divider,

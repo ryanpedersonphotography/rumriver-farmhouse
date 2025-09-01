@@ -1,0 +1,42 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Wood frame pattern for borders -->
+    <pattern id="woodFrame" patternUnits="userSpaceOnUse" width="100" height="100">
+      <!-- Base wood color -->
+      <rect width="100" height="100" fill="#3A2618"/>
+      
+      <!-- Wood grain texture -->
+      <path d="M0,10 Q25,12 50,8 T100,10" stroke="#2F1F14" stroke-width="1" opacity="0.4" fill="none"/>
+      <path d="M0,25 Q30,27 60,23 T100,25" stroke="#4A3426" stroke-width="1.5" opacity="0.3" fill="none"/>
+      <path d="M0,40 Q35,42 70,38 T100,40" stroke="#2F1F14" stroke-width="1" opacity="0.35" fill="none"/>
+      <path d="M0,55 Q28,57 56,53 T100,55" stroke="#4A3426" stroke-width="2" opacity="0.25" fill="none"/>
+      <path d="M0,70 Q32,72 64,68 T100,70" stroke="#2F1F14" stroke-width="1" opacity="0.4" fill="none"/>
+      <path d="M0,85 Q26,87 52,83 T100,85" stroke="#4A3426" stroke-width="1.5" opacity="0.3" fill="none"/>
+      
+      <!-- Vertical grain -->
+      <path d="M15,0 Q16,50 14,100" stroke="#2F1F14" stroke-width="0.5" opacity="0.25" fill="none"/>
+      <path d="M35,0 Q34,50 36,100" stroke="#2F1F14" stroke-width="0.5" opacity="0.2" fill="none"/>
+      <path d="M55,0 Q56,50 54,100" stroke="#2F1F14" stroke-width="0.5" opacity="0.22" fill="none"/>
+      <path d="M75,0 Q74,50 76,100" stroke="#2F1F14" stroke-width="0.5" opacity="0.18" fill="none"/>
+      <path d="M90,0 Q91,50 89,100" stroke="#2F1F14" stroke-width="0.5" opacity="0.2" fill="none"/>
+      
+      <!-- Small knot -->
+      <ellipse cx="65" cy="35" rx="8" ry="5" fill="#261811" opacity="0.3" transform="rotate(25 65 35)"/>
+      
+      <!-- Highlight for depth -->
+      <rect x="0" y="0" width="100" height="2" fill="#4A3426" opacity="0.5"/>
+      <rect x="0" y="0" width="2" height="100" fill="#4A3426" opacity="0.5"/>
+    </pattern>
+    
+    <!-- Inner shadow gradient -->
+    <linearGradient id="frameShade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#261811;stop-opacity:0.4"/>
+      <stop offset="50%" style="stop-color:#3A2618;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#261811;stop-opacity:0.5"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Apply the pattern -->
+  <rect width="100" height="100" fill="url(#woodFrame)"/>
+  <rect width="100" height="100" fill="url(#frameShade)" opacity="0.6"/>
+</svg>

@@ -39,21 +39,8 @@ export function initLightbox() {
     if (index < 0 || index >= currentImages.length) return;
     
     const image = currentImages[index];
-    // Use optimized version for lightbox
-    const baseName = image.src.replace(/\.(jpg|jpeg)$/i, '').replace('/stills/', '');
-    const optimizedSrc = `/stills/optimized/${baseName}-xl.webp`;
-    const fallbackSrc = `/stills/optimized/${baseName}-optimized.jpg`;
-    
-    // Try WebP first, fallback to JPEG if not supported
-    const img = new Image();
-    img.onload = () => {
-      lightboxImage.src = optimizedSrc;
-    };
-    img.onerror = () => {
-      lightboxImage.src = fallbackSrc;
-    };
-    img.src = optimizedSrc;
-    
+    // Use the original image directly
+    lightboxImage.src = image.src;
     lightboxImage.alt = image.description;
     lightboxCaption.textContent = image.description;
     currentIndex = index;
