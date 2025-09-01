@@ -6,8 +6,12 @@ export function initNavigation() {
   
   // Scroll effect and active section detection
   let lastScroll = 0;
+  let hasScrolled = false;
   
   function updateActiveSection() {
+    // Only update active sections after user has scrolled
+    if (!hasScrolled) return;
+    
     const scrollPosition = window.pageYOffset + 100; // Offset for header height
     
     // Get all sections
@@ -36,6 +40,9 @@ export function initNavigation() {
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
+    // Mark that user has scrolled
+    hasScrolled = true;
+    
     if (currentScroll > 50) {
       header.classList.add('scrolled');
     } else {
@@ -45,9 +52,6 @@ export function initNavigation() {
     updateActiveSection();
     lastScroll = currentScroll;
   });
-  
-  // Initial active section check
-  updateActiveSection();
   
   // Mobile menu toggle
   mobileMenuToggle.addEventListener('click', () => {

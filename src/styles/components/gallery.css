@@ -25,9 +25,9 @@
 
 .filter-btn {
   padding: 0.75rem 1.5rem;
-  background-color: var(--white);
-  color: var(--charcoal);
-  border: 2px solid var(--wheat);
+  background-color: rgba(250, 246, 240, 0.8);
+  color: var(--deep-brown);
+  border: 2px solid rgba(139, 111, 71, 0.6);
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
@@ -36,20 +36,23 @@
   text-transform: uppercase;
   font-size: 0.825rem;
   letter-spacing: 0.05em;
+  backdrop-filter: blur(4px);
 }
 
 .filter-btn:hover {
-  background-color: var(--sage-light);
-  border-color: var(--sage);
+  background-color: rgba(139, 111, 71, 0.2);
+  border-color: rgba(139, 111, 71, 0.8);
+  color: var(--bone);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(135, 169, 107, 0.2);
+  box-shadow: 0 4px 8px rgba(139, 111, 71, 0.3);
 }
 
 .filter-btn.active {
-  background-color: var(--barn-red);
-  color: var(--cream);
-  border-color: var(--barn-red);
-  box-shadow: 0 2px 6px rgba(139, 58, 58, 0.2);
+  background-color: rgba(74, 60, 40, 0.9);
+  color: var(--bone);
+  border-color: rgba(74, 60, 40, 1);
+  box-shadow: 0 2px 6px rgba(74, 60, 40, 0.4);
+  backdrop-filter: blur(6px);
 }
 
 /* Gallery Grid - 4 Across Layout with Cork Board */
@@ -57,14 +60,22 @@
   margin: 0 auto 3rem;
   position: relative;
   width: 100%;
-  max-width: 1000px; /* Constrain width for 4 across */
+  max-width: 1280px; /* Special exception - wider for gallery display */
   min-height: 800px;
   /* Rich warm cork board background - farmhouse chic */
+  /* Safari fallback - solid color first */
+  background-color: #C4956A;
+  /* Chrome/Firefox - simple gradient fallback */
+  background: linear-gradient(135deg, #D4A974 0%, #C4956A 30%, #B8936A 70%, #D4A974 100%);
+  /* Modern browsers with texture */
   background: 
     url('/src/assets/cork-texture.svg'),
-    linear-gradient(135deg, #D4A974 0%, #C4956A 30%, #B8936A 70%, #D4A974 100%);
-  background-size: 350px 350px, 100% 100%;
-  padding: 30px 20px;
+    linear-gradient(135deg, #D4A974 0%, #C4956A 30%, #B8936A 70%, #D4A974 100%) !important;
+  background-size: 350px 350px, 100% 100% !important;
+  /* Explicit background properties for Safari */
+  background-repeat: repeat, no-repeat !important;
+  background-attachment: scroll, scroll !important;
+  padding: 50px 40px !important;
   border-radius: 8px;
   box-shadow: 
     inset 0 3px 12px rgba(139, 58, 58, 0.15),
@@ -73,6 +84,7 @@
     0 2px 8px rgba(139, 111, 71, 0.2);
   border: 4px solid #8B6F47;
   display: block;
+  text-align: center;
 }
 
 .gallery-grid:after {
@@ -108,17 +120,19 @@
     0 4px 8px rgba(0, 0, 0, 0.1),
     0 8px 16px rgba(0, 0, 0, 0.1),
     0 16px 32px rgba(0, 0, 0, 0.05);
-  /* Transform and transition handled by JavaScript */
+  /* Support CSS custom properties for rotation set by JavaScript */
+  transform: rotate(var(--card-rotation, 0deg)) translateY(var(--card-translateY, 0px)) scale(var(--card-scale, 1));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   will-change: transform, box-shadow;
 }
 
 /* Random rotation handled by JavaScript via --rotation variable */
 
-/* Pushpin on top white border with random position and rotation */
+/* Pushpin positioned to go into the white top border of polaroid */
 .gallery-item::before {
   content: '';
   position: absolute;
-  top: -5px;
+  top: -17px; /* Position pin to go into the white top border area */
   left: var(--pin-position, 50%);
   transform: translateX(-50%) rotate(var(--pin-rotation, 0deg));
   width: 28px;
@@ -232,6 +246,7 @@ h3.gallery-title {
     margin: 10px;
   }
 }
+
 
 /* Mobile Styles */
 @media (max-width: 768px) {

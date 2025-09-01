@@ -41,6 +41,14 @@ export function initGallery() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const loadMoreBtn = document.getElementById('loadMoreBtn');
   
+  // Safari detection and background fix
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  if (isSafari && galleryGrid) {
+    // Remove corkboard background on Safari and use solid color instead
+    galleryGrid.style.background = 'linear-gradient(135deg, #D4A974 0%, #C4956A 30%, #B8936A 70%, #D4A974 100%)';
+    galleryGrid.style.backgroundSize = '100% 100%';
+  }
+  
   allImages = [...imageData];
   
   // Initial load first, then setup masonry with a small delay
@@ -138,8 +146,8 @@ function loadImages(filter, append = false, isInitial = false) {
         percentPosition: false, // Use pixel positioning
         horizontalOrder: true, // Keep items in order for 4-across layout
         transitionDuration: 0,
-        gutter: 20, // Tighter gutter for 4-across
-        fitWidth: false, // Full width to fit 4 across
+        gutter: 30, // More spacing between photos
+        fitWidth: true, // Center the grid
         originLeft: true,
         originTop: true
       });
@@ -253,9 +261,10 @@ function createGalleryItem(image, index) {
   const initialTranslateY = 0;
   const initialScale = 1;
   
-  // Apply initial transform
-  item.style.transform = `rotate(${cardRotation}deg) translateY(${initialTranslateY}px) scale(${initialScale})`;
-  item.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease';
+  // Apply initial transform using CSS custom properties
+  item.style.setProperty('--card-rotation', `${cardRotation}deg`);
+  item.style.setProperty('--card-translateY', `${initialTranslateY}px`);
+  item.style.setProperty('--card-scale', initialScale);
   
   // More consistent pushpin position (45% to 55% from left) 
   const pinPosition = 45 + Math.random() * 10;
@@ -296,7 +305,9 @@ function createGalleryItem(image, index) {
   
   // Add hover animations
   item.addEventListener('mouseenter', () => {
-    item.style.transform = `rotate(${initialRotation}deg) translateY(-20px) scale(1.08)`;
+    item.style.setProperty('--card-rotation', `${initialRotation}deg`);
+    item.style.setProperty('--card-translateY', '-20px');
+    item.style.setProperty('--card-scale', '1.08');
     item.style.boxShadow = `
       inset 0 0 4px rgba(0, 0, 0, 0.06),
       0 10px 20px rgba(0, 0, 0, 0.25),
@@ -312,7 +323,9 @@ function createGalleryItem(image, index) {
   });
   
   item.addEventListener('mouseleave', () => {
-    item.style.transform = `rotate(${initialRotation}deg) translateY(${initialTranslateY}px) scale(${initialScale})`;
+    item.style.setProperty('--card-rotation', `${initialRotation}deg`);
+    item.style.setProperty('--card-translateY', `${initialTranslateY}px`);
+    item.style.setProperty('--card-scale', initialScale);
     item.style.boxShadow = `
       inset 0 0 4px rgba(0, 0, 0, 0.06),
       0 2px 4px rgba(0, 0, 0, 0.1),

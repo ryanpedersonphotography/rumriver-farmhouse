@@ -7,8 +7,22 @@
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--charcoal); /* Charcoal from Northwoods palette */
-  background-color: rgba(46, 50, 48, 0.97); /* Charcoal with slight transparency */
+  /* Dark brown wood grain background - warmer brown tones */
+  background-color: #3A2D1F; /* Fallback solid color - dark brown */
+  /* Safari fallback - simple gradient */
+  background: linear-gradient(180deg, #4A3628 0%, #2A1F15 100%);
+  /* Modern browsers with full texture */
+  background:
+    url('/src/assets/wood-grain.svg'),
+    radial-gradient(160% 120% at 15% 0%,
+      rgba(90, 75, 55, 0.25) 0%,
+      transparent 48%),
+    linear-gradient(180deg,
+      #4A3628 0%,
+      #2A1F15 100%);
+  background-size: 120% 120%, 100% 100%, 100% 100%;
+  background-position: -10% -5%, center, center;
+  background-blend-mode: overlay, normal, normal;
   display: flex;
   align-items: center;
   justify-content: center;

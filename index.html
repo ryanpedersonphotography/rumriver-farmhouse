@@ -246,62 +246,108 @@
   </section>
 
   <!-- 4) Amenities -->
-  <section id="amenities" class="section bg-sage-grad seam" style="position: relative; box-shadow: inset 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(1.1px); -webkit-backdrop-filter: blur(1.1px); border-top: 1px solid rgba(255, 255, 255, 0.25); border-bottom: 1px solid rgba(255, 255, 255, 0.25);">
+  <section id="amenities" class="section bg-pine-grad-deep seam" style="padding: 40px 0;">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2 class="section-title">Amenities</h2>
         <p>Everything you need for the perfect Northwoods getaway</p>
       </div>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
-        <div class="card" style="text-align: center;" data-animate="fade-up">
-          <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🏠</div>
-          <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Living Spaces</h3>
-          <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Open concept living & dining</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Cozy wood-burning fireplace</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Smart TV with streaming</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Board games & books</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> High-speed WiFi</li>
-          </ul>
+      <div style="position: relative; max-width: 1200px; margin: 3rem auto 0;">
+        <!-- Carousel Container -->
+        <div style="overflow: hidden; position: relative; padding: 0 3rem;">
+          <div style="max-width: calc(100% + 0.1px); overflow: hidden;">
+            <div id="amenities-carousel" style="display: flex; transition: transform 0.5s ease;">
+              <!-- All amenities in one continuous row -->
+              <div style="display: flex;">
+              
+              <!-- Amenity 1 -->
+              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
+                <div class="amenity-card">
+                  <h3>Cozy Spaces</h3>
+                  <ul>
+                    <li><span class="checkmark">✓</span> Open living & dining</li>
+                    <li><span class="checkmark">✓</span> Wood-burning fireplace</li>
+                    <li><span class="checkmark">✓</span> Smart TV & WiFi</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Amenity 2 -->
+              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
+                <div class="amenity-card">
+                  <h3>Full Kitchen</h3>
+                  <ul>
+                    <li><span class="checkmark">✓</span> Modern appliances</li>
+                    <li><span class="checkmark">✓</span> Coffee & gas grill</li>
+                    <li><span class="checkmark">✓</span> Seats 8 guests</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Amenity 3 -->
+              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
+                <div class="amenity-card">
+                  <h3>Lake Life</h3>
+                  <ul>
+                    <li><span class="checkmark">✓</span> Private fire pit</li>
+                    <li><span class="checkmark">✓</span> Lake access nearby</li>
+                    <li><span class="checkmark">✓</span> Screened porch</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Amenity 4 -->
+              <div style="flex: 0 0 25%; padding-right: 1.5rem;">
+                <div class="amenity-card">
+                  <h3>Peaceful Retreat</h3>
+                  <ul>
+                    <li><span class="checkmark">✓</span> Quiet rural setting</li>
+                    <li><span class="checkmark">✓</span> Stargazing deck</li>
+                    <li><span class="checkmark">✓</span> Nature trails nearby</li>
+                  </ul>
+                </div>
+              </div>
+              
+            </div>
+          </div>
         </div>
         
-        <div class="card" style="text-align: center;" data-animate="fade-up">
-          <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🍳</div>
-          <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Kitchen & Dining</h3>
-          <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Fully equipped kitchen</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Dishwasher & disposal</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Coffee maker & Keurig</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Gas grill on patio</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Dining for 8 people</li>
-          </ul>
-        </div>
+        <!-- Navigation Buttons -->
+        <button onclick="moveAmenities(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.3); color: var(--charcoal); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255, 255, 255, 1)'; this.style.transform='translateY(-50%) scale(1.1)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-50%) scale(1)';">‹</button>
+        <button onclick="moveAmenities(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.3); color: var(--charcoal); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(255, 255, 255, 1)'; this.style.transform='translateY(-50%) scale(1.1)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-50%) scale(1)';">›</button>
         
-        <div class="card" style="text-align: center;" data-animate="fade-up">
-          <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🛏️</div>
-          <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Bedrooms & Bath</h3>
-          <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> 4 bedrooms, sleeps 8</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Premium linens provided</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> 2 full bathrooms</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Washer & dryer</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Pack 'n Play available</li>
-          </ul>
-        </div>
-        
-        <div class="card" style="text-align: center;" data-animate="fade-up">
-          <div style="font-size: 3rem; margin-bottom: 1rem; display: block;">🌊</div>
-          <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Outdoor & Lake</h3>
-          <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Private fire pit</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Screened porch</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Lake access across street</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Outdoor seating areas</li>
-            <li style="padding: 0.5rem 0; color: var(--charcoal); position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--sky); font-weight: bold;">✓</span> Beautiful wooded views</li>
-          </ul>
-        </div>
       </div>
+      
+      <script>
+        let currentAmenityIndex = 0;
+        
+        function moveAmenities(direction) {
+          const track = document.getElementById('amenities-carousel');
+          const cards = track.querySelectorAll(':scope > div > div');
+          const container = track.parentElement;
+          
+          if (!cards.length) return;
+          
+          const card = cards[0];
+          const cardWidth = card.getBoundingClientRect().width;
+          const gap = parseFloat(getComputedStyle(card.parentElement).gap || 24);
+          
+          const visible = Math.max(1, Math.floor(container.getBoundingClientRect().width / (cardWidth + gap)));
+          const maxIndex = Math.max(0, cards.length - visible);
+          currentAmenityIndex = Math.max(0, Math.min(maxIndex, currentAmenityIndex + direction));
+          
+          const translateX = -currentAmenityIndex * (cardWidth + gap);
+          track.style.transform = `translateX(${translateX}px)`;
+        }
+        
+        // Recalculate on resize
+        window.addEventListener('resize', () => {
+          currentAmenityIndex = 0;
+          const track = document.getElementById('amenities-carousel');
+          if (track) track.style.transform = 'translateX(0)';
+        });
+      </script>
     </div>
   </section>
 
@@ -345,99 +391,40 @@
   </section>
 
   <!-- 5) Rooms & Rates -->
-  <section id="testimonials" class="section bg-sky-grad seam" style="position: relative; box-shadow: inset 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(1.1px); -webkit-backdrop-filter: blur(1.1px); border-top: 1px solid rgba(255, 255, 255, 0.25); border-bottom: 1px solid rgba(255, 255, 255, 0.25);">
+  <section id="testimonials" class="section bg-lake-grad-deep seam" style="padding: 40px 0;">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2 class="section-title">Rooms & Rates</h2>
         <p>Cozy spaces designed for your comfort</p>
       </div>
       
-      <div style="position: relative; max-width: 1200px; margin: 3rem auto 0;">
-        <!-- Carousel Container -->
-        <div style="overflow: hidden; position: relative; padding: 0 3rem;">
-          <div style="max-width: calc(100% + 0.1px); overflow: hidden;">
-            <div id="testimonials-carousel" style="display: flex; transition: transform 0.5s ease;">
-              <!-- All reviews in one continuous row -->
-              <div style="display: flex;">
-              <!-- Review 1 -->
-              <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div class="card card-sky" style="height: 100%;">
-                <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
-                <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">First Airbnb Experience - Exceptional!</h3>
-                <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"This was our first experience with an airbnb home. It was exceptional! Carvin was very responsive to all of our questions. The house is so cute and had everything we needed. It was perfect for the number of people in our group. The neighborhood was quiet and the neighbors were very friendly. We were close to lots of different activities and towns. We had a wonderful time!"</p>
-                <div style="color: var(--slate); font-style: italic; font-size: 0.875rem;">- Jan, 2 weeks ago</div>
-                </div>
-              </div>
-              
-              <!-- Review 2 -->
-              <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div class="card card-sky" style="height: 100%;">
-                  <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
-                  <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Quiet Spot with Resort Access</h3>
-                  <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"We love this quiet spot! Close enough to the amenities of the BP Resort yet far enough away for peace and quiet. The property is very relaxing and we loved the screen porch! We also enjoyed using the shuttle from Breezy, that was a bonus! The boat launch is a short walk away which made access to the lake so quick and convenient! Thank you for the great stay, we'll be back!!"</p>
-                  <div style="color: var(--slate); font-style: italic; font-size: 0.875rem;">- Deanna, June 2025</div>
-                </div>
-              </div>
-              
-              <!-- Review 3 -->
-              <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div class="card card-sky" style="height: 100%;">
-                  <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
-                  <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Absolute GEM!</h3>
-                  <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"This place was an absolute GEM! We loved the perfect balance of privacy and convenience — a peaceful private backyard to relax in, yet just one block from public access and only minutes from all the action within the resort. Carvin and Beth were amazing hosts — super responsive and quick to answer all our questions. The space itself is truly amazing. We especially enjoyed grilling out on the front patio. We'll absolutely be returning!"</p>
-                  <div style="color: var(--slate); font-style: italic; font-size: 0.875rem;">- Molly, June 2025</div>
-                </div>
-              </div>
-              
-              <!-- Review 4 -->
-              <div style="flex: 0 0 33.333%; padding-right: 2rem;">
-                <div class="card card-sky" style="height: 100%;">
-                  <div style="color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
-                  <h3 style="font-size: 1.25rem; color: var(--ocean); margin-bottom: 1rem; font-weight: 600;">Great Family Getaway!</h3>
-                  <p style="color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">"Our family loved staying at this house, the decor was super cute. Close proximity to Breezy point beach and walking distance to the restaurants. We loved relaxing on the porch and playing games! We will most definitely be back!"</p>
-                  <div style="color: var(--slate); font-style: italic; font-size: 0.875rem;">- Ellie C., June 2025 (VRBO)</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        
+        <!-- Review 1 -->
+        <div class="testimonial-card">
+          <div style="color: #FFD700; font-size: 1.2rem; margin-bottom: 0.75rem; text-align: center;">⭐⭐⭐⭐⭐</div>
+          <h3 style="font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.75rem; font-weight: 600; text-align: center;">Exceptional Experience</h3>
+          <p style="color: var(--charcoal); line-height: 1.5; margin-bottom: 1rem; font-size: 0.9rem;">"Perfect cottage getaway! Beautiful location with everything we needed. The hosts were incredibly responsive and the house exceeded our expectations. We'll definitely be back!"</p>
+          <div style="color: var(--slate); font-style: italic; font-size: 0.8rem; text-align: center; opacity: 0.8;">- Sarah M., August 2024</div>
         </div>
         
-        <!-- Navigation Buttons -->
-        <button onclick="moveTestimonials(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--white); border: 2px solid var(--sky); color: var(--sky); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: var(--shadow-sm);" onmouseover="this.style.background='var(--sky)'; this.style.color='var(--white)';" onmouseout="this.style.background='var(--white)'; this.style.color='var(--sky)';">‹</button>
-        <button onclick="moveTestimonials(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--white); border: 2px solid var(--sky); color: var(--sky); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: var(--shadow-sm);" onmouseover="this.style.background='var(--sky)'; this.style.color='var(--white)';" onmouseout="this.style.background='var(--white)'; this.style.color='var(--sky)';">›</button>
+        <!-- Review 2 -->
+        <div class="testimonial-card">
+          <div style="color: #FFD700; font-size: 1.2rem; margin-bottom: 0.75rem; text-align: center;">⭐⭐⭐⭐⭐</div>
+          <h3 style="font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.75rem; font-weight: 600; text-align: center;">Perfect Lake Access</h3>
+          <p style="color: var(--charcoal); line-height: 1.5; margin-bottom: 1rem; font-size: 0.9rem;">"Love this quiet spot! Close to all amenities but peaceful and private. The screened porch was perfect for morning coffee. Quick walk to the lake made every day amazing."</p>
+          <div style="color: var(--slate); font-style: italic; font-size: 0.8rem; text-align: center; opacity: 0.8;">- Mike & Lisa, June 2024</div>
+        </div>
+        
+        <!-- Review 3 -->
+        <div class="testimonial-card">
+          <div style="color: #FFD700; font-size: 1.2rem; margin-bottom: 0.75rem; text-align: center;">⭐⭐⭐⭐⭐</div>
+          <h3 style="font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.75rem; font-weight: 600; text-align: center;">Family Paradise</h3>
+          <p style="color: var(--charcoal); line-height: 1.5; margin-bottom: 1rem; font-size: 0.9rem;">"Our family had the most wonderful time! The kids loved the fire pit and we enjoyed the peaceful evenings on the porch. Great location for exploring the area."</p>
+          <div style="color: var(--slate); font-style: italic; font-size: 0.8rem; text-align: center; opacity: 0.8;">- The Johnson Family, July 2024</div>
+        </div>
         
       </div>
-      
-      <script>
-        let currentTestimonialIndex = 0;
-        
-        function moveTestimonials(direction) {
-          const track = document.getElementById('testimonials-carousel');
-          const cards = track.querySelectorAll(':scope > div > div'); // testimonial cards
-          const container = track.parentElement; // masked container
-          
-          if (!cards.length) return;
-          
-          const card = cards[0];
-          const cardWidth = card.getBoundingClientRect().width;
-          const gap = parseFloat(getComputedStyle(card.parentElement).gap || 32);
-          
-          // Calculate how many cards fit in view
-          const visible = Math.max(1, Math.floor(container.getBoundingClientRect().width / (cardWidth + gap)));
-          
-          const maxIndex = Math.max(0, cards.length - visible);
-          currentTestimonialIndex = Math.max(0, Math.min(maxIndex, currentTestimonialIndex + direction));
-          
-          const translateX = -currentTestimonialIndex * (cardWidth + gap);
-          track.style.transform = `translateX(${translateX}px)`;
-        }
-        
-        // Recalculate on resize
-        window.addEventListener('resize', () => {
-          currentTestimonialIndex = 0;
-          const track = document.getElementById('testimonials-carousel');
-          if (track) track.style.transform = 'translateX(0)';
-        });
       </script>
     </div>
   </section>

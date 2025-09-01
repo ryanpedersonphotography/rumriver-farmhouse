@@ -143,21 +143,85 @@
   color: var(--bone);
 }
 
-/* 3d) Warm brown (your "Walnut" idea) - with burnt edges and wood grain */
+/* 3d) Enhanced dark gradients for amenities and testimonials */
+.bg-pine-grad-deep {
+  /* Rich evergreen with copper highlights */
+  background:
+    radial-gradient(140% 120% at 20% 10%,
+      rgba(182, 106, 75, 0.35) 0%,
+      transparent 45%),
+    radial-gradient(120% 100% at 80% 90%,
+      rgba(47, 74, 60, 0.8) 0%,
+      transparent 50%),
+    linear-gradient(var(--grad-angle),
+      #1A2B22 0%,
+      rgba(47, 74, 60, 0.95) 30%,
+      #2F4A3C 70%,
+      #23382F 100%);
+  color: var(--bone);
+  background-size: var(--grad-scale) var(--grad-scale);
+  box-shadow: 
+    inset 0 4px 20px rgba(0, 0, 0, 0.3),
+    0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bg-lake-grad-deep {
+  /* Serene lake at twilight with forest reflections */
+  background:
+    radial-gradient(120% 80% at 20% 0%,
+      rgba(91, 133, 150, 0.3) 0%,
+      transparent 40%),
+    radial-gradient(100% 120% at 80% 100%,
+      rgba(60, 94, 75, 0.4) 0%,
+      transparent 45%),
+    linear-gradient(var(--grad-angle),
+      #243540 0%,
+      rgba(91, 133, 150, 0.85) 30%,
+      rgba(60, 94, 75, 0.9) 70%,
+      #1E3A2F 100%);
+  color: var(--bone);
+  background-size: var(--grad-scale) var(--grad-scale);
+  box-shadow: 
+    inset 0 4px 20px rgba(0, 0, 0, 0.3),
+    0 2px 15px rgba(60, 94, 75, 0.25);
+}
+
+.bg-barn-grad-deep {
+  /* Deep barn red with golden warmth */
+  background:
+    radial-gradient(160% 140% at 30% 0%,
+      rgba(232, 200, 143, 0.25) 0%,
+      transparent 50%),
+    radial-gradient(130% 110% at 70% 100%,
+      rgba(142, 59, 47, 0.4) 0%,
+      transparent 55%),
+    linear-gradient(var(--grad-angle),
+      #4A1F1A 0%,
+      rgba(142, 59, 47, 0.98) 25%,
+      #8E3B2F 60%,
+      #6A2E25 100%);
+  color: var(--bone);
+  background-size: var(--grad-scale) var(--grad-scale);
+  box-shadow: 
+    inset 0 4px 20px rgba(0, 0, 0, 0.3),
+    0 2px 15px rgba(142, 59, 47, 0.2);
+}
+
+/* 3e) Warm brown (your "Walnut" idea) - with burnt edges and wood grain */
 .bg-walnut-grad {
-  /* darker, more burnt walnut */
-  background-color: #6B4A37; /* Fallback solid color - warm brown */
+  /* Dark brown wood grain background - warmer brown tones */
+  background-color: #3A2D1F; /* Fallback solid color - dark brown */
   /* Safari fallback - simple gradient */
-  background: linear-gradient(180deg, #7B5A42 0%, #5A4236 100%);
+  background: linear-gradient(180deg, #4A3628 0%, #2A1F15 100%);
   /* Modern browsers with full texture */
   background:
     url('/src/assets/wood-grain.svg'),
     radial-gradient(160% 120% at 15% 0%,
-      rgba(139, 107, 71, 0.25) 0%,
+      rgba(90, 75, 55, 0.25) 0%,
       transparent 48%),
     linear-gradient(var(--grad-angle),
-      #7B5A42 0%,
-      #5A4236 100%);
+      #4A3628 0%,
+      #2A1F15 100%);
   background-size: 120% 120%, var(--grad-scale) var(--grad-scale), var(--grad-scale) var(--grad-scale);
   background-position: -10% -5%, center, center;
   background-blend-mode: overlay, normal, normal;
@@ -186,17 +250,35 @@
 .bg-barn-grad a,
 .bg-pine-grad a,
 .bg-charcoal-grad a,
-.bg-walnut-grad a { color: var(--bone); text-decoration-thickness: 2px; }
+.bg-walnut-grad a,
+.bg-pine-grad-deep a,
+.bg-barn-grad-deep a,
+.bg-lake-grad-deep a { color: var(--bone); text-decoration-thickness: 2px; }
 .bg-barn-grad .btn-primary-inverse,
 .bg-pine-grad .btn-primary-inverse,
 .bg-charcoal-grad .btn-primary-inverse,
-.bg-walnut-grad .btn-primary-inverse { --btn-bg: var(--bone); --btn-fg: var(--barn-700); }
+.bg-walnut-grad .btn-primary-inverse,
+.bg-pine-grad-deep .btn-primary-inverse,
+.bg-barn-grad-deep .btn-primary-inverse,
+.bg-lake-grad-deep .btn-primary-inverse { --btn-bg: var(--bone); --btn-fg: var(--barn-700); }
 
-/* Ensure text readability on walnut gradient */
+/* Ensure text readability on dark gradients */
 .bg-walnut-grad h2,
 .bg-walnut-grad h3,
 .bg-walnut-grad p,
-.bg-walnut-grad .section-header p {
+.bg-walnut-grad .section-header p,
+.bg-pine-grad-deep h2,
+.bg-pine-grad-deep h3,
+.bg-pine-grad-deep p,
+.bg-pine-grad-deep .section-header p,
+.bg-barn-grad-deep h2,
+.bg-barn-grad-deep h3,
+.bg-barn-grad-deep p,
+.bg-barn-grad-deep .section-header p,
+.bg-lake-grad-deep h2,
+.bg-lake-grad-deep h3,
+.bg-lake-grad-deep p,
+.bg-lake-grad-deep .section-header p {
   color: var(--bone) !important;
 }
 
@@ -206,7 +288,10 @@
 .bg-barn-grad .section-title::after,
 .bg-pine-grad .section-title::after,
 .bg-charcoal-grad .section-title::after,
-.bg-walnut-grad .section-title::after{ background: var(--bone); opacity:.9; }
+.bg-walnut-grad .section-title::after,
+.bg-pine-grad-deep .section-title::after,
+.bg-barn-grad-deep .section-title::after,
+.bg-lake-grad-deep .section-title::after{ background: var(--bone); opacity:.9; }
 
 /* 6) Seam fade - DISABLED for seamless transitions */
 /* Remove the seam effect to allow gradients to flow into each other */
@@ -222,8 +307,153 @@
 .bg-pine-grad     { --section-bg: var(--pine-800); }
 .bg-charcoal-grad { --section-bg: var(--charcoal); }
 .bg-walnut-grad   { --section-bg: #5A4636; }
+.bg-pine-grad-deep { --section-bg: #1A2B22; }
+.bg-barn-grad-deep { --section-bg: #4A1F1A; }
+.bg-lake-grad-deep { --section-bg: #243540; }
 
-/* 7) Optional: parallax-ish nudge for hero only (safe + tiny) */
+/* 7) Testimonial cards for dark gradient backgrounds */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 1.75rem;
+  height: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure maximum text contrast on testimonial cards */
+.testimonial-card h3 {
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
+}
+
+.testimonial-card p {
+  color: #2d2d2d !important;
+  font-weight: 500 !important;
+}
+
+/* Make attribution text more visible */
+.testimonial-card div[style*="italic"] {
+  color: #4a4a4a !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+/* Circular amenity cards */
+.amenity-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 2rem;
+  height: auto;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.amenity-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+
+.amenity-card h3 {
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
+  font-size: 1.3rem !important;
+  margin-bottom: 1rem !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.amenity-card ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  width: 100%;
+}
+
+.amenity-card li {
+  padding: 0.5rem 0 !important;
+  color: #2d2d2d !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  position: relative !important;
+  padding-left: 1.8rem !important;
+  line-height: 1.4 !important;
+}
+
+.amenity-card .checkmark {
+  position: absolute !important;
+  left: 0 !important;
+  color: var(--copper-600) !important;
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Circular images for property details and farmhouse life sections */
+#property-details .split-image,
+#farmhouse-life .split-image {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+#property-details .split-image:hover,
+#farmhouse-life .split-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+#property-details .split-image::after,
+#farmhouse-life .split-image::after {
+  display: none; /* Remove the decorative border overlay */
+}
+
+#property-details .split-image img,
+#farmhouse-life .split-image img {
+  border-radius: 0; /* Image doesn't need border radius since container handles it */
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.3s ease;
+}
+
+#property-details .split-image:hover img,
+#farmhouse-life .split-image:hover img {
+  transform: scale(1.05); /* Keep the hover scale effect */
+}
+
+/* 8) Optional: parallax-ish nudge for hero only (safe + tiny) */
 .hero-grad {
   background-attachment: fixed;          /* supported on desktop, ignored on iOS */
   background-size: cover;
