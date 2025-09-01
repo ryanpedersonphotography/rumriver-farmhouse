@@ -1,32 +1,35 @@
 :root {
-  /* Vacation-inspired Colors */
-  --navy: #1e4d6b;          /* Deep lake blue with teal undertone */
-  --ocean: #2e6e8e;         /* Main lake blue - vibrant vacation feel */
-  --sky: #4a92b4;           /* Bright energetic blue */
-  --powder: #6fb1d3;        /* Soft powder blue */
-  --mist: #e3f2fd;          /* Clear vacation sky */
-  --ice: #f3f9ff;           /* Bright morning sky */
-  --frost: #ebf2fa;
-  --white: #ffffff;
-  --charcoal: #2c3e50;
-  --slate: #5a6c7d;
-  --pearl: #f8fafb;
+  /* Farmhouse Primary Colors */
+  --cream: #FAF6F0;         /* Warm cream - main background */
+  --barn-red: #8B3A3A;      /* Classic barn red - primary accent */
+  --barn-red-dark: #6B2C2C; /* Darker barn red for hover */
+  --sage: #87A96B;          /* Sage green - secondary accent */
+  --sage-light: #A4BD8E;    /* Light sage for backgrounds */
+  --charcoal: #3A3A3A;      /* Dark charcoal - main text */
   
-  /* Sunset & Warmth */
-  --sunset: #ff7043;        /* Soft coral sunset */
-  --sunset-light: #ff8a65;  /* Peachy sunset glow */
-  --sunset-dark: #f4511e;   /* Rich sunset */
-  --sunshine: #ffd54f;      /* Warm golden sunshine */
-  --sunshine-light: #ffe082;/* Soft morning light */
-  --sunshine-dark: #ffb300; /* Golden hour */
+  /* Farmhouse Secondary Colors */
+  --wheat: #F5DEB3;         /* Wheat - warm highlights */
+  --wheat-light: #FAE7C9;   /* Light wheat */
+  --sky-blue: #87CEEB;      /* Soft sky blue - trust elements */
+  --antique-white: #FAEBD7; /* Antique white - alt backgrounds */
+  --wood-brown: #8B6F47;    /* Wood brown - borders, dividers */
+  --wood-light: #A0845C;    /* Light wood */
+  
+  /* Farmhouse Neutrals */
+  --off-white: #FEFEFA;     /* Off-white */
+  --white: #FFFFFF;         /* Pure white */
+  --stone-gray: #8B8680;    /* Stone gray - muted text */
+  --stone-light: #A09B96;   /* Light stone */
+  --deep-brown: #4A3C28;    /* Deep brown - dark sections */
+  --rust: #B87333;          /* Rust orange - accents */
   
   /* Natural Elements */
-  --wood: #8d6e63;          /* Warm cabin wood */
-  --wood-light: #a1887f;    /* Driftwood */
-  --forest: #558b2f;        /* Lively summer green */
-  --forest-light: #689f38;  /* Fresh green */
-  --sand: #faf3e0;          /* Creamy beach sand */
-  --sand-light: #fffbf0;    /* Light sand */
+  --forest: #4A5D23;        /* Deep forest green */
+  --forest-light: #6B8E23;  /* Olive green */
+  --sand: #F4E4C1;          /* Sandy beige */
+  --sand-light: #FBF5E9;    /* Light sand */
+  --clay: #C76B5C;          /* Terra cotta clay */
+  --butter: #FFFACD;        /* Butter yellow */
   
   /* Typography */
   --font-heading: 'Playfair Display', serif;

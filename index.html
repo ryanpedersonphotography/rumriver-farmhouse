@@ -97,10 +97,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@400&family=Raleway:wght@600&display=swap" rel="stylesheet">
   
   <!-- Styles -->
   <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="/src/styles/components/farmhouse-dividers.css">
   
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DY58N5WC3B"></script>
@@ -138,6 +139,8 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N626W63F"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  
+  
   <!-- Navigation -->
   <header class="site-header">
     <nav class="nav-container">
@@ -174,16 +177,10 @@
         <circle cx="15" cy="20" r="3" fill="white" class="scroll-dot"/>
       </svg>
     </div>
-    <!-- Bottom Wave Divider -->
-    <div class="custom-shape-divider-bottom-1753419162">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
   </section>
 
   <!-- Property Details -->
-  <section id="property-details" class="section section--white">
+  <section id="property-details" class="section section--antique-cream">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>Lake Life Awaits You</h2>
@@ -216,13 +213,7 @@
   </section>
 
   <!-- Image Gallery -->
-  <section id="gallery" class="gallery-section section section--mist section--has-top-divider">
-    <!-- Top Wave Divider (Flipped) -->
-    <div class="custom-shape-divider-top-1753422094">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
+  <section id="gallery" class="gallery-section section section--warm-linen">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>Photo Gallery</h2>
@@ -247,16 +238,10 @@
         View All
       </button>
     </div>
-    <!-- Gallery to Next Section Wave -->
-    <div class="shape-divider-wave-pearl-bottom">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
   </section>
 
   <!-- Amenities Section -->
-  <section id="amenities" class="section section--pearl">
+  <section id="amenities" class="section section--photo-overlay">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>Our Amenities</h2>
@@ -313,15 +298,10 @@
         </div>
       </div>
     </div>
-    <div class="shape-divider-wave-mist-bottom">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
   </section>
 
   <!-- Testimonials Section -->
-  <section id="testimonials" class="section section--mist">
+  <section id="testimonials" class="section section--antique-cream">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>Reviews From Real People</h2>
@@ -386,39 +366,40 @@
       
       <script>
         let currentTestimonialIndex = 0;
-        const totalReviews = 4; // Total number of reviews
-        const visibleReviews = 3; // Number of reviews visible at once
         
         function moveTestimonials(direction) {
-          const carousel = document.getElementById('testimonials-carousel');
-          const slideWidth = 33.333; // Width of one review card in percentage
+          const track = document.getElementById('testimonials-carousel');
+          const cards = track.querySelectorAll(':scope > div > div'); // testimonial cards
+          const container = track.parentElement; // masked container
           
-          // Update index
-          currentTestimonialIndex += direction;
+          if (!cards.length) return;
           
-          // Handle infinite loop
-          if (currentTestimonialIndex < 0) {
-            currentTestimonialIndex = totalReviews - visibleReviews;
-          } else if (currentTestimonialIndex > totalReviews - visibleReviews) {
-            currentTestimonialIndex = 0;
-          }
+          const card = cards[0];
+          const cardWidth = card.getBoundingClientRect().width;
+          const gap = parseFloat(getComputedStyle(card.parentElement).gap || 32);
           
-          // Calculate position
-          const translateX = -(currentTestimonialIndex * slideWidth);
-          carousel.style.transform = `translateX(${translateX}%)`;
+          // Calculate how many cards fit in view
+          const visible = Math.max(1, Math.floor(container.getBoundingClientRect().width / (cardWidth + gap)));
+          
+          const maxIndex = Math.max(0, cards.length - visible);
+          currentTestimonialIndex = Math.max(0, Math.min(maxIndex, currentTestimonialIndex + direction));
+          
+          const translateX = -currentTestimonialIndex * (cardWidth + gap);
+          track.style.transform = `translateX(${translateX}px)`;
         }
+        
+        // Recalculate on resize
+        window.addEventListener('resize', () => {
+          currentTestimonialIndex = 0;
+          const track = document.getElementById('testimonials-carousel');
+          if (track) track.style.transform = 'translateX(0)';
+        });
       </script>
-    </div>
-    <!-- Testimonials to Location Divider -->
-    <div class="shape-divider-wave-ocean-bottom">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
     </div>
   </section>
 
   <!-- Prime Location Section -->
-  <section id="location" class="section section--ocean">
+  <section id="location" class="section section--warm-linen">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2 style="color: var(--white);">Prime Location</h2>
@@ -489,6 +470,30 @@
           background: none;
           border: none;
         }
+        
+        /* Mobile styles for testimonials */
+        @media (max-width: 768px) {
+          #testimonials-carousel {
+            display: block !important;
+            transform: none !important;
+          }
+          
+          #testimonials-carousel > div {
+            display: block !important;
+          }
+          
+          #testimonials-carousel > div > div {
+            flex: none !important;
+            width: 100% !important;
+            padding-right: 0 !important;
+            margin-bottom: 1.5rem;
+          }
+          
+          /* Hide navigation buttons on mobile */
+          section#testimonials button[onclick*="moveTestimonials"] {
+            display: none !important;
+          }
+        }
       </style>
       
       <script>
@@ -501,9 +506,16 @@
             const lat = 46.623456;
             const lng = -94.212345;
             
-            // Initialize the map with scroll wheel zoom disabled
+            // Initialize the map with all interactions disabled
             const map = L.map('location-map', {
               scrollWheelZoom: false,
+              doubleClickZoom: false,
+              dragging: false,
+              touchZoom: false,
+              boxZoom: false,
+              keyboard: false,
+              zoomControl: false,
+              attributionControl: false,
               center: [lat, lng],
               zoom: 17
             });
@@ -554,66 +566,6 @@
               fillOpacity: 0.2,
               radius: 80
             }).addTo(map);
-            
-            // Add click-to-activate message
-            const mapContainer = document.querySelector('#location-map');
-            const scrollMessage = document.createElement('div');
-            scrollMessage.className = 'map-scroll-message';
-            scrollMessage.innerHTML = 'Click to activate map';
-            scrollMessage.style.cssText = `
-              position: absolute;
-              top: 10px;
-              left: 50%;
-              transform: translateX(-50%);
-              background: rgba(255, 255, 255, 0.9);
-              color: var(--ocean-dark);
-              padding: 6px 12px;
-              border-radius: 20px;
-              font-size: 0.875rem;
-              font-weight: 500;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-              z-index: 1000;
-              opacity: 1;
-              transition: opacity 0.3s ease;
-              pointer-events: none;
-            `;
-            mapContainer.appendChild(scrollMessage);
-            
-            // Enable scroll wheel zoom on click
-            let mapActivated = false;
-            mapContainer.addEventListener('click', function() {
-              if (!mapActivated) {
-                map.scrollWheelZoom.enable();
-                scrollMessage.style.opacity = '0';
-                mapActivated = true;
-                
-                // Add visual feedback
-                mapContainer.style.boxShadow = '0 0 0 2px var(--powder)';
-                setTimeout(() => {
-                  mapContainer.style.boxShadow = '';
-                }, 500);
-              }
-            });
-            
-            // Re-disable scroll wheel zoom when mouse leaves the map
-            mapContainer.addEventListener('mouseleave', function() {
-              map.scrollWheelZoom.disable();
-              mapActivated = false;
-              scrollMessage.style.opacity = '1';
-            });
-            
-            // Also enable on focus for keyboard accessibility
-            map.on('focus', function() {
-              map.scrollWheelZoom.enable();
-              scrollMessage.style.opacity = '0';
-              mapActivated = true;
-            });
-            
-            map.on('blur', function() {
-              map.scrollWheelZoom.disable();
-              mapActivated = false;
-              scrollMessage.style.opacity = '1';
-            });
           }
         });
       </script>
@@ -680,16 +632,10 @@
         </div>
       </div>
     </div>
-    <!-- Location to Video Divider -->
-    <div class="shape-divider-wave-powder-bottom" style="position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="position: relative; display: block; width: calc(139% + 1.3px); height: 89px;">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" style="fill: var(--powder);"></path>
-      </svg>
-    </div>
   </section>
 
   <!-- YouTube Video Section -->
-  <section class="section section--pearl" style="background-color: var(--powder);">
+  <section class="section section--sage-pine">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>See The Property In Action</h2>
@@ -707,16 +653,10 @@
         </iframe>
       </div>
     </div>
-    <!-- Video to Matterport Divider -->
-    <div class="shape-divider-wave-pearl-bottom">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
   </section>
 
   <!-- 3D Virtual Tour -->
-  <section id="virtual-tour" class="section section--pearl">
+  <section id="virtual-tour" class="section section--photo-overlay">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>3D Virtual Tour</h2>
@@ -734,16 +674,10 @@
         </iframe>
       </div>
     </div>
-    <!-- Matterport to Booking Divider -->
-    <div class="shape-divider-wave-mist-bottom">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.22,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
   </section>
 
   <!-- Booking CTAs -->
-  <section id="book" class="section section--mist">
+  <section id="book" class="section section--sage-pine">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2>Ready to Book Your Stay?</h2>
@@ -844,7 +778,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="site-footer section--iron-black">
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">

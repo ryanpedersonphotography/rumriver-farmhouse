@@ -1,14 +1,15 @@
 /* Animation System - Cohesive and Structured */
 
-/* Base animation variables */
+/* Base animation variables - Farmhouse Charm */
 :root {
   --anim-duration-fast: 0.4s;
   --anim-duration-normal: 0.8s;
   --anim-duration-slow: 1.2s;
   --anim-delay-step: 0.15s;
-  --anim-distance: 60px;
-  --anim-easing: cubic-bezier(0.16, 1, 0.3, 1);
+  --anim-distance: 50px;
+  --anim-easing: cubic-bezier(0.4, 0, 0.2, 1);
   --anim-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --anim-easing-gentle: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Animation States */
@@ -50,62 +51,77 @@
 }
 
 /* Section-specific animation timing */
-/* Hero Section - Immediate */
+/* Hero Section - Warm Welcome */
 .hero-content h1 {
   opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  animation: heroEnter 1s var(--anim-easing) 0.2s forwards;
+  transform: translateY(30px) scale(0.97);
+  animation: gentleReveal 1.2s var(--anim-easing-gentle) 0.3s forwards;
 }
 
 .hero-content p {
   opacity: 0;
-  transform: translateY(40px);
-  animation: heroEnter 1s var(--anim-easing) 0.4s forwards;
+  transform: translateY(30px);
+  animation: gentleReveal 1.2s var(--anim-easing-gentle) 0.5s forwards;
 }
 
 .hero-cta {
   opacity: 0;
-  transform: translateY(40px);
-  animation: heroEnter 1s var(--anim-easing) 0.6s forwards;
+  transform: translateY(30px);
+  animation: gentleReveal 1.2s var(--anim-easing-gentle) 0.7s forwards;
 }
 
-@keyframes heroEnter {
+@keyframes gentleReveal {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-/* Gallery Items - Staggered Grid */
+/* Farmhouse Sway Animation */
+@keyframes farmhouseSway {
+  0%, 100% {
+    transform: rotate(-1deg) translateY(0);
+  }
+  50% {
+    transform: rotate(1deg) translateY(-5px);
+  }
+}
+
+/* Gallery Items - Rustic Reveal */
 .gallery-item {
   opacity: 0;
-  transform: translateY(80px) scale(0.9) rotate(2deg);
-  transition: all 0.8s var(--anim-easing);
+  transform: translateY(60px) scale(0.92);
+  transition: all 0.9s var(--anim-easing-gentle);
 }
 
 .gallery-item:nth-child(even) {
-  transform: translateY(80px) scale(0.9) rotate(-2deg);
+  transform: translateY(60px) scale(0.92);
+  transition-delay: 0.1s;
 }
 
 .gallery-item.gallery-animate-in {
   opacity: 1;
-  transform: translateY(0) scale(1) rotate(0deg);
+  transform: translateY(0) scale(1);
 }
 
-/* Feature Cards - Wave Pattern */
+.gallery-item.gallery-animate-in:hover {
+  animation: farmhouseSway 3s ease-in-out infinite;
+}
+
+/* Feature Cards - Barn Door Slide */
 .feature-card {
   opacity: 0;
-  transform: translateY(80px) translateX(-20px) scale(0.9);
-  transition: all 0.8s var(--anim-easing);
+  transform: translateX(-50px) scale(0.95);
+  transition: all 0.8s var(--anim-easing-gentle);
 }
 
 .feature-card:nth-child(even) {
-  transform: translateY(80px) translateX(20px) scale(0.9);
+  transform: translateX(50px) scale(0.95);
 }
 
 .feature-card.animate-in {
   opacity: 1;
-  transform: translateY(0) translateX(0) scale(1);
+  transform: translateX(0) scale(1);
 }
 
 /* Review Cards - Cascade */
@@ -235,34 +251,47 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(74, 60, 40, 0.18);
 }
 
 
 
 .booking-card:hover {
-  transform: translateY(-20px) scale(1.05);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(74, 60, 40, 0.22);
 }
 
-/* Floating Animation for Icons */
-@keyframes float {
+/* Gentle Bob Animation for Icons */
+@keyframes gentleBob {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
   }
   25% {
-    transform: translateY(-15px) rotate(-5deg);
+    transform: translateY(-8px) rotate(-2deg);
   }
   75% {
-    transform: translateY(-15px) rotate(5deg);
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+/* Wheat Field Wave */
+@keyframes wheatWave {
+  0%, 100% {
+    transform: skewX(0deg) translateX(0);
+  }
+  25% {
+    transform: skewX(2deg) translateX(2px);
+  }
+  75% {
+    transform: skewX(-2deg) translateX(-2px);
   }
 }
 
 .feature-icon,
 .guide-icon {
   display: inline-block;
-  animation: float 4s ease-in-out infinite;
+  animation: gentleBob 5s ease-in-out infinite;
 }
 
 .feature-icon {
@@ -321,11 +350,11 @@
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(139, 58, 58, 0.25);
 }
 
-/* Loading Animation */
+/* Loading Animation - Farmhouse Fade */
 .loading {
   opacity: 0;
   pointer-events: none;
@@ -333,7 +362,17 @@
 
 .loaded {
   opacity: 1;
-  transition: opacity 0.8s ease-out;
+  transition: opacity 1s ease-out;
+}
+
+/* Harvest Glow Pulse */
+@keyframes harvestGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(135, 169, 107, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(135, 169, 107, 0.5);
+  }
 }
 
 /* Performance */

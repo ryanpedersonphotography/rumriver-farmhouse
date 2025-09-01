@@ -1,0 +1,339 @@
+/* ==========================================================================
+   Farmhouse Divider System - Clean, Rustic, Maintainable
+   ========================================================================== */
+
+/* Farmhouse Chic Palette - Northern Minnesota Style
+   ========================================================================== */
+:root {
+  /* Primary Farmhouse Colors */
+  --warm-linen: #F9F7F2;      /* Primary Neutral - background base */
+  --antique-cream: #E1DCD3;   /* Secondary Neutral - light sections */
+  --rustic-oak: #8B6B4F;      /* Accent Wood - headings, nav */
+  --sage-pine: #6E7E58;       /* Accent Green - buttons, highlights */
+  --iron-black: #2E2B26;      /* Deep Contrast - body text, footer */
+  --terracotta-clay: #C97A4D; /* Highlight Accent - CTAs, hover */
+  --white: #fff;
+  
+  /* Legacy colors still in use - to be migrated */
+  --ocean: #2E6E8E;
+  --ocean-dark: #1F4A61;
+  --sky: #5AA7D6;
+  --powder: #D9EEF9;
+  --pearl: #F8FBFD;
+  --charcoal: #2F3437;
+  --slate: #6A737D;
+  
+  /* Design tokens */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 10px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 15px rgba(0,0,0,.08);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.12);
+}
+
+/* Typography - Farmhouse Chic Style Guide
+   ========================================================================== */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--rustic-oak);
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--sage-pine);
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--iron-black);
+}
+
+p, body {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--iron-black);
+}
+
+button, .nav-link {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Section Base
+   ========================================================================== */
+.section {
+  position: relative;
+  padding: 64px 20px;
+  color: var(--iron-black);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 80px 20px;
+  }
+}
+
+/* Section Color Classes - Farmhouse Chic Style Guide
+   ========================================================================== */
+.section--warm-linen { 
+  background: var(--warm-linen);
+  color: var(--iron-black);
+}
+
+.section--antique-cream { 
+  background: var(--antique-cream);
+  color: var(--iron-black);
+}
+
+.section--sage-pine { 
+  background: var(--sage-pine);
+  color: var(--white);
+}
+
+.section--sage-pine h2,
+.section--sage-pine h3,
+.section--sage-pine p {
+  color: var(--white);
+}
+
+.section--iron-black {
+  background: var(--iron-black);
+  color: var(--white);
+}
+
+.section--iron-black h2,
+.section--iron-black h3,
+.section--iron-black p,
+.section--iron-black a {
+  color: var(--rustic-oak);
+}
+
+.section--photo-overlay {
+  position: relative;
+  background: var(--white);
+  color: var(--iron-black);
+}
+
+.section--photo-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.section--photo-overlay .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* Optional: Subtle farmhouse texture overlay
+   ========================================================================== */
+.section--textured::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .04;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, #000 30%, transparent 31%),
+    radial-gradient(1px 1px at 80% 60%, #000 30%, transparent 31%),
+    radial-gradient(1px 0.8px at 50% 80%, #000 30%, transparent 31%);
+  mix-blend-mode: multiply;
+}
+
+/* Buttons & Interactions - Farmhouse Chic Style Guide
+   ========================================================================== */
+.btn, .btn-primary {
+  background: var(--sage-pine);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 12px 24px;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover, .btn-primary:hover {
+  background: var(--terracotta-clay);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--rustic-oak);
+  border: 2px solid var(--rustic-oak);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--rustic-oak);
+  color: var(--white);
+}
+
+/* Card Pattern Utilities
+   ========================================================================== */
+.farmhouse-card {
+  background: var(--white);
+  border: 1px solid rgba(126, 155, 118, .15);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.farmhouse-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.farmhouse-card h3 {
+  font-size: 28px;
+  color: var(--iron-black);
+  margin: 0 0 1rem;
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+}
+
+.farmhouse-card .emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* List with checkmarks */
+.list-ticks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-ticks li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  color: var(--charcoal);
+}
+
+.list-ticks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--sage-pine);
+  font-weight: bold;
+}
+
+/* Location Cards (specific style) */
+.location-card {
+  background: linear-gradient(135deg, var(--warm-linen) 0%, var(--white) 100%);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.location-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(139, 107, 79, 0.15);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  background: var(--white);
+  border: 2px solid var(--antique-cream);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+}
+
+.testimonial-card .stars {
+  color: var(--terracotta-clay);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card h3 {
+  font-size: 28px;
+  color: var(--iron-black);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+.testimonial-card p {
+  color: var(--charcoal);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card .author {
+  color: var(--slate);
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+/* Responsive Carousel (no hard-coded widths) */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: calc(33.333% - 1.33rem);
+  margin-right: 2rem;
+}
+
+@media (max-width: 900px) {
+  .carousel-item {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-track {
+    display: block;
+    transform: none !important;
+  }
+  
+  .carousel-item {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .carousel-nav {
+    display: none !important;
+  }
+}

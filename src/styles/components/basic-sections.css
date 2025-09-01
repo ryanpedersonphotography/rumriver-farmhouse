@@ -16,36 +16,80 @@
   }
 }
 
-/* Section Colors - Clean transitions
+/* Section Colors - Farmhouse Palette
    ========================================================================== */
 .section--white {
   background-color: var(--white);
 }
 
+.section--cream {
+  background-color: var(--cream);
+}
+
+.section--wheat {
+  background: linear-gradient(180deg, var(--wheat) 0%, var(--wheat-light) 100%);
+}
+
+.section--wheat-light {
+  background-color: var(--wheat-light);
+}
+
+.section--sage-light {
+  background: linear-gradient(135deg, var(--sage-light) 0%, rgba(164, 189, 142, 0.3) 100%);
+}
+
+.section--sand-light {
+  background-color: var(--sand-light);
+}
+
+.section--antique-white {
+  background-color: var(--antique-white);
+}
+
+.section--barn-red {
+  background: linear-gradient(180deg, var(--barn-red) 0%, var(--barn-red-dark) 100%);
+  color: var(--cream);
+}
+
+.section--barn-red h2,
+.section--barn-red h3,
+.section--barn-red p {
+  color: var(--cream);
+}
+
+.section--barn-red a {
+  color: var(--wheat-light);
+}
+
+.section--barn-red a:hover {
+  color: var(--white);
+}
+
+/* Legacy color mappings for compatibility */
 .section--pearl {
-  background-color: var(--pearl);
+  background-color: var(--cream);
 }
 
 .section--mist {
-  background-color: var(--mist);
+  background-color: var(--wheat-light);
 }
 
 .section--frost {
-  background-color: var(--frost);
+  background-color: var(--sand-light);
 }
 
 .section--ocean {
-  background-color: var(--ocean);
+  background-color: var(--sage);
   color: var(--white);
 }
 
 .section--ocean-dark {
-  background-color: var(--ocean-dark);
+  background-color: var(--forest);
   color: var(--white);
 }
 
 .section--powder {
-  background-color: var(--powder);
+  background-color: var(--antique-white);
 }
 
 /* Container - Standard max-width and padding
@@ -67,12 +111,12 @@
 .section-header h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--navy);
+  color: var(--deep-brown);
 }
 
 .section-header p {
   font-size: 1.125rem;
-  color: var(--slate);
+  color: var(--stone-gray);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -129,15 +173,30 @@
 }
 
 /* Ensure cards in colored sections stand out */
-.section--mist .card,
-.section--pearl .card,
-.section--frost .card {
+.section--wheat .card,
+.section--sage-light .card,
+.section--sand-light .card,
+.section--antique-white .card {
   background: var(--white);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--wheat);
+  box-shadow: 0 3px 8px rgba(74, 60, 40, 0.08);
 }
 
+.section--cream .card,
 .section--white .card {
-  background: var(--pearl);
+  background: var(--antique-white);
+  border: 1px solid var(--wheat-light);
+}
+
+.section--barn-red .card {
+  background: rgba(250, 246, 240, 0.95);
+  color: var(--charcoal);
+  border: 2px solid var(--wheat);
+}
+
+.section--barn-red .card h3,
+.section--barn-red .card h4 {
+  color: var(--deep-brown);
 }
 
 /* Section modifiers for shape dividers
