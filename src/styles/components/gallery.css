@@ -253,44 +253,114 @@ h3.gallery-title {
   
   .gallery-filters {
     gap: 0.5rem;
-    margin-bottom: 2rem;
-    padding: 0;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .gallery-filters::-webkit-scrollbar {
+    display: none;
   }
   
   .filter-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   
+  /* Override all desktop gallery-grid styles */
+  .gallery-section .gallery-grid,
   .gallery-grid {
-    padding: 15px;
-    margin: 0;
-    justify-content: center;
+    /* Reset all inherited properties */
+    all: unset;
+    /* Now add mobile-specific styles */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    margin: 0 auto 2rem !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    min-height: unset !important;
+    position: relative !important;
   }
   
+  .gallery-grid:after {
+    display: none !important;
+  }
+  
+  /* Override all desktop gallery-item styles */
   .gallery-item {
-    width: 140px;
-    margin: 8px;
-    padding: 7px;
-    padding-bottom: 28px;
+    /* Reset inherited properties */
+    all: unset;
+    /* Mobile-specific styles */
+    display: block !important;
+    width: calc(100% - 2rem) !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    padding: 12px !important;
+    padding-bottom: 45px !important;
+    background: white !important;
+    border: 1px solid #f0f0f0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    position: relative !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
   }
   
   .gallery-item img {
-    height: 126px;
+    width: 100% !important;
+    height: 260px !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 !important;
+    box-shadow: none !important;
   }
   
-  /* Random rotations handled by JavaScript on mobile too */
+  .gallery-item::before {
+    display: none !important;
+  }
   
-  .gallery-title {
-    opacity: 1; /* Always show on mobile */
-    font-size: 0.8rem !important;
-    bottom: 6px;
-    font-weight: 700 !important;
+  .gallery-item.visible {
+    animation: none !important;
+  }
+  
+  /* Gallery title on mobile */
+  .gallery-item .gallery-title,
+  h3.gallery-title {
+    opacity: 1 !important;
+    font-size: 0.9rem !important;
+    bottom: 10px !important;
+    font-weight: 600 !important;
+    transform: none !important;
+    position: absolute !important;
+    left: 8px !important;
+    right: 8px !important;
   }
   
   .load-more-btn {
-    margin: 2rem auto 0;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+    margin: 2rem auto 1rem;
+    padding: 0.875rem 2rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Small mobile (iPhone SE, etc) */
+@media (max-width: 375px) {
+  .gallery-item {
+    width: calc(100% - 1.5rem) !important;
+    max-width: 350px !important;
+  }
+  
+  .gallery-item img {
+    height: 220px !important;
   }
 }

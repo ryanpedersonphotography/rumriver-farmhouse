@@ -51,6 +51,26 @@ export function initGallery() {
   
   allImages = [...imageData];
   
+  // Handle resize events
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const wasMobile = masonryInstance === null && window.innerWidth > 768;
+      const isMobile = window.innerWidth <= 768;
+      
+      if (wasMobile && !isMobile) {
+        // Switching from mobile to desktop - reinitialize
+        location.reload();
+      } else if (!wasMobile && isMobile && masonryInstance) {
+        // Switching from desktop to mobile - destroy masonry
+        masonryInstance.destroy();
+        masonryInstance = null;
+        galleryGrid.classList.add('mobile-gallery');
+      }
+    }, 250);
+  });
+  
   // Initial load first, then setup masonry with a small delay
   setTimeout(() => {
     loadImages('all', false, true);
@@ -101,6 +121,9 @@ function loadImages(filter, append = false, isInitial = false) {
   const galleryGrid = document.getElementById('galleryGrid');
   const loadMoreBtn = document.getElementById('loadMoreBtn');
   
+  // Check if we're on mobile
+  const isMobile = window.innerWidth <= 768;
+  
   // Filter images
   const filteredImages = filter === 'all' 
     ? allImages 
@@ -115,8 +138,8 @@ function loadImages(filter, append = false, isInitial = false) {
     displayedImages = 0;
   }
   
-  // Add sizer element if initial load
-  if (isInitial || !append) {
+  // Add sizer element if initial load (only for desktop)
+  if (!isMobile && (isInitial || !append)) {
     const sizer = document.createElement('div');
     sizer.className = 'gallery-sizer';
     galleryGrid.appendChild(sizer);
@@ -135,8 +158,8 @@ function loadImages(filter, append = false, isInitial = false) {
   
   galleryGrid.appendChild(fragment);
   
-  // Initialize or update masonry
-  if (!masonryInstance) {
+  // Initialize or update masonry ONLY on desktop
+  if (!isMobile && !masonryInstance) {
     // Wait for images to load before initializing Masonry
     imagesLoaded(galleryGrid, () => {
       // Initialize masonry after images are loaded
@@ -163,8 +186,8 @@ function loadImages(filter, append = false, isInitial = false) {
         }, index * 50);
       });
     });
-  } else {
-    // Layout with masonry
+  } else if (!isMobile && masonryInstance) {
+    // Layout with masonry on desktop only
     imagesLoaded(galleryGrid, () => {
       masonryInstance.reloadItems();
       masonryInstance.layout();
@@ -176,6 +199,14 @@ function loadImages(filter, append = false, isInitial = false) {
           item.classList.add('visible');
         }, index * 50);
       });
+    });
+  } else if (isMobile) {
+    // On mobile, just add visible class without masonry
+    const newItems = galleryGrid.querySelectorAll('.gallery-item:not(.visible)');
+    newItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add('visible');
+      }, index * 50);
     });
   }
   
