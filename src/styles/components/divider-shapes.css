@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Divider Shape Definitions
+   ========================================================================== */
+
+/* Curve Concave Shapes (dips down/inward)
+   ========================================================================== */
+.divider--curve-concave {
+  --divider-height: 100px;
+}
+
+.divider--curve-concave svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+.divider--curve-concave-gentle {
+  --divider-height: 60px;
+}
+
+.divider--curve-concave-gentle svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+.divider--curve-concave-steep {
+  --divider-height: 140px;
+}
+
+.divider--curve-concave-steep svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Curve Convex Shapes (bulges up/outward)
+   ========================================================================== */
+.divider--curve-convex {
+  --divider-height: 100px;
+}
+
+.divider--curve-convex svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+.divider--curve-convex-gentle {
+  --divider-height: 60px;
+}
+
+.divider--curve-convex-gentle svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+.divider--curve-convex-steep {
+  --divider-height: 140px;
+}
+
+.divider--curve-convex-steep svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Diagonal Shape
+   ========================================================================== */
+.divider--diagonal {
+  --divider-height: 60px;
+}
+
+.divider--diagonal svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Jagged/Zigzag Shape
+   ========================================================================== */
+.divider--jagged {
+  --divider-height: 40px;
+}
+
+.divider--jagged svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Arrow/Chevron Shape
+   ========================================================================== */
+.divider--arrow {
+  --divider-height: 80px;
+}
+
+.divider--arrow svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Torn Paper Shape
+   ========================================================================== */
+.divider--torn {
+  --divider-height: 30px;
+}
+
+.divider--torn svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Cloud/Bubble Shape
+   ========================================================================== */
+.divider--cloud {
+  --divider-height: 120px;
+}
+
+.divider--cloud svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Step Shape
+   ========================================================================== */
+.divider--step {
+  --divider-height: 50px;
+}
+
+.divider--step svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}
+
+/* Double Curve Shape
+   ========================================================================== */
+.divider--curve-double {
+  --divider-height: 100px;
+}
+
+.divider--curve-double svg {
+  width: calc(100% + 1.3px);
+  height: var(--divider-height);
+}

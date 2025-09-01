@@ -1,0 +1,368 @@
+/* ==========================================================================
+   Shape Dividers Library
+   Complete collection of wave dividers for all section combinations
+   ========================================================================== */
+
+/* Base Shape Divider Classes
+   ========================================================================== */
+.shape-divider {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.shape-divider--bottom {
+  bottom: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider--top {
+  top: 0;
+  left: 0;
+}
+
+.shape-divider--flipped svg {
+  transform: rotateY(180deg);
+}
+
+.shape-divider--inverted svg {
+  transform: rotateX(180deg);
+}
+
+/* 1. Wave - White - Bottom
+   ========================================================================== */
+.shape-divider-wave-white-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-wave-white-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(139% + 1.3px);
+  height: 89px;
+}
+
+.shape-divider-wave-white-bottom .shape-fill {
+  fill: #FFFFFF;
+}
+
+/* 2. Wave - White - Top
+   ========================================================================== */
+.shape-divider-wave-white-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.shape-divider-wave-white-top svg {
+  position: relative;
+  display: block;
+  width: calc(139% + 1.3px);
+  height: 89px;
+}
+
+.shape-divider-wave-white-top .shape-fill {
+  fill: #FFFFFF;
+}
+
+/* Flipped version */
+.shape-divider-wave-white-top--flipped svg {
+  transform: rotateY(180deg);
+}
+
+/* 3. Wave - Pearl - Bottom
+   ========================================================================== */
+.shape-divider-wave-pearl-bottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-wave-pearl-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(139% + 1.3px);
+  height: 89px;
+}
+
+.shape-divider-wave-pearl-bottom .shape-fill {
+  fill: var(--pearl);
+}
+
+/* 4. Wave - Mist - Bottom
+   ========================================================================== */
+.shape-divider-wave-mist-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-wave-mist-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(139% + 1.3px);
+  height: 89px;
+}
+
+.shape-divider-wave-mist-bottom .shape-fill {
+  fill: var(--mist);
+}
+
+/* 5. Wave - Ocean - Bottom
+   ========================================================================== */
+.shape-divider-wave-ocean-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-wave-ocean-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(139% + 1.3px);
+  height: 89px;
+}
+
+.shape-divider-wave-ocean-bottom .shape-fill {
+  fill: var(--ocean);
+}
+
+/* 6. Wave Opacity - White - Bottom
+   ========================================================================== */
+.shape-divider-wave-opacity-white-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-wave-opacity-white-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(130% + 1.3px);
+  height: 80px;
+}
+
+.shape-divider-wave-opacity-white-bottom .shape-fill {
+  fill: #FFFFFF;
+}
+
+.shape-divider-wave-opacity-white-bottom .shape-fill-opacity-1 {
+  opacity: 0.25;
+}
+
+.shape-divider-wave-opacity-white-bottom .shape-fill-opacity-2 {
+  opacity: 0.5;
+}
+
+/* 7. Wave Opacity - Mist - Top
+   ========================================================================== */
+.shape-divider-wave-opacity-mist-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.shape-divider-wave-opacity-mist-top svg {
+  position: relative;
+  display: block;
+  width: calc(130% + 1.3px);
+  height: 80px;
+}
+
+.shape-divider-wave-opacity-mist-top .shape-fill {
+  fill: var(--mist);
+}
+
+.shape-divider-wave-opacity-mist-top .shape-fill-opacity-1 {
+  opacity: 0.25;
+}
+
+.shape-divider-wave-opacity-mist-top .shape-fill-opacity-2 {
+  opacity: 0.5;
+}
+
+/* 8. Gentle Wave - Pearl - Bottom
+   ========================================================================== */
+.shape-divider-gentle-wave-pearl-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-gentle-wave-pearl-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(125% + 1.3px);
+  height: 60px;
+}
+
+.shape-divider-gentle-wave-pearl-bottom .shape-fill {
+  fill: var(--pearl);
+}
+
+/* 9. Steep Wave - Ocean - Top
+   ========================================================================== */
+.shape-divider-steep-wave-ocean-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.shape-divider-steep-wave-ocean-top svg {
+  position: relative;
+  display: block;
+  width: calc(145% + 1.3px);
+  height: 100px;
+}
+
+.shape-divider-steep-wave-ocean-top .shape-fill {
+  fill: var(--ocean);
+}
+
+/* 10. Double Wave - White - Bottom
+   ========================================================================== */
+.shape-divider-double-wave-white-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-double-wave-white-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(120% + 1.3px);
+  height: 65px;
+}
+
+.shape-divider-double-wave-white-bottom .shape-fill {
+  fill: #FFFFFF;
+}
+
+/* 11. Wave Opacity - Navy - Bottom
+   ========================================================================== */
+.shape-divider-wave-opacity-navy-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.shape-divider-wave-opacity-navy-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(130% + 1.3px);
+  height: 80px;
+}
+
+.shape-divider-wave-opacity-navy-bottom .shape-fill {
+  fill: var(--navy);
+}
+
+.shape-divider-wave-opacity-navy-bottom .shape-fill-opacity-1 {
+  opacity: 0.25;
+}
+
+.shape-divider-wave-opacity-navy-bottom .shape-fill-opacity-2 {
+  opacity: 0.5;
+}
+
+/* 12. Subtle Wave - Frost - Top
+   ========================================================================== */
+.shape-divider-subtle-wave-frost-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.shape-divider-subtle-wave-frost-top svg {
+  position: relative;
+  display: block;
+  width: calc(135% + 1.3px);
+  height: 50px;
+}
+
+.shape-divider-subtle-wave-frost-top .shape-fill {
+  fill: var(--frost);
+}
+
+/* Responsive adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Reduce heights on mobile for better proportions */
+  .shape-divider-wave-white-bottom svg,
+  .shape-divider-wave-white-top svg,
+  .shape-divider-wave-pearl-bottom svg,
+  .shape-divider-wave-mist-bottom svg,
+  .shape-divider-wave-ocean-bottom svg {
+    height: 60px;
+  }
+  
+  .shape-divider-wave-opacity-white-bottom svg,
+  .shape-divider-wave-opacity-mist-top svg,
+  .shape-divider-wave-opacity-navy-bottom svg {
+    height: 50px;
+  }
+  
+  .shape-divider-gentle-wave-pearl-bottom svg {
+    height: 40px;
+  }
+  
+  .shape-divider-steep-wave-ocean-top svg {
+    height: 70px;
+  }
+  
+  .shape-divider-double-wave-white-bottom svg {
+    height: 45px;
+  }
+  
+  .shape-divider-subtle-wave-frost-top svg {
+    height: 35px;
+  }
+}

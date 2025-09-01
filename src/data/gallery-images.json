@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "src": "/stills/hero-placeholder.jpg",
+    "category": "exterior",
+    "title": "Property Exterior",
+    "description": "Beautiful property exterior view"
+  },
+  {
+    "id": 2,
+    "src": "/stills/interior-placeholder.jpg",
+    "category": "living",
+    "title": "Living Room",
+    "description": "Spacious living room with modern amenities"
+  },
+  {
+    "id": 3,
+    "src": "/stills/bedroom-placeholder.jpg",
+    "category": "bedroom",
+    "title": "Master Bedroom",
+    "description": "Comfortable master bedroom"
+  },
+  {
+    "id": 4,
+    "src": "/stills/kitchen-placeholder.jpg",
+    "category": "kitchen",
+    "title": "Kitchen",
+    "description": "Fully equipped modern kitchen"
+  },
+  {
+    "id": 5,
+    "src": "/stills/bathroom-placeholder.jpg",
+    "category": "bathroom",
+    "title": "Bathroom",
+    "description": "Clean bathroom facilities"
+  },
+  {
+    "id": 6,
+    "src": "/stills/amenity-placeholder.jpg",
+    "category": "amenity",
+    "title": "Property Amenities",
+    "description": "Enjoy the property amenities"
+  }
+]

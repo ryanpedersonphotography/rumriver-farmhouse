@@ -1,0 +1,86 @@
+{
+  "property": {
+    "name": "Breezy Point Lakeview Cottage",
+    "tagline": "Experience the serenity of lakeside living",
+    "address": {
+      "street": "30539 N Lakeview Dr",
+      "city": "Breezy Point",
+      "state": "MN",
+      "zip": "56472"
+    },
+    "contact": {
+      "phone": "+1 (612) 801-0546",
+      "email": "breezylakeviewcottage@gmail.com"
+    },
+    "features": [
+      {
+        "icon": "🏠",
+        "title": "Spacious Living",
+        "description": "4 bedrooms, 2 bathrooms<br>Sleeps up to 8 guests"
+      },
+      {
+        "icon": "🌊",
+        "title": "Waterfront Access",
+        "description": "Private beach & dock<br>Stunning lake views"
+      },
+      {
+        "icon": "🔥",
+        "title": "Cozy Comfort",
+        "description": "Fireplace & fire pit<br>Perfect for gatherings"
+      },
+      {
+        "icon": "🍳",
+        "title": "Full Kitchen",
+        "description": "Modern appliances<br>Everything for meal prep"
+      }
+    ],
+    "amenities": [
+      "High-Speed WiFi",
+      "Smart TV with Streaming",
+      "Washer & Dryer",
+      "Air Conditioning",
+      "Outdoor Grill",
+      "Kayaks & Paddleboards",
+      "Board Games",
+      "Coffee Maker",
+      "Parking for 4 Cars",
+      "Pet-Friendly",
+      "Beach Towels",
+      "First Aid Kit"
+    ]
+  },
+  "hero": {
+    "type": "video",
+    "source": "/videos/site_video_no_audio.mp4",
+    "fallback": "/stills/breezy_4.jpeg"
+  },
+  "gallery": {
+    "categories": [
+      { "id": "all", "label": "All Photos" },
+      { "id": "exterior", "label": "Exterior" },
+      { "id": "living", "label": "Living Areas" },
+      { "id": "bedroom", "label": "Bedrooms" },
+      { "id": "kitchen", "label": "Kitchen" },
+      { "id": "bathroom", "label": "Bathrooms" },
+      { "id": "amenity", "label": "Amenities" }
+    ]
+  },
+  "bookingLinks": {
+    "airbnb": "https://airbnb.com/h/lakeview-cottage-breezy-point",
+    "vrbo": "https://t.vrbo.io/S09ELUREbVb"
+  },
+  "virtualTour": {
+    "matterport": "https://my.matterport.com/show/?m=TWdSds3vn6p"
+  },
+  "video": {
+    "youtube": "https://youtu.be/tjoNyDYm1do"
+  },
+  "social": {
+    "instagram": "https://instagram.com/breezylakeviewcottage",
+    "facebook": "https://facebook.com/breezylakeviewcottage",
+    "tiktok": "https://www.tiktok.com/@breezylakeviewcottage"
+  },
+  "googleMaps": {
+    "embed": "https://maps.app.goo.gl/xbNYrpHm99Ttwgs47"
+  }
+}

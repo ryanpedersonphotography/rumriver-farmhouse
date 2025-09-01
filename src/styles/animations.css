@@ -1,0 +1,397 @@
+/* Animation System - Cohesive and Structured */
+
+/* Base animation variables */
+:root {
+  --anim-duration-fast: 0.4s;
+  --anim-duration-normal: 0.8s;
+  --anim-duration-slow: 1.2s;
+  --anim-delay-step: 0.15s;
+  --anim-distance: 60px;
+  --anim-easing: cubic-bezier(0.16, 1, 0.3, 1);
+  --anim-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Animation States */
+[data-animate] {
+  opacity: 0;
+  transition: all var(--anim-duration-normal) var(--anim-easing);
+  will-change: transform, opacity;
+}
+
+/* Direction-based animations */
+[data-animate="fade-up"] {
+  transform: translateY(var(--anim-distance));
+}
+
+[data-animate="fade-down"] {
+  transform: translateY(calc(var(--anim-distance) * -1));
+}
+
+[data-animate="fade-left"] {
+  transform: translateX(calc(var(--anim-distance) * -1));
+}
+
+[data-animate="fade-right"] {
+  transform: translateX(var(--anim-distance));
+}
+
+[data-animate="scale"] {
+  transform: scale(0.85);
+}
+
+[data-animate="fade"] {
+  transform: none;
+}
+
+/* Animated state */
+.animate-in {
+  opacity: 1 !important;
+  transform: translate(0) scale(1) !important;
+}
+
+/* Section-specific animation timing */
+/* Hero Section - Immediate */
+.hero-content h1 {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  animation: heroEnter 1s var(--anim-easing) 0.2s forwards;
+}
+
+.hero-content p {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroEnter 1s var(--anim-easing) 0.4s forwards;
+}
+
+.hero-cta {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroEnter 1s var(--anim-easing) 0.6s forwards;
+}
+
+@keyframes heroEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Gallery Items - Staggered Grid */
+.gallery-item {
+  opacity: 0;
+  transform: translateY(80px) scale(0.9) rotate(2deg);
+  transition: all 0.8s var(--anim-easing);
+}
+
+.gallery-item:nth-child(even) {
+  transform: translateY(80px) scale(0.9) rotate(-2deg);
+}
+
+.gallery-item.gallery-animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+/* Feature Cards - Wave Pattern */
+.feature-card {
+  opacity: 0;
+  transform: translateY(80px) translateX(-20px) scale(0.9);
+  transition: all 0.8s var(--anim-easing);
+}
+
+.feature-card:nth-child(even) {
+  transform: translateY(80px) translateX(20px) scale(0.9);
+}
+
+.feature-card.animate-in {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Review Cards - Cascade */
+.review-card {
+  opacity: 0;
+  transform: translateY(60px) rotateX(-10deg);
+  transform-origin: center bottom;
+  transition: all 0.9s var(--anim-easing);
+}
+
+.review-card.animate-in {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
+}
+
+/* Guide Items - Expanding Circle */
+.guide-item {
+  opacity: 0;
+  transform: scale(0.7) translateY(40px);
+  transition: all 0.8s var(--anim-easing-bounce);
+}
+
+.guide-item.animate-in {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Amenity Items - Slide and Fade */
+.preview-item {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.6s var(--anim-easing);
+}
+
+.preview-item:nth-child(even) {
+  transform: translateX(40px);
+}
+
+.preview-item.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Location Highlights - Alternating Slide */
+.highlight-item {
+  opacity: 0;
+  transition: all 0.8s var(--anim-easing);
+}
+
+.highlight-item[data-animate="fade-left"] {
+  transform: translateX(-100px) scale(0.95);
+}
+
+.highlight-item[data-animate="fade-right"] {
+  transform: translateX(100px) scale(0.95);
+}
+
+.highlight-item.animate-in {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Booking Cards - Zoom and Glow */
+.booking-card {
+  opacity: 0;
+  transform: scale(0.8) translateY(60px);
+  transition: all 1s var(--anim-easing);
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-card.animate-in {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.booking-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.booking-card.animate-in::before {
+  animation: glowPulse 2s ease-in-out 0.5s;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Wave Separator Animation - DISABLED */
+.wave-separator svg path {
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+  fill-opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+.wave-separator.animate-in svg path {
+  stroke-dashoffset: 0 !important;
+  fill-opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Navigation Links - Removed underline animations */
+
+/* Interactive Element Hovers */
+.feature-card,
+.guide-item,
+.booking-card {
+  cursor: pointer;
+  transition: all 0.4s var(--anim-easing);
+}
+
+.review-card {
+  transition: all 0.4s var(--anim-easing);
+}
+
+.feature-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.booking-card:hover {
+  transform: translateY(-20px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Animation for Icons */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+.feature-icon,
+.guide-icon {
+  display: inline-block;
+  animation: float 4s ease-in-out infinite;
+}
+
+.feature-icon {
+  animation-delay: 0s;
+}
+
+.guide-item:nth-child(2) .guide-icon {
+  animation-delay: 0.5s;
+}
+
+.guide-item:nth-child(3) .guide-icon {
+  animation-delay: 1s;
+}
+
+.guide-item:nth-child(4) .guide-icon {
+  animation-delay: 1.5s;
+}
+
+.guide-item:nth-child(5) .guide-icon {
+  animation-delay: 2s;
+}
+
+.guide-item:nth-child(6) .guide-icon {
+  animation-delay: 2.5s;
+}
+
+/* Parallax Layers */
+.hero-content {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* Button Ripple Effect */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--anim-easing);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.8s, height 0.8s;
+}
+
+.btn:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading Animation */
+.loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loaded {
+  opacity: 1;
+  transition: opacity 0.8s ease-out;
+}
+
+/* Performance */
+.gallery-item img,
+.feature-image img {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero-content {
+    transform: none !important;
+  }
+  
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  :root {
+    --anim-distance: 40px;
+  }
+  
+  /* Disable parallax on mobile */
+  .hero-content {
+    transform: none !important;
+  }
+  
+  /* Simplify animations */
+  .gallery-item,
+  .gallery-item:nth-child(even) {
+    transform: translateY(40px) scale(0.95);
+  }
+  
+  .feature-card,
+  .feature-card:nth-child(even) {
+    transform: translateY(40px);
+  }
+  
+  .highlight-item[data-animate="fade-left"],
+  .highlight-item[data-animate="fade-right"] {
+    transform: translateY(40px) scale(0.98);
+  }
+}

@@ -1,0 +1,80 @@
+:root {
+  /* Vacation-inspired Colors */
+  --navy: #1e4d6b;          /* Deep lake blue with teal undertone */
+  --ocean: #2e6e8e;         /* Main lake blue - vibrant vacation feel */
+  --sky: #4a92b4;           /* Bright energetic blue */
+  --powder: #6fb1d3;        /* Soft powder blue */
+  --mist: #e3f2fd;          /* Clear vacation sky */
+  --ice: #f3f9ff;           /* Bright morning sky */
+  --frost: #ebf2fa;
+  --white: #ffffff;
+  --charcoal: #2c3e50;
+  --slate: #5a6c7d;
+  --pearl: #f8fafb;
+  
+  /* Sunset & Warmth */
+  --sunset: #ff7043;        /* Soft coral sunset */
+  --sunset-light: #ff8a65;  /* Peachy sunset glow */
+  --sunset-dark: #f4511e;   /* Rich sunset */
+  --sunshine: #ffd54f;      /* Warm golden sunshine */
+  --sunshine-light: #ffe082;/* Soft morning light */
+  --sunshine-dark: #ffb300; /* Golden hour */
+  
+  /* Natural Elements */
+  --wood: #8d6e63;          /* Warm cabin wood */
+  --wood-light: #a1887f;    /* Driftwood */
+  --forest: #558b2f;        /* Lively summer green */
+  --forest-light: #689f38;  /* Fresh green */
+  --sand: #faf3e0;          /* Creamy beach sand */
+  --sand-light: #fffbf0;    /* Light sand */
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+  --section-padding: 5rem 0;
+  --section-padding-mobile: 3rem 0;
+  
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease-in-out;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+/* Screen reader only - for SEO/Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

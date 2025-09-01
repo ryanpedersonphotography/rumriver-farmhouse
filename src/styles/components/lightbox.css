@@ -1,0 +1,144 @@
+/* Lightbox Styles */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 77, 107, 0.95); /* Navy blue with opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Ensure body doesn't clip lightbox */
+body.lightbox-active {
+  overflow: hidden !important;
+  position: relative;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.lightbox-caption {
+  display: none;
+}
+
+/* Lightbox Controls */
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 2001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover {
+  transform: rotate(90deg);
+  color: var(--powder);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--white);
+  font-size: 3rem;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-prev {
+  left: 2rem;
+}
+
+.lightbox-next {
+  right: 2rem;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .lightbox-content {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+  
+  .lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+  }
+  
+  .lightbox-prev,
+  .lightbox-next {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+  }
+  
+  .lightbox-prev {
+    left: 1rem;
+  }
+  
+  .lightbox-next {
+    right: 1rem;
+  }
+  
+  .lightbox-caption {
+    font-size: 1rem;
+    margin-top: 0.75rem;
+  }
+}

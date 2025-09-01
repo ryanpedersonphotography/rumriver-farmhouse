@@ -1,0 +1,149 @@
+/* Video Lightbox Styles */
+.video-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 77, 107, 0.95); /* Navy blue with opacity - matches photo lightbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.video-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Ensure body doesn't clip video lightbox */
+body.video-lightbox-active {
+  overflow: hidden !important;
+}
+
+.video-lightbox-content {
+  position: relative;
+  width: 90vw;
+  max-width: 1200px;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Close button - matching photo lightbox style */
+.video-lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-lightbox-close:hover {
+  transform: rotate(90deg);
+  color: var(--powder);
+}
+
+/* Play button overlay for video section */
+.video-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.video-play-overlay:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.3s ease;
+}
+
+.video-play-overlay:hover .play-button {
+  transform: scale(1.1);
+}
+
+.play-button svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Remove duplicate animation since scaleIn is already applied to video-wrapper */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .video-lightbox-content {
+    width: 95vw;
+    height: 60vh;
+  }
+  
+  .video-lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .play-button {
+    width: 60px;
+    height: 60px;
+  }
+}

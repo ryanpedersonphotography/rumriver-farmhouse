@@ -1,0 +1,146 @@
+/* Global CSS with theme variables */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color palette */
+  --color-primary-lakeBlueDark: #1e3a5f;
+  --color-primary-lakeBlue: #2a4d75;
+  --color-primary-lakeBlueLight: #3a6491;
+  
+  --color-secondary-sunsetOrange: #ff6b35;
+  --color-secondary-sunsetOrangeLight: #ff8759;
+  --color-secondary-sunsetOrangeDark: #e55424;
+  
+  --color-accent-campfireYellow: #ffd93d;
+  --color-accent-campfireYellowLight: #ffe366;
+  --color-accent-campfireYellowDark: #f5c71a;
+  
+  --color-natural-woodBrown: #8b6f47;
+  --color-natural-woodBrownLight: #a68860;
+  --color-natural-woodBrownDark: #6d5738;
+  --color-natural-forestGreen: #2d5016;
+  --color-natural-forestGreenLight: #3d6a1f;
+  --color-natural-forestGreenDark: #1e350e;
+  --color-natural-softSand: #f5e6d3;
+  --color-natural-softSandLight: #f9f2e9;
+  --color-natural-softSandDark: #e8d4b8;
+  --color-natural-morningMist: #e8f3f5;
+  --color-natural-morningMistLight: #f2f9fa;
+  --color-natural-morningMistDark: #d6e8eb;
+  
+  /* Typography */
+  --font-heading: 'Bebas Neue', cursive;
+  --font-subheading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --font-accent: 'Amatic SC', cursive;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Utility classes for theme colors */
+.bg-lake-blue { background-color: var(--color-primary-lakeBlue); }
+.bg-lake-blue-dark { background-color: var(--color-primary-lakeBlueDark); }
+.bg-sunset-orange { background-color: var(--color-secondary-sunsetOrange); }
+.bg-sunset-orange-dark { background-color: var(--color-secondary-sunsetOrangeDark); }
+.bg-campfire-yellow { background-color: var(--color-accent-campfireYellow); }
+.bg-wood-brown { background-color: var(--color-natural-woodBrown); }
+.bg-forest-green { background-color: var(--color-natural-forestGreen); }
+.bg-soft-sand { background-color: var(--color-natural-softSand); }
+.bg-morning-mist { background-color: var(--color-natural-morningMist); }
+
+.text-lake-blue { color: var(--color-primary-lakeBlue); }
+.text-sunset-orange { color: var(--color-secondary-sunsetOrange); }
+.text-campfire-yellow { color: var(--color-accent-campfireYellow); }
+.text-wood-brown { color: var(--color-natural-woodBrown); }
+.text-forest-green { color: var(--color-natural-forestGreen); }
+
+/* Font utilities */
+.font-bebas { font-family: var(--font-heading); }
+.font-montserrat { font-family: var(--font-subheading); }
+.font-amatic { font-family: var(--font-accent); }
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-natural-morningMist);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-lakeBlue);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-lakeBlueDark);
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-accent-campfireYellow);
+  color: var(--color-primary-lakeBlueDark);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-secondary-sunsetOrange);
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-natural-morningMist) 0%,
+    var(--color-natural-morningMistLight) 50%,
+    var(--color-natural-morningMist) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite;
+}

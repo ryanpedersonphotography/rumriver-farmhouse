@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Generic Highlight Cards Component
+   Following the Section Design Bible - content handles its own spacing
+   ========================================================================== */
+
+/* Content Container
+   ========================================================================== */
+.highlight-cards-content {
+  /* Container already handles max-width and centering */
+  margin-top: 2rem;
+}
+
+/* Grid Layout
+   ========================================================================== */
+.highlight-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Card Base Styles - Clean and Simple
+   ========================================================================== */
+.highlight-card {
+  background-color: var(--white);
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+}
+
+/* Card Variants
+   ========================================================================== */
+.highlight-card--circle {
+  background-color: var(--mist);
+  padding: 2.5rem;
+  border-radius: 50%;
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid rgba(46, 110, 142, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  aspect-ratio: 1;
+  width: 300px;
+  height: 300px;
+  min-height: 300px;
+}
+
+.highlight-card--rounded {
+  border-radius: 16px;
+}
+
+.highlight-card--minimal {
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Hover Effects
+   ========================================================================== */
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-color: rgba(46, 110, 142, 0.25);
+}
+
+/* Icon Styles
+   ========================================================================== */
+.highlight-icon {
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Text Styles
+   ========================================================================== */
+.highlight-card h3 {
+  color: var(--navy);
+  font-size: 1.4rem;
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.highlight-card p {
+  color: var(--charcoal);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+  max-width: 200px;
+}
+
+/* Background Variations
+   ========================================================================== */
+.section--white .highlight-card {
+  background-color: var(--mist);
+}
+
+/* Override background for circle cards */
+.section--white .highlight-card--circle {
+  background-color: var(--mist);
+}
+
+.section--mist .highlight-card {
+  background-color: var(--white);
+}
+
+.section--pearl .highlight-card {
+  background-color: var(--frost);
+}
+
+.section--frost .highlight-card {
+  background-color: var(--white);
+}
+
+/* Mobile Styles
+   ========================================================================== */
+@media (max-width: 768px) {
+  .highlight-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .highlight-card {
+    padding: 2rem;
+  }
+  
+  .highlight-card--circle {
+    min-height: 250px;
+  }
+  
+  .highlight-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem;
+  }
+  
+  .highlight-card h3 {
+    font-size: 1.25rem;
+  }
+}

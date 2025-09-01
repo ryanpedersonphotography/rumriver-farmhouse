@@ -1,0 +1,227 @@
+/* Navigation Styles */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(30, 77, 107, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.site-header.scrolled {
+  background-color: rgba(30, 77, 107, 0.7);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.nav-logo a {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  transition: var(--transition);
+  white-space: nowrap;
+  margin-right: 2rem;
+}
+
+.nav-logo a:hover {
+  color: var(--powder);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  color: var(--white);
+  transition: var(--transition);
+  padding: 0.5rem 0.75rem;
+  overflow: visible;
+  display: inline-block;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 5px;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='5' viewBox='0 0 20 5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 4 L3 0 L6 4 L9 0 L12 4 L15 0 L18 4' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linejoin='miter'/%3E%3C/svg%3E");
+  background-size: 20px 5px;
+  background-repeat: repeat-x;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--white);
+}
+
+.nav-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Active section indicator */
+.nav-link.active {
+  color: var(--white);
+  position: relative;
+}
+
+.nav-link.active::after {
+  display: none;
+}
+
+/* Circle indicator for active link */
+.nav-link.active::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 16px);
+  height: 32px;
+  border: 2px solid var(--white);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  animation: fadeInCircle 0.3s ease forwards;
+  z-index: -1;
+}
+
+@keyframes fadeInCircle {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.nav-cta {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.nav-cta:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  color: var(--white) !important;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-cta::after {
+  display: none;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--charcoal);
+  margin: 3px 0;
+  transition: var(--transition);
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 1rem;
+  }
+  
+  .nav-logo a {
+    font-size: 1.1rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+  
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-link {
+    width: 100%;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--ice);
+  }
+  
+  .nav-link::after {
+    display: none;
+  }
+  
+  .nav-link.active::before {
+    display: none;
+  }
+  
+  .nav-cta {
+    margin: 1rem 2rem;
+    text-align: center;
+  }
+}

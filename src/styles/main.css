@@ -1,0 +1,257 @@
+/* Import utilities */
+@import './utilities/variables.css';
+@import './utilities/animations.css';
+
+/* Import components */
+@import './components/navigation.css';
+@import './components/hero.css';
+@import './components/property.css';
+@import './components/property-details.css';
+@import './components/highlight-cards.css';
+@import './components/gallery.css';
+@import './components/sections.css';
+@import './components/footer.css';
+@import './components/lightbox.css';
+@import './components/video-lightbox.css';
+@import './components/waves.css';
+/* @import './components/section-system.css'; - Disabled, using basic-sections.css */
+/* @import './components/divider-shapes.css'; - Disabled, no shapes for now */
+@import './components/basic-sections.css';
+@import './components/shape-dividers.css';
+@import './components/shape-dividers-library.css';
+
+/* Import animations */
+@import './animations.css';
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--charcoal);
+  line-height: 1.6;
+  background-color: var(--white);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Prevent horizontal overflow from any element */
+#root,
+main,
+.site-wrapper {
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+h1 {
+  font-size: clamp(10rem, 20vw, 16rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--sky);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--ocean);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure all sections don't overflow */
+section {
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Section Styles */
+section {
+  padding: var(--section-padding);
+  margin: 0 !important; /* Reset all section margins to prevent gaps */
+}
+
+/* GLOBAL: Force disable ALL divider animations */
+.section-divider,
+.section-divider *,
+.wave-divider,
+.wave-divider * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  color: var(--navy);
+}
+
+.section-header p {
+  font-size: 1.125rem;
+  color: var(--slate);
+  margin-top: 0.5rem;
+}
+
+/* Button Styles - Professional & Refined */
+.btn {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-family: var(--font-body);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Subtle hover effect */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background-color: var(--ocean);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(46, 110, 142, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: var(--sky);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(46, 110, 142, 0.25);
+}
+
+.btn-secondary {
+  background-color: var(--white);
+  color: var(--ocean);
+  border: 2px solid var(--ocean);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary:hover {
+  background-color: var(--ocean);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(46, 110, 142, 0.2);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  section {
+    padding: var(--section-padding-mobile);
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Loading State */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--ice);
+  border-radius: 50%;
+  border-top-color: var(--sky);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Skip to content */
+.skip-to-content {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  background: var(--navy);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  z-index: 10000;
+}

@@ -1,0 +1,200 @@
+/* Gallery Section */
+.gallery-section {
+  background-color: var(--pearl);
+  position: relative;
+  padding: 5rem 0 5rem 0;
+  margin-top: 0 !important;
+  z-index: 1;
+}
+
+/* Override overflow only for gallery section, not affecting body */
+#gallery.section {
+  overflow: visible !important;
+}
+
+/* Ensure gallery grid doesn't get clipped */
+.gallery-section .gallery-grid {
+  overflow: visible;
+}
+
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  padding: 0.625rem 1.25rem;
+  background-color: var(--white);
+  color: var(--charcoal);
+  border: 2px solid var(--ice);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  background-color: var(--frost);
+  border-color: var(--powder);
+}
+
+.filter-btn.active {
+  background-color: var(--sky);
+  color: var(--white);
+  border-color: var(--sky);
+}
+
+/* Gallery Grid - Masonry Layout */
+.gallery-grid {
+  margin: 0 auto 3rem;
+  position: relative;
+  width: 100%;
+}
+
+.gallery-grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* Gallery sizer for masonry grid */
+.gallery-sizer,
+.gallery-item {
+  width: calc(25% - 15px);
+}
+
+.gallery-item {
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+}
+
+.gallery-item.visible {
+  opacity: 1;
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(30, 58, 95, 0.9) 0%, transparent 100%);
+  color: var(--white);
+  padding: 1.5rem 1rem 1rem;
+  transform: translateY(100%);
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Load More Button */
+.load-more-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 0.875rem 2rem;
+  background-color: var(--sky);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.load-more-btn:hover {
+  background-color: var(--ocean);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Gallery Item Images */
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: var(--transition);
+  border-radius: var(--radius-lg);
+}
+
+/* Desktop medium */
+@media (max-width: 1200px) {
+  .gallery-sizer,
+  .gallery-item {
+    width: calc(33.333% - 13.333px);
+  }
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .gallery-sizer,
+  .gallery-item {
+    width: calc(50% - 10px);
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 2rem 0 3rem 0;
+  }
+  
+  .gallery-filters {
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .gallery-sizer,
+  .gallery-item {
+    width: 100%;
+  }
+  
+  .gallery-item {
+    margin-bottom: 1rem;
+  }
+  
+  .gallery-overlay {
+    transform: translateY(0);
+    background: linear-gradient(to top, rgba(30, 58, 95, 0.7) 0%, transparent 100%);
+    padding: 1rem 0.75rem 0.75rem;
+  }
+  
+  .gallery-title {
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Custom Shape Dividers
+   ========================================================================== */
+
+/* Wave Divider from Shape Generator */
+.custom-shape-divider-top-1753418517 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1753418517 svg {
+    position: relative;
+    display: block;
+    width: calc(119% + 1.3px);
+    height: 58px;
+}
+
+.custom-shape-divider-top-1753418517 .shape-fill {
+    fill: var(--ocean-dark); /* Matches video dark tones */
+}
+
+/* Bottom Wave Divider for Hero */
+.custom-shape-divider-bottom-1753419162 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: 3;
+}
+
+.custom-shape-divider-bottom-1753419162 svg {
+    position: relative;
+    display: block;
+    width: calc(139% + 1.3px);
+    height: 89px;
+}
+
+.custom-shape-divider-bottom-1753419162 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* Non-flipped wave divider for section tops */
+.custom-shape-divider-top-1753421774 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1753421774 svg {
+    position: relative;
+    display: block;
+    width: calc(139% + 1.3px);
+    height: 89px;
+}
+
+.custom-shape-divider-top-1753421774 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* Flipped wave divider for section tops */
+.custom-shape-divider-top-1753422094 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1753422094 svg {
+    position: relative;
+    display: block;
+    width: calc(139% + 1.3px);
+    height: 89px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1753422094 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* Ensure the parent section has relative positioning */
+.section {
+    position: relative;
+}

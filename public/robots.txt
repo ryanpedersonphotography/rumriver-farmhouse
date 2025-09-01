@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /manage.html
+Disallow: /admin
+Disallow: /admin.html
+
+Sitemap: https://breezylakeviewcottage.com/sitemap.xml

@@ -1,0 +1,157 @@
+/* Wave Dividers */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+  margin: 0;
+}
+
+
+/* Section Dividers */
+.section-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+  margin: -20px 0;
+  z-index: 2;
+  background: transparent;
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+.section-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 80px;
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+.section-divider svg path {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.wave-divider.wave-flip svg {
+  transform: rotate(180deg);
+}
+
+/* Wave Styles */
+.wave-gentle {
+  fill: var(--ocean);
+}
+
+.wave-mist {
+  fill: var(--mist);
+}
+
+.wave-sand {
+  fill: var(--sand);
+}
+
+.wave-sunset {
+  fill: var(--sunset);
+}
+
+.wave-white {
+  fill: var(--white);
+}
+
+/* Water Texture Overlay */
+.water-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+.water-texture::before,
+.water-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.water-texture::before {
+  background-image: 
+    radial-gradient(circle at 20% 30%, transparent 40%, rgba(46, 110, 142, 0.1) 70%),
+    radial-gradient(circle at 60% 70%, transparent 45%, rgba(74, 146, 180, 0.1) 75%),
+    radial-gradient(circle at 80% 20%, transparent 35%, rgba(30, 77, 107, 0.1) 65%);
+  filter: blur(2px);
+}
+
+.water-texture::after {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(227, 242, 253, 0.03) 3px,
+      rgba(227, 242, 253, 0.03) 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(227, 242, 253, 0.03) 3px,
+      rgba(227, 242, 253, 0.03) 6px
+    );
+  transform: scale(1.5) rotate(45deg);
+}
+
+
+
+
+
+/* Section-specific wave transitions */
+.hero + .wave-divider {
+  background: linear-gradient(to bottom, var(--navy), transparent);
+}
+
+/* Gallery background is set in gallery.css */
+
+.reviews-section {
+  background: var(--mist);
+  position: relative;
+}
+
+.location-section {
+  background: var(--white);
+}
+
+.area-guide-section {
+  background: var(--sand-light);
+  position: relative;
+}
+
+.booking-section {
+  background: linear-gradient(135deg, var(--ocean) 0%, var(--navy) 100%);
+  color: var(--white);
+}
+
+/* Wave SVG Path Definitions */
+.wave-path-gentle {
+  d: path("M0,60 C150,90 350,30 600,60 C850,90 1050,30 1200,60 L1200,120 L0,120 Z");
+}
+
+.wave-path-smooth {
+  d: path("M0,40 C400,80 800,20 1200,60 L1200,120 L0,120 Z");
+}
+
+.wave-path-ripple {
+  d: path("M0,40 C300,20 600,60 900,40 C1050,30 1100,50 1200,40 L1200,120 L0,120 Z");
+}

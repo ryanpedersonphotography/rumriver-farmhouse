@@ -1,0 +1,273 @@
+/* ==========================================================================
+   Section Templates - Pre-configured Design Bible Compliant Patterns
+   ========================================================================== */
+
+/* Template Pattern Classes
+   ========================================================================== */
+
+/* Hero Section Templates
+   ========================================================================== */
+.section-template--hero-ocean {
+  background: linear-gradient(135deg, var(--ocean), var(--navy));
+  color: var(--white);
+  min-height: 70vh;
+  position: relative;
+}
+
+.section-template--hero-ocean::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  pointer-events: none;
+}
+
+/* Content Flow Templates (Decrescendo Pattern)
+   ========================================================================== */
+.section-template--intro-after-hero {
+  background-color: var(--white);
+  position: relative;
+  /* Expects steep wave from hero */
+}
+
+.section-template--content-primary {
+  background-color: var(--mist);
+  position: relative;
+  /* Standard wave transitions */
+}
+
+.section-template--content-secondary {
+  background-color: var(--pearl);
+  position: relative;
+  /* Gentle wave transitions */
+}
+
+/* Feature Echo Pattern Templates
+   ========================================================================== */
+.section-template--feature-white {
+  background-color: var(--white);
+  position: relative;
+}
+
+.section-template--feature-pearl {
+  background-color: var(--pearl);
+  position: relative;
+}
+
+.section-template--feature-mist {
+  background-color: var(--mist);
+  position: relative;
+}
+
+/* CTA Section Templates
+   ========================================================================== */
+.section-template--cta-ocean {
+  background-color: var(--ocean);
+  color: var(--white);
+  position: relative;
+  padding: 6rem 0;
+  /* No bottom divider - clean exit */
+}
+
+.section-template--cta-navy {
+  background-color: var(--navy);
+  color: var(--white);
+  position: relative;
+  padding: 6rem 0;
+}
+
+/* Testimonial/Review Templates
+   ========================================================================== */
+.section-template--testimonials {
+  background-color: var(--pearl);
+  position: relative;
+  /* Clean entry, no top divider */
+}
+
+/* Footer Templates
+   ========================================================================== */
+.section-template--footer-ocean {
+  background-color: var(--ocean);
+  color: var(--white);
+  position: relative;
+  /* Subtle or no top divider */
+}
+
+.section-template--footer-navy {
+  background-color: var(--navy);
+  color: var(--white);
+  position: relative;
+}
+
+/* Pre-configured Divider Combinations
+   ========================================================================== */
+
+/* Hero Exit Patterns */
+.hero-exit--steep-white {
+  /* Add to hero section */
+}
+
+.hero-exit--steep-white .shape-divider {
+  /* Pre-configured steep wave in white */
+}
+
+/* Content Flow Patterns */
+.content-flow--standard {
+  /* Standard wave bottom dividers */
+}
+
+.content-flow--gentle {
+  /* Gentle wave transitions */
+}
+
+.content-flow--echo {
+  /* Matching wave patterns for features */
+}
+
+/* CTA Entry Patterns */
+.cta-entry--dramatic {
+  /* Steep wave entry from above */
+}
+
+.cta-entry--opacity {
+  /* Opacity wave for high contrast */
+}
+
+/* Complete Section Sequences
+   ========================================================================== */
+
+/* Sequence 1: Classic Hero to Content */
+.sequence-hero-to-content {
+  /* Apply to container holding hero + intro + content sections */
+}
+
+.sequence-hero-to-content > .section:nth-child(1) {
+  /* Hero with steep white exit */
+}
+
+.sequence-hero-to-content > .section:nth-child(2) {
+  /* White intro with standard mist exit */
+}
+
+.sequence-hero-to-content > .section:nth-child(3) {
+  /* Mist content with gentle white exit */
+}
+
+/* Sequence 2: Feature Echo Pattern */
+.sequence-features-echo {
+  /* Apply to container with multiple feature sections */
+}
+
+.sequence-features-echo > .section:nth-child(odd) {
+  background-color: var(--white);
+}
+
+.sequence-features-echo > .section:nth-child(even) {
+  background-color: var(--pearl);
+}
+
+/* Sequence 3: Build to CTA */
+.sequence-build-to-cta {
+  /* Crescendo pattern building energy */
+}
+
+.sequence-build-to-cta > .section:nth-child(1) {
+  /* Subtle transitions */
+}
+
+.sequence-build-to-cta > .section:nth-child(2) {
+  /* Standard transitions */
+}
+
+.sequence-build-to-cta > .section:nth-child(3) {
+  /* Steep entry to CTA */
+}
+
+/* Utility Classes for Common Patterns
+   ========================================================================== */
+
+/* Clean Breaks */
+.clean-break-before {
+  /* No top divider */
+}
+
+.clean-break-after {
+  /* No bottom divider */
+}
+
+/* Divider Intensity Modifiers */
+.divider-intensity--subtle {
+  /* Forces subtle wave heights */
+}
+
+.divider-intensity--gentle {
+  /* Forces gentle wave heights */
+}
+
+.divider-intensity--standard {
+  /* Forces standard wave heights */
+}
+
+.divider-intensity--steep {
+  /* Forces steep wave heights */
+}
+
+/* Mobile Responsive Templates
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Reduce all divider heights on mobile */
+  .section-template--hero-ocean {
+    min-height: 60vh;
+  }
+  
+  .section-template--cta-ocean,
+  .section-template--cta-navy {
+    padding: 4rem 0;
+  }
+  
+  /* Simplify complex patterns on mobile */
+  .sequence-build-to-cta > .section {
+    /* Use gentler transitions on small screens */
+  }
+}
+
+/* Dark Mode Adjustments (if applicable)
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  /* Adjust opacity waves for better contrast in dark mode */
+  .shape-divider-wave-opacity-white-bottom .shape-fill-opacity-1 {
+    opacity: 0.15;
+  }
+  
+  .shape-divider-wave-opacity-white-bottom .shape-fill-opacity-2 {
+    opacity: 0.3;
+  }
+}
+
+/* Quick Implementation Guide
+   ========================================================================== */
+/*
+   BASIC USAGE:
+   <section class="section-template--hero-ocean">
+     <!-- Hero content -->
+     <div class="shape-divider-steep-wave-white-bottom">...</div>
+   </section>
+   
+   <section class="section-template--intro-after-hero">
+     <!-- Introduction content -->
+     <div class="shape-divider-wave-mist-bottom">...</div>
+   </section>
+   
+   SEQUENCE USAGE:
+   <div class="sequence-hero-to-content">
+     <section>...</section>
+     <section>...</section>
+     <section>...</section>
+   </div>
+   
+   MODIFIERS:
+   class="section-template--feature-white clean-break-after"
+   class="section-template--cta-ocean divider-intensity--steep"
+*/

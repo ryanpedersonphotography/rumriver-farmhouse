@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Reusable Section System
+   ========================================================================== */
+
+/* Base Section Classes
+   ========================================================================== */
+.section {
+  padding: var(--section-padding) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.section--no-padding {
+  padding: 0;
+}
+
+.section--extra-padding-bottom {
+  padding-bottom: 8rem;
+}
+
+/* Section Background Colors
+   ========================================================================== */
+.section--white {
+  background-color: var(--white);
+}
+
+.section--pearl {
+  background-color: var(--pearl);
+}
+
+.section--mist {
+  background-color: var(--mist);
+}
+
+.section--ocean {
+  background-color: var(--ocean);
+  color: var(--white);
+}
+
+.section--ocean-light {
+  background-color: var(--ocean-light);
+  color: var(--white);
+}
+
+.section--ocean-dark {
+  background-color: var(--ocean-dark);
+  color: var(--white);
+}
+
+/* Divider System
+   ========================================================================== */
+.divider {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 !important;
+  display: block;
+  line-height: 0;
+  vertical-align: bottom;
+  pointer-events: none;
+  animation: none !important;
+  transition: none !important;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Bottom Dividers - Most common use case */
+.divider--bottom {
+  bottom: -1px; /* Slight overlap to prevent gaps */
+  transform: none;
+}
+
+/* Bottom Extended - Extends below section */
+.divider--bottom-extended {
+  bottom: -50px;
+  transform: none;
+}
+
+/* Top Dividers - Less common, needs careful positioning */
+.divider--top {
+  top: 0;
+  transform: translateY(-100%);
+}
+
+/* Top Overlap - For sections that need custom positioning */
+.divider--top-overlap {
+  top: -100px; /* Adjust based on divider height */
+  transform: none;
+}
+
+/* Stacked dividers (for multiple transitions) */
+.divider--bottom-stacked {
+  bottom: -100px;
+  z-index: 3;
+}
+
+/* Position Modifiers - Use when default positioning doesn't work */
+.divider--position-absolute {
+  position: absolute;
+}
+
+.divider--position-relative {
+  position: relative;
+  transform: none;
+}
+
+/* Divider Shapes
+   ========================================================================== */
+
+/* Curve Concave - Standard (dips down/inward) */
+.divider--curve-concave svg {
+  width: 100%;
+  height: 100px;
+}
+
+/* Curve Concave - Gentle (subtle dip) */
+.divider--curve-concave-gentle svg {
+  width: 100%;
+  height: 60px;
+}
+
+/* Curve Concave - Steep (deep dip) */
+.divider--curve-concave-steep svg {
+  width: 100%;
+  height: 140px;
+}
+
+/* Curve Convex - Standard (bulges up/outward) */
+.divider--curve-convex svg {
+  width: 100%;
+  height: 100px;
+}
+
+/* Curve Convex - Gentle (subtle bulge) */
+.divider--curve-convex-gentle svg {
+  width: 100%;
+  height: 60px;
+}
+
+/* Curve Convex - Steep (high bulge) */
+.divider--curve-convex-steep svg {
+  width: 100%;
+  height: 140px;
+}
+
+/* Diagonal shape */
+.divider--diagonal svg {
+  width: 100%;
+  height: 60px;
+}
+
+/* Jagged/zigzag shape */
+.divider--jagged svg {
+  width: 100%;
+  height: 40px;
+}
+
+/* Arrow/chevron shape */
+.divider--arrow svg {
+  width: 100%;
+  height: 80px;
+}
+
+/* Torn paper shape */
+.divider--torn svg {
+  width: 100%;
+  height: 30px;
+}
+
+/* Divider Color Fills
+   ========================================================================== */
+.divider--fill-white path {
+  fill: var(--white);
+}
+
+.divider--fill-pearl path {
+  fill: var(--pearl);
+}
+
+.divider--fill-mist path {
+  fill: var(--mist);
+}
+
+.divider--fill-ocean path {
+  fill: var(--ocean);
+}
+
+.divider--fill-ocean-light path {
+  fill: var(--ocean-light);
+}
+
+.divider--fill-ocean-dark path {
+  fill: var(--ocean-dark);
+}
+
+.divider--fill-charcoal path {
+  fill: var(--charcoal);
+}
+
+.divider--fill-frost path {
+  fill: var(--frost);
+}
+
+/* Divider Flipping
+   ========================================================================== */
+.divider--flip-horizontal {
+  transform: scaleX(-1) translateY(99%) !important;
+}
+
+.divider--flip-vertical {
+  transform: scaleY(-1) translateY(-99%) !important;
+}
+
+/* Common Section Combinations
+   ========================================================================== */
+
+/* Pearl section flowing into mist */
+.section--pearl-to-mist {
+  background-color: var(--pearl);
+  padding-bottom: 5rem;
+}
+
+.section--pearl-to-mist .divider--bottom {
+  fill: var(--mist);
+}
+
+/* Mist section flowing into white */
+.section--mist-to-white {
+  background-color: var(--mist);
+  padding-bottom: 5rem;
+}
+
+.section--mist-to-white .divider--bottom {
+  fill: var(--white);
+}
+
+/* White section flowing into pearl */
+.section--white-to-pearl {
+  background-color: var(--white);
+  padding-bottom: 5rem;
+}
+
+.section--white-to-pearl .divider--bottom {
+  fill: var(--pearl);
+}
+
+/* Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-padding-mobile) 0;
+  }
+  
+  .section--extra-padding-bottom {
+    padding-bottom: 5rem;
+  }
+  
+  .divider--wave svg {
+    height: 60px;
+  }
+  
+  .divider--diagonal svg {
+    height: 40px;
+  }
+  
+  .divider--arrow svg {
+    height: 50px;
+  }
+}

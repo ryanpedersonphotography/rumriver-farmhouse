@@ -1,0 +1,30 @@
+{
+  "name": "property-blank-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sanity": "sanity dev",
+    "sanity:deploy": "sanity deploy"
+  },
+  "devDependencies": {
+    "@sanity/vision": "^4.6.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "puppeteer": "^24.15.0",
+    "sanity": "^4.6.0",
+    "sharp": "^0.34.3",
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.10.0",
+    "@sanity/image-url": "^1.2.0",
+    "framer-motion": "^11.0.0",
+    "imagesloaded": "^5.0.0",
+    "masonry-layout": "^4.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
