@@ -165,12 +165,11 @@ function loadImages(filter, append = false, isInitial = false) {
       // Initialize masonry after images are loaded
       masonryInstance = new Masonry(galleryGrid, {
         itemSelector: '.gallery-item',
-        columnWidth: 220,
-        percentPosition: false, // Use pixel positioning
-        horizontalOrder: true, // Keep items in order for 4-across layout
+        columnWidth: '.gallery-sizer',
+        percentPosition: false,
         transitionDuration: 0,
-        gutter: 30, // More spacing between photos
-        fitWidth: true, // Center the grid
+        gutter: 30,
+        fitWidth: true,
         originLeft: true,
         originTop: true
       });
@@ -178,8 +177,8 @@ function loadImages(filter, append = false, isInitial = false) {
       // Force layout
       masonryInstance.layout();
       
-      // Add visible class for animation
-      const newItems = galleryGrid.querySelectorAll('.gallery-item:not(.visible)');
+      // Add visible class for animation, but skip items with flying animation
+      const newItems = galleryGrid.querySelectorAll('.gallery-item');
       newItems.forEach((item, index) => {
         setTimeout(() => {
           item.classList.add('visible');
@@ -192,8 +191,8 @@ function loadImages(filter, append = false, isInitial = false) {
       masonryInstance.reloadItems();
       masonryInstance.layout();
       
-      // Add visible class for animation
-      const newItems = galleryGrid.querySelectorAll('.gallery-item:not(.visible)');
+      // Add visible class for animation, but skip items with flying animation
+      const newItems = galleryGrid.querySelectorAll('.gallery-item');
       newItems.forEach((item, index) => {
         setTimeout(() => {
           item.classList.add('visible');
@@ -201,8 +200,8 @@ function loadImages(filter, append = false, isInitial = false) {
       });
     });
   } else if (isMobile) {
-    // On mobile, just add visible class without masonry
-    const newItems = galleryGrid.querySelectorAll('.gallery-item:not(.visible)');
+    // On mobile, just add visible class without masonry, but skip flying animation items
+    const newItems = galleryGrid.querySelectorAll('.gallery-item');
     newItems.forEach((item, index) => {
       setTimeout(() => {
         item.classList.add('visible');
@@ -260,8 +259,9 @@ function loadAllImages(filter) {
     masonryInstance.appended(addedItems);
     masonryInstance.layout();
     
-    // Add visible class for animation
-    addedItems.forEach((item, index) => {
+    // Add visible class for animation, but skip items with flying animation
+    const itemsToShow = addedItems.filter(item => !item.classList.contains('gallery-fly-initial'));
+    itemsToShow.forEach((item, index) => {
       setTimeout(() => {
         item.classList.add('visible');
       }, index * 30);
