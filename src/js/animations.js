@@ -63,8 +63,12 @@ export function initScrollAnimations() {
   // Guide items with bounce
   setupGuideAnimations();
   
-  // Amenity preview items
+  // Amenity preview items and cards
   setupAmenityAnimations();
+  setupAmenityCardAnimations();
+  
+  // Room cards animations
+  setupRoomCardAnimations();
   
   // Location highlights
   setupLocationHighlights();
@@ -252,6 +256,42 @@ function setupAmenityAnimations() {
   if (amenitySection) {
     observer.observe(amenitySection);
   }
+}
+
+// Amenity cards with slide up animation
+function setupAmenityCardAnimations() {
+  const cards = document.querySelectorAll('.amenity-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  });
+  
+  cards.forEach(card => observer.observe(card));
+}
+
+// Room cards with 3D reveal animation
+function setupRoomCardAnimations() {
+  const cards = document.querySelectorAll('.room-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  });
+  
+  cards.forEach(card => observer.observe(card));
 }
 
 // Location highlights alternating

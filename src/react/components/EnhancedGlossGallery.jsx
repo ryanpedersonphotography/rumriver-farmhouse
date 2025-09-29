@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PolaroidCardGL from './PolaroidCardGL.jsx';
 import '../styles/EnhancedGloss.css';
 
@@ -15,6 +15,22 @@ const imageData = [
 function EnhancedGlossGallery() {
   const [filter, setFilter] = useState('all');
   const [displayedImages, setDisplayedImages] = useState(4);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1000);
+
+  // Update window width on resize
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate responsive dimensions
+  const isMobile = windowWidth <= 768;
+  const cardWidth = isMobile ? Math.min(windowWidth - 40, 320) : 360;
+  const cardHeight = isMobile ? Math.round(cardWidth * 1.1) : 450;
+  const cardInset = isMobile 
+    ? { t: 0.04, r: 0.04, b: 0.12, l: 0.04 }  // Smaller borders on mobile
+    : { t: 0.055, r: 0.055, b: 0.18, l: 0.055 };
 
   const categories = ['all', 'exterior', 'living', 'bedroom', 'kitchen'];
   
@@ -23,6 +39,33 @@ function EnhancedGlossGallery() {
     : imageData.filter(img => img.category === filter);
   
   const visibleImages = filteredImages.slice(0, displayedImages);
+
+  // Setup animation observer on mount
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      // Set up intersection observer for polaroid animations
+      const elements = document.querySelectorAll('.polaroid-wrapper[data-animate]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '-50px 0px'
+      });
+      
+      elements.forEach(el => observer.observe(el));
+      
+      // Cleanup
+      return () => {
+        elements.forEach(el => observer.unobserve(el));
+      };
+    }, 100);
+  }, [displayedImages, filter]); // Re-run when images change
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -58,7 +101,10 @@ function EnhancedGlossGallery() {
             <div 
               key={image.id} 
               className="polaroid-wrapper"
+              data-animate={index % 2 === 0 ? "fade-left" : "fade-right"}
               style={{
+                '--rotation': `${rotation}deg`,
+                '--index': index,
                 transform: `rotate(${rotation}deg)`,
                 transformOrigin: 'center center'
               }}
@@ -74,15 +120,10 @@ function EnhancedGlossGallery() {
                 fresnel={0.25}
                 roll={0.32}
                 streak={0.4}
-                width={360}
-                height={450}
-                inset={{ t: 0.055, r: 0.055, b: 0.18, l: 0.055 }}
+                width={cardWidth}
+                height={cardHeight}
+                inset={cardInset}
               />
-              
-              {/* Caption below the card */}
-              <div className="polaroid-gl-caption">
-                {image.title}
-              </div>
             </div>
           );
         })}

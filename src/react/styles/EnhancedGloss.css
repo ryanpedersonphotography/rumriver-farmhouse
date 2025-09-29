@@ -134,13 +134,27 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .enhanced-gloss-gallery {
+    padding: 0.5rem;
+  }
+  
   .enhanced-gloss-container {
     padding: 1rem;
-    gap: 1rem;
+    gap: 1.5rem;
+    background: transparent;
+    flex-direction: column;
+    align-items: center;
   }
   
   .polaroid-wrapper {
-    margin: 0.5rem;
+    margin: 0.5rem auto;
+    width: 100%;
+    max-width: 320px;
+    transform: rotate(0deg) !important;
+  }
+  
+  .polaroid-wrapper:hover {
+    transform: scale(1.02) !important;
   }
   
   .polaroid-gl-caption {

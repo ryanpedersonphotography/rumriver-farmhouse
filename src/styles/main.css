@@ -28,6 +28,7 @@
 /* @import './components/divider-shapes.css'; - Disabled, no shapes for now */
 @import './components/basic-sections.css';
 @import './components/shape-dividers.css';
+@import './components/card-animations.css';
 @import './components/shape-dividers-library.css';
 
 /* Import animations */

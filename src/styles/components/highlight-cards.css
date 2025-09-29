@@ -75,9 +75,9 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Hover Effects
+/* Hover Effects - DISABLED for better mobile experience
    ========================================================================== */
-.highlight-card:hover {
+/* .highlight-card:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 8px 24px rgba(74, 60, 40, 0.15);
   border-color: var(--sage-light);
@@ -85,7 +85,7 @@
 
 .highlight-card:hover::before {
   transform: scaleX(1);
-}
+} */
 
 /* Icon Styles
    ========================================================================== */
@@ -105,11 +105,11 @@
   border: 3px solid var(--wheat);
 }
 
-.highlight-card:hover .highlight-icon {
+/* .highlight-card:hover .highlight-icon {
   transform: rotate(-5deg) scale(1.05);
   background: linear-gradient(135deg, var(--barn-red), var(--rust));
   border-color: var(--barn-red);
-}
+} */
 
 /* Text Styles
    ========================================================================== */
@@ -170,25 +170,30 @@
   
   .highlight-card--circle {
     width: 100%;
-    max-width: 280px;
-    height: auto;
+    max-width: 200px;
+    height: 200px;
     min-height: 200px;
     aspect-ratio: 1;
-    padding: 1.5rem;
+    padding: 1.25rem;
     margin: 0 auto;
   }
   
   .highlight-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 2.5rem;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
     background: linear-gradient(135deg, var(--sage-light), var(--sage));
     border-radius: 50%;
-    padding: 0.75rem;
+    padding: 0.5rem;
     border: 2px solid var(--wheat);
   }
   
   .highlight-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+  }
+  
+  .highlight-card p {
+    font-size: 0.9rem;
+    max-width: 100%;
   }
 }

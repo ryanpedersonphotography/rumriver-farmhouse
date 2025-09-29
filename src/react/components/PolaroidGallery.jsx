@@ -35,6 +35,38 @@ function PolaroidGallery() {
   const [displayedImages, setDisplayedImages] = useState(12);
   const [showingAll, setShowingAll] = useState(false);
 
+  // Setup animation observer
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      // Set up intersection observer for polaroid animations
+      const elements = document.querySelectorAll('.polaroid-item[data-animate]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // Add staggered delay for each card
+            setTimeout(() => {
+              entry.target.classList.add('animate-in');
+            }, index * 50);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '-50px 0px'
+      });
+      
+      elements.forEach(el => observer.observe(el));
+      
+      // Cleanup
+      return () => {
+        elements.forEach(el => observer.unobserve(el));
+      };
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [filter, displayedImages, showingAll]); // Re-run when images change
+
   const categories = ['all', 'exterior', 'living', 'bedroom', 'kitchen', 'bathroom', 'amenity'];
   
   const filteredImages = filter === 'all' 
@@ -90,10 +122,12 @@ function PolaroidGallery() {
             <div
               key={image.id}
               className="polaroid-item"
+              data-animate={index % 2 === 0 ? "fade-left" : "fade-right"}
               style={{
                 '--card-rotation': `${cardRotation}deg`,
                 '--pin-position': `${pinPosition}%`,
                 '--pin-rotation': `${pinRotation}deg`,
+                '--index': index,
                 cursor: 'pointer'
               }}
               onClick={() => {
@@ -114,14 +148,8 @@ function PolaroidGallery() {
                 <img 
                   src={image.src}
                   alt={image.title}
-                  style={{
-                    width: '220px',
-                    height: '200px',
-                    objectFit: 'cover',
-                    display: 'block'
-                  }}
+                  className="polaroid-image"
                 />
-                <h3 className="polaroid-title">{image.title}</h3>
               </div>
             </div>
           );

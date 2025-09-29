@@ -456,54 +456,9 @@ a:hover {
   }
 }
 
-/* Navigation overrides for Northwoods theme */
-.site-header {
-  background: var(--bone);
-  border-bottom: 1px solid var(--parchment);
-}
+/* Navigation overrides for Northwoods theme - removed to preserve glass effect from navigation.css */
+/* nav-link styles moved to navigation.css to preserve correct colors */
 
-.nav-link {
-  color: var(--charcoal);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
+/* nav-cta styles moved to navigation.css for glass effect */
 
-.nav-link:hover {
-  color: var(--lake-600);
-}
-
-.nav-cta {
-  background: var(--barn-700);
-  color: var(--bone);
-  padding: 10px 20px;
-  border-radius: var(--radius);
-}
-
-.nav-cta:hover {
-  background: #7A342A;
-  color: var(--bone);
-}
-
-/* Footer specific */
-.site-footer {
-  background: var(--charcoal);
-  color: var(--bone);
-  padding: var(--section-pad-d) 0;
-}
-
-.site-footer a {
-  color: var(--bone);
-  opacity: 0.8;
-}
-
-.site-footer a:hover {
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
-  .site-footer {
-    padding: var(--section-pad-m) 0;
-  }
-}
+/* Footer styles removed - using footer.css instead for better control */

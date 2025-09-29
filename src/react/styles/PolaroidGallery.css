@@ -83,8 +83,24 @@
   margin: 10px;
   cursor: pointer;
   transform: rotate(var(--card-rotation));
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-  will-change: transform, box-shadow;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+}
+
+/* Animation states */
+.polaroid-item[data-animate="fade-left"] {
+  opacity: 0;
+  transform: translateX(-100px) rotate(var(--card-rotation));
+}
+
+.polaroid-item[data-animate="fade-right"] {
+  opacity: 0;
+  transform: translateX(100px) rotate(var(--card-rotation));
+}
+
+.polaroid-item.animate-in {
+  opacity: 1 !important;
+  transform: translateX(0) rotate(var(--card-rotation)) !important;
 }
 
 /* Pushpin */
@@ -113,6 +129,14 @@
     0 4px 8px rgba(0, 0, 0, 0.1),
     0 8px 16px rgba(0, 0, 0, 0.1),
     0 16px 32px rgba(0, 0, 0, 0.05);
+}
+
+/* Polaroid Image */
+.polaroid-image {
+  width: 220px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
 
 /* Polaroid Title */
@@ -144,7 +168,7 @@
 /* Hover Effects */
 .polaroid-item:hover {
   z-index: 20;
-  transform: rotate(0deg) translateY(-20px) scale(1.08);
+  transform: rotate(0deg) translateY(-20px) scale(1.08) !important;
   box-shadow: 
     0 10px 20px rgba(0, 0, 0, 0.25),
     0 15px 30px rgba(0, 0, 0, 0.2);
@@ -235,15 +259,39 @@
   }
   
   .polaroid-item {
-    width: calc(100% - 2rem);
-    max-width: 400px;
+    width: calc(100vw - 3rem);
+    max-width: 350px;
     margin: 0;
-    transform: none !important; /* Remove rotations on mobile */
+  }
+  
+  .polaroid-item[data-animate="fade-left"],
+  .polaroid-item[data-animate="fade-right"] {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .polaroid-item.animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .polaroid-item:hover {
+    transform: translateY(-10px) scale(1.02) !important;
   }
   
   .polaroid-card {
-    padding: 12px;
-    padding-bottom: 45px;
+    padding: 8px;
+    padding-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .polaroid-image {
+    width: calc(100vw - 4.5rem) !important;
+    max-width: 334px !important;
+    height: calc((100vw - 4.5rem) * 0.85) !important;
+    max-height: 284px !important;
   }
   
   .polaroid-pin {
@@ -251,8 +299,9 @@
   }
   
   .polaroid-title {
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     transform: none !important; /* Remove text rotation on mobile */
+    bottom: 8px;
   }
   
   .load-more-btn {

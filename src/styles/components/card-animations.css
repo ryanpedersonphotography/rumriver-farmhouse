@@ -1,0 +1,187 @@
+/* Card Animation Styles */
+
+/* Gallery Polaroid Cards Animation */
+.polaroid-wrapper {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: polaroidFloat 6s ease-in-out infinite;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+}
+
+.polaroid-wrapper:hover {
+  transform: rotate(0deg) scale(1.05) translateY(-10px) !important;
+  z-index: 10;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes polaroidFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(calc(var(--rotation, 0deg) * 0.8));
+  }
+}
+
+/* Amenities Cards Animation */
+.amenity-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardSlideUp 0.8s ease-out forwards;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+}
+
+.amenity-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.amenity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.amenity-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes cardSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rooms and Rates Cards Animation */
+.room-card {
+  opacity: 0;
+  transform: perspective(1000px) rotateX(-10deg) translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: roomCardReveal 0.8s ease-out forwards;
+  animation-delay: calc(var(--index, 0) * 0.15s);
+  transform-style: preserve-3d;
+}
+
+.room-card:hover {
+  transform: perspective(1000px) rotateX(0deg) translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.room-card .room-image {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.room-card:hover .room-image img {
+  transform: scale(1.1);
+}
+
+@keyframes roomCardReveal {
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+  }
+}
+
+/* Staggered animation for lists */
+.amenities-grid > *,
+.rooms-grid > * {
+  --index: 0;
+}
+
+.amenities-grid > *:nth-child(1),
+.rooms-grid > *:nth-child(1) { --index: 0; }
+
+.amenities-grid > *:nth-child(2),
+.rooms-grid > *:nth-child(2) { --index: 1; }
+
+.amenities-grid > *:nth-child(3),
+.rooms-grid > *:nth-child(3) { --index: 2; }
+
+.amenities-grid > *:nth-child(4),
+.rooms-grid > *:nth-child(4) { --index: 3; }
+
+.amenities-grid > *:nth-child(5) { --index: 4; }
+.amenities-grid > *:nth-child(6) { --index: 5; }
+.amenities-grid > *:nth-child(7) { --index: 6; }
+.amenities-grid > *:nth-child(8) { --index: 7; }
+
+/* Gallery stagger */
+.gallery-grid .polaroid-wrapper:nth-child(1) { --index: 0; }
+.gallery-grid .polaroid-wrapper:nth-child(2) { --index: 1; }
+.gallery-grid .polaroid-wrapper:nth-child(3) { --index: 2; }
+.gallery-grid .polaroid-wrapper:nth-child(4) { --index: 3; }
+.gallery-grid .polaroid-wrapper:nth-child(5) { --index: 4; }
+.gallery-grid .polaroid-wrapper:nth-child(6) { --index: 5; }
+.gallery-grid .polaroid-wrapper:nth-child(7) { --index: 6; }
+.gallery-grid .polaroid-wrapper:nth-child(8) { --index: 7; }
+.gallery-grid .polaroid-wrapper:nth-child(9) { --index: 8; }
+.gallery-grid .polaroid-wrapper:nth-child(10) { --index: 9; }
+
+/* React Polaroid Gallery animations */
+.enhanced-gloss-container .polaroid-wrapper {
+  --index: 0;
+  animation: polaroidEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation-delay: calc(var(--index, 0) * 0.08s);
+  opacity: 0;
+  transform: scale(0.8) rotate(calc(var(--index, 0) * 5deg));
+}
+
+@keyframes polaroidEntrance {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(var(--rotation, 0deg));
+  }
+}
+
+/* Intersection observer animations */
+.amenity-card.in-view,
+.room-card.in-view {
+  animation-play-state: running;
+}
+
+.amenity-card:not(.in-view),
+.room-card:not(.in-view) {
+  animation-play-state: paused;
+}
+
+/* Parallax effect for polaroids on scroll */
+@media (prefers-reduced-motion: no-preference) {
+  .polaroid-wrapper {
+    will-change: transform;
+  }
+  
+  .gallery-grid {
+    perspective: 1000px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .polaroid-wrapper:hover {
+    transform: scale(1.03) translateY(-5px) !important;
+  }
+  
+  .amenity-card:hover,
+  .room-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  @keyframes polaroidFloat {
+    0%, 100% {
+      transform: translateY(0px) rotate(var(--rotation, 0deg));
+    }
+    50% {
+      transform: translateY(-4px) rotate(calc(var(--rotation, 0deg) * 0.9));
+    }
+  }
+}
