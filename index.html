@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{PROPERTY_NAME}} - {{PROPERTY_TAGLINE}}</title>
-  <meta name="description" content="{{PROPERTY_DESCRIPTION}}">
+  <title>Rum River Farmhouse - Cozy Farmhouse Retreat in Beautiful Minnesota</title>
+  <meta name="description" content="Experience the charm of Rum River Farmhouse, a cozy vacation rental nestled in Minnesota's countryside. Perfect for families and couples seeking a peaceful farmhouse retreat with modern amenities.">
   
   <!-- SEO Meta Tags -->
   <meta property="og:title" content="{{PROPERTY_NAME}} - {{PROPERTY_TAGLINE}}">
@@ -164,7 +164,7 @@
   </header>
 
   <!-- Hero Section with Video Background -->
-  <section class="section scrim-hero hero" style="background-image: url('/stills/rum-river-farmhouse-21.jpg');">
+  <section class="section scrim-hero hero" style="background-image: url('/rum-river-farmhouse-21.jpg');">
     <div class="hero-content">
       <h1 class="hero-title">Northwoods Farmhouse Retreat</h1>
       <p class="hero-subtitle">Wake to pines, lakes, and quiet skies—your modern farmhouse escape in northern Minnesota.</p>
@@ -176,31 +176,17 @@
     </div>
   </section>
 
-  <!-- 2) Featured Gallery -->
+  <!-- 2) Polaroid Gallery - React Powered -->
   <section id="gallery" class="gallery-section section bg-walnut-grad seam">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <div class="section-kicker">YOUR ESCAPE</div>
         <h2 class="section-title">Miles from Everything, Close to Perfect</h2>
+        <p>Authentic film photography with vintage Polaroid effects</p>
       </div>
       
-      <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">All Photos</button>
-        <button class="filter-btn" data-filter="exterior">Exterior</button>
-        <button class="filter-btn" data-filter="interior">Living Areas</button>
-        <button class="filter-btn" data-filter="bedroom">Bedrooms</button>
-        <button class="filter-btn" data-filter="kitchen">Kitchen</button>
-        <button class="filter-btn" data-filter="bathroom">Bathrooms</button>
-        <button class="filter-btn" data-filter="amenity">Amenities</button>
-      </div>
-
-      <div class="gallery-grid" id="galleryGrid">
-        <!-- Gallery items will be dynamically loaded here -->
-      </div>
-
-      <button class="load-more-btn" id="loadMoreBtn" style="display: none;">
-        View All
-      </button>
+      <!-- React Gallery will mount here -->
+      <div id="polaroid-gallery-root"></div>
     </div>
   </section>
 
@@ -856,46 +842,6 @@
     }
   </script>
 
-  <!-- Desktop Video Loader -->
-  <script>
-    function loadDesktopVideo() {
-      if (window.matchMedia("(min-width: 768px)").matches) {
-        const container = document.getElementById('video-placeholder');
-        const video = document.createElement('video');
-
-        video.className = 'hero-video';
-        video.poster = '/videos/optimized/hero-poster.jpg';
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.playsInline = true;
-        video.preload = 'metadata';
-        
-        // Add WebM source first (smaller file)
-        const sourceWebM = document.createElement('source');
-        sourceWebM.src = '/videos/optimized/hero-compressed.webm';
-        sourceWebM.type = 'video/webm';
-        video.appendChild(sourceWebM);
-        
-        // Add MP4 fallback
-        const sourceMP4 = document.createElement('source');
-        sourceMP4.src = '/videos/optimized/hero-compressed.mp4';
-        sourceMP4.type = 'video/mp4';
-        video.appendChild(sourceMP4);
-
-        container.appendChild(video);
-        
-        // Hide fallback image once video loads
-        video.addEventListener('loadeddata', () => {
-          const fallback = document.querySelector('.hero-fallback');
-          if (fallback) fallback.style.display = 'none';
-        });
-      }
-    }
-
-    // Call the function on DOMContentLoaded
-    document.addEventListener('DOMContentLoaded', loadDesktopVideo);
-  </script>
   
   <!-- Gradient System Intersection Observer -->
   <script>

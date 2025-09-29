@@ -1,6 +1,6 @@
 import './styles/main.css';
 import { initNavigation } from './js/navigation.js';
-import { initGallery } from './js/gallery.js';
+import { mountPolaroidGallery } from './react/PolaroidGalleryApp.jsx';
 import { initLightbox } from './js/lightbox.js';
 import { initVideoLightbox } from './js/video-lightbox.js';
 import { initPropertySlider } from './js/slider.js';
@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Content is now statically built into HTML
   
   initNavigation();
-  initGallery();
+  
+  // Mount React Polaroid Gallery instead of vanilla JS gallery
+  mountPolaroidGallery();
+  
   initLightbox();
   initVideoLightbox();
   initPropertySlider();

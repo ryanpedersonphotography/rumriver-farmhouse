@@ -140,35 +140,43 @@ function setupDataAnimateElements() {
   elements.forEach(el => observer.observe(el));
 }
 
-// Gallery with flying polaroid cards from alternating sides
+// Gallery with flying polaroid cards from alternating sides based on position
 function setupGalleryAnimations() {
   const galleryItems = document.querySelectorAll('.gallery-item');
   
-  // Set initial positions for flying animation
-  galleryItems.forEach((item, index) => {
-    // Alternate between left and right sides
-    const isFromLeft = index % 2 === 0;
-    const flyDirection = isFromLeft ? 'fly-from-left' : 'fly-from-right';
-    item.classList.add('gallery-fly-initial', flyDirection);
-  });
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        const delay = Math.floor(index / 4) * 150 + (index % 4) * 75;
-        setTimeout(() => {
-          entry.target.classList.remove('gallery-fly-initial');
-          entry.target.classList.add('gallery-animate-in');
-        }, delay);
-        observer.unobserve(entry.target);
-      }
+  // Wait for masonry layout to complete before determining positions
+  setTimeout(() => {
+    const galleryContainer = document.querySelector('.gallery-grid');
+    if (!galleryContainer) return;
+    
+    const containerCenter = galleryContainer.offsetLeft + galleryContainer.offsetWidth / 2;
+    
+    // Set data-animate attributes based on actual card position
+    galleryItems.forEach((item, index) => {
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const isFromLeft = itemCenter < containerCenter;
+      const animateDirection = isFromLeft ? 'fly-left' : 'fly-right';
+      item.setAttribute('data-animate', animateDirection);
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '-50px 0px'
-  });
-  
-  galleryItems.forEach(item => observer.observe(item));
+    
+    // Now observe for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          const delay = Math.floor(index / 4) * 150 + (index % 4) * 75;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '-50px 0px'
+    });
+    
+    galleryItems.forEach(item => observer.observe(item));
+  }, 500); // Delay to ensure masonry is fully loaded
 }
 
 // Feature cards with wave pattern

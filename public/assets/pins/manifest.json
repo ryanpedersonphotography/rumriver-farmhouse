@@ -1,0 +1,134 @@
+{
+  "pins": [
+    {
+      "id": 0,
+      "name": "Gold Classic",
+      "position": { "x": 0, "y": 0 },
+      "color": "#d4af37",
+      "description": "Classic gold pushpin"
+    },
+    {
+      "id": 1,
+      "name": "Red Standard",
+      "position": { "x": 100, "y": 0 },
+      "color": "#dc143c",
+      "description": "Standard red pushpin"
+    },
+    {
+      "id": 2,
+      "name": "Green Nature",
+      "position": { "x": 200, "y": 0 },
+      "color": "#228b22",
+      "description": "Nature green pushpin"
+    },
+    {
+      "id": 3,
+      "name": "Blue Ocean",
+      "position": { "x": 300, "y": 0 },
+      "color": "#4169e1",
+      "description": "Ocean blue pushpin"
+    },
+    {
+      "id": 4,
+      "name": "Purple Royal",
+      "position": { "x": 0, "y": 100 },
+      "color": "#800080",
+      "description": "Royal purple pushpin"
+    },
+    {
+      "id": 5,
+      "name": "Orange Sunset",
+      "position": { "x": 100, "y": 100 },
+      "color": "#ff8c00",
+      "description": "Sunset orange pushpin"
+    },
+    {
+      "id": 6,
+      "name": "Pink Rose",
+      "position": { "x": 200, "y": 100 },
+      "color": "#ff69b4",
+      "description": "Rose pink pushpin"
+    },
+    {
+      "id": 7,
+      "name": "Yellow Sun",
+      "position": { "x": 300, "y": 100 },
+      "color": "#ffd700",
+      "description": "Sunny yellow pushpin"
+    },
+    {
+      "id": 8,
+      "name": "Teal Modern",
+      "position": { "x": 0, "y": 200 },
+      "color": "#008080",
+      "description": "Modern teal pushpin"
+    },
+    {
+      "id": 9,
+      "name": "Silver Metal",
+      "position": { "x": 100, "y": 200 },
+      "color": "#c0c0c0",
+      "description": "Metallic silver pushpin"
+    },
+    {
+      "id": 10,
+      "name": "Black Onyx",
+      "position": { "x": 200, "y": 200 },
+      "color": "#000000",
+      "description": "Onyx black pushpin"
+    },
+    {
+      "id": 11,
+      "name": "White Pearl",
+      "position": { "x": 300, "y": 200 },
+      "color": "#ffffff",
+      "description": "Pearl white pushpin"
+    },
+    {
+      "id": 12,
+      "name": "Brown Earth",
+      "position": { "x": 0, "y": 300 },
+      "color": "#8b4513",
+      "description": "Earthy brown pushpin"
+    },
+    {
+      "id": 13,
+      "name": "Cyan Sky",
+      "position": { "x": 100, "y": 300 },
+      "color": "#00ffff",
+      "description": "Sky cyan pushpin"
+    },
+    {
+      "id": 14,
+      "name": "Magenta Vibrant",
+      "position": { "x": 200, "y": 300 },
+      "color": "#ff00ff",
+      "description": "Vibrant magenta pushpin"
+    },
+    {
+      "id": 15,
+      "name": "Lime Fresh",
+      "position": { "x": 300, "y": 300 },
+      "color": "#32cd32",
+      "description": "Fresh lime pushpin"
+    }
+  ],
+  "grid": {
+    "cols": 4,
+    "rows": 4,
+    "cellSize": 256,
+    "totalSize": 1024
+  },
+  "source": "/assets/pins.png",
+  "generated": "2025-01-02T00:00:00Z",
+  "usage": {
+    "cycling": "Press 'P' key to cycle through pin variants",
+    "urlParam": "Add ?pin=0-15 to URL to select specific pin",
+    "sizing": {
+      "small": { "maxImageDimension": 200, "pinSize": 20 },
+      "medium": { "maxImageDimension": 400, "pinSize": 30 },
+      "large": { "maxImageDimension": 600, "pinSize": 40 },
+      "xlarge": { "maxImageDimension": 9999, "pinSize": 50 }
+    }
+  }
+}
