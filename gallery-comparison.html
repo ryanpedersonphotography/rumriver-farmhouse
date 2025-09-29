@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polaroid Gallery Comparison - Rum River Farmhouse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            color: #4a3c28;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .page-subtitle {
+            font-size: 1.4rem;
+            color: #6b5b47;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-title {
+            font-size: 1.5rem;
+            color: #4a3c28;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .gallery-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .status-working {
+            background: rgba(46, 125, 50, 0.1);
+            color: #2e7d32;
+        }
+
+        .status-broken {
+            background: rgba(211, 47, 47, 0.1);
+            color: #d32f2f;
+        }
+
+        .status-experimental {
+            background: rgba(255, 193, 7, 0.1);
+            color: #f57c00;
+        }
+
+        .gallery-description {
+            color: #6b5b47;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.25rem 0;
+            color: #8b7355;
+            font-size: 0.9rem;
+        }
+
+        .feature-list li::before {
+            content: "✓ ";
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .gallery-link {
+            display: inline-block;
+            background: #4a3c28;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-link:hover {
+            background: #3d3121;
+        }
+
+        .gallery-link.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .tech-note {
+            background: rgba(74, 60, 40, 0.05);
+            border-left: 4px solid #4a3c28;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #6b5b47;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            border: 2px dashed #ddd;
+        }
+
+        .comparison-table {
+            margin-top: 4rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table h3 {
+            color: #4a3c28;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(74, 60, 40, 0.1);
+        }
+
+        th {
+            background: rgba(74, 60, 40, 0.05);
+            font-weight: 600;
+            color: #4a3c28;
+        }
+
+        td {
+            color: #6b5b47;
+        }
+
+        .check-yes {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .check-no {
+            color: #d32f2f;
+        }
+
+        .check-partial {
+            color: #f57c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1 class="page-title">Polaroid Gallery Comparison</h1>
+        <p class="page-subtitle">Compare all working versions of the Rum River Farmhouse photo gallery</p>
+    </div>
+
+    <div class="comparison-grid">
+        <!-- CSS Gloss Simple (Working) -->
+        <div class="gallery-card">
+            <h3 class="gallery-title">Enhanced CSS Gloss Gallery</h3>
+            <span class="gallery-status status-working">✓ Working</span>
+            
+            <div class="preview-image">
+                Polaroid cards with CSS gloss effects
+            </div>
+            
+            <p class="gallery-description">
+                The best working version with realistic CSS-based gloss effects, film grain, 
+                and vintage color filters. No mouseover behavior for a clean, static presentation.
+            </p>
+            
+            <ul class="feature-list">
+                <li>CSS-based radial gradient gloss effects</li>
+                <li>Animated film grain patterns</li>
+                <li>Vintage color filtering (sepia, contrast)</li>
+                <li>Realistic polaroid dimensions and styling</li>
+                <li>Card rotation and hover transforms</li>
+                <li>No interactive mouse tracking</li>
+            </ul>
+            
+            <div class="tech-note">
+                <strong>Technology:</strong> Pure CSS with gradients, filters, and animations. 
+                No WebGL dependency, works on all devices.
+            </div>
+            
+            <a href="/enhanced-gloss-simple.html" class="gallery-link">View Gallery</a>
+        </div>
+
+        <!-- Vanilla WebGL (Fixed) -->
+        <div class="gallery-card">
+            <h3 class="gallery-title">Vanilla WebGL Gallery</h3>
+            <span class="gallery-status status-working">✓ Working (LUT Disabled)</span>
+            
+            <div class="preview-image">
+                WebGL-powered polaroid effects
+            </div>
+            
+            <p class="gallery-description">
+                Hardware-accelerated WebGL implementation with specular highlights, 
+                film grain, and interactive lighting. LUT color grading temporarily disabled.
+            </p>
+            
+            <ul class="feature-list">
+                <li>WebGL fragment shaders for realistic effects</li>
+                <li>Real-time specular highlighting</li>
+                <li>Temporal film grain with noise functions</li>
+                <li>Interactive mouse-based lighting</li>
+                <li>Fresnel edge effects</li>
+                <li>60fps hardware acceleration</li>
+            </ul>
+            
+            <div class="tech-note">
+                <strong>Technology:</strong> Vanilla WebGL with custom GLSL shaders. 
+                Requires WebGL support. LUT color grading needs debugging.
+            </div>
+            
+            <a href="/enhanced-webgl.html" class="gallery-link">View Gallery</a>
+        </div>
+
+        <!-- GL-React Version (Needs Debugging) -->
+        <div class="gallery-card">
+            <h3 class="gallery-title">GL-React Pixel-Perfect</h3>
+            <span class="gallery-status status-experimental">⚠ Needs Debugging</span>
+            
+            <div class="preview-image">
+                Exact polaroid dimensions with GL-React
+            </div>
+            
+            <p class="gallery-description">
+                React-based WebGL implementation with exact Polaroid 600/SX-70/i-Type dimensions 
+                (4.233" × 3.483"). Two border modes: classic and gallery-friendly.
+            </p>
+            
+            <ul class="feature-list">
+                <li>Pixel-perfect Polaroid dimensions</li>
+                <li>Two border ratio modes (classic/optionA)</li>
+                <li>React component architecture</li>
+                <li>3D LUT color grading (HALD format)</li>
+                <li>Advanced WebGL effects</li>
+                <li>Next.js integration</li>
+            </ul>
+            
+            <div class="tech-note">
+                <strong>Technology:</strong> GL-React with Next.js App Router. 
+                Complex implementation with exact dimensional calculations.
+            </div>
+            
+            <a href="/enhanced-polaroid-exact.html" class="gallery-link">View Gallery</a>
+        </div>
+
+        <!-- Real Pushpins Gallery -->
+        <div class="gallery-card">
+            <h3 class="gallery-title">Real Pushpins Gallery</h3>
+            <span class="gallery-status status-working">✓ Working</span>
+            
+            <div class="preview-image">
+                Polaroid cards with real pushpin images
+            </div>
+            
+            <p class="gallery-description">
+                Enhanced CSS gallery using actual pins.png image file with cycling support. 
+                Press 'P' to cycle through 16 different pin styles from the sprite sheet.
+            </p>
+            
+            <ul class="feature-list">
+                <li>Real pushpin images from pins.png</li>
+                <li>16 different pin variants (4x4 grid)</li>
+                <li>Keyboard cycling with 'P' key</li>
+                <li>URL parameter support (?pin=0-15)</li>
+                <li>Dynamic pin sizing based on card dimensions</li>
+                <li>Cork board background</li>
+            </ul>
+            
+            <div class="tech-note">
+                <strong>Technology:</strong> CSS sprites with pins.png, keyboard events, 
+                URL state management. No dependencies required.
+            </div>
+            
+            <a href="/enhanced-gloss-pins.html" class="gallery-link">View Gallery</a>
+        </div>
+
+        <!-- Original Gallery -->
+        <div class="gallery-card">
+            <h3 class="gallery-title">Original Masonry Gallery</h3>
+            <span class="gallery-status status-working">✓ Working</span>
+            
+            <div class="preview-image">
+                Traditional masonry layout
+            </div>
+            
+            <p class="gallery-description">
+                The original working gallery with Masonry layout, lightbox functionality, 
+                and smooth animations. Clean and reliable baseline version.
+            </p>
+            
+            <ul class="feature-list">
+                <li>Masonry grid layout</li>
+                <li>Lightbox modal viewing</li>
+                <li>Smooth hover animations</li>
+                <li>Responsive design</li>
+                <li>Fast loading performance</li>
+                <li>Wide browser compatibility</li>
+            </ul>
+            
+            <div class="tech-note">
+                <strong>Technology:</strong> Traditional HTML/CSS/JS with Masonry.js. 
+                Proven, stable implementation.
+            </div>
+            
+            <a href="/" class="gallery-link">View Gallery</a>
+        </div>
+    </div>
+
+    <!-- Feature Comparison Table -->
+    <div class="comparison-table">
+        <h3>Feature Comparison</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>CSS Gloss</th>
+                    <th>Real Pushpins</th>
+                    <th>Vanilla WebGL</th>
+                    <th>GL-React</th>
+                    <th>Original</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Working Status</td>
+                    <td class="check-yes">✓ Perfect</td>
+                    <td class="check-yes">✓ Perfect</td>
+                    <td class="check-partial">⚠ LUT Issues</td>
+                    <td class="check-no">✗ Debugging</td>
+                    <td class="check-yes">✓ Stable</td>
+                </tr>
+                <tr>
+                    <td>Polaroid Effects</td>
+                    <td class="check-yes">✓ CSS</td>
+                    <td class="check-yes">✓ CSS</td>
+                    <td class="check-yes">✓ WebGL</td>
+                    <td class="check-yes">✓ WebGL</td>
+                    <td class="check-no">✗ None</td>
+                </tr>
+                <tr>
+                    <td>Pin System</td>
+                    <td class="check-partial">⚠ SVG</td>
+                    <td class="check-yes">✓ Real PNG</td>
+                    <td class="check-no">✗ None</td>
+                    <td class="check-no">✗ None</td>
+                    <td class="check-no">✗ None</td>
+                </tr>
+                <tr>
+                    <td>Pin Cycling</td>
+                    <td class="check-no">✗ None</td>
+                    <td class="check-yes">✓ 16 Variants</td>
+                    <td class="check-no">✗ None</td>
+                    <td class="check-no">✗ None</td>
+                    <td class="check-no">✗ None</td>
+                </tr>
+                <tr>
+                    <td>Interactive Lighting</td>
+                    <td class="check-no">✗ Disabled</td>
+                    <td class="check-no">✗ Disabled</td>
+                    <td class="check-yes">✓ Mouse</td>
+                    <td class="check-yes">✓ Mouse</td>
+                    <td class="check-no">✗ None</td>
+                </tr>
+                <tr>
+                    <td>Color Grading</td>
+                    <td class="check-partial">⚠ Basic</td>
+                    <td class="check-partial">⚠ Basic</td>
+                    <td class="check-no">✗ Broken</td>
+                    <td class="check-yes">✓ 3D LUT</td>
+                    <td class="check-no">✗ None</td>
+                </tr>
+                <tr>
+                    <td>Browser Support</td>
+                    <td class="check-yes">✓ Universal</td>
+                    <td class="check-yes">✓ Universal</td>
+                    <td class="check-partial">⚠ WebGL Only</td>
+                    <td class="check-partial">⚠ WebGL Only</td>
+                    <td class="check-yes">✓ Universal</td>
+                </tr>
+                <tr>
+                    <td>Performance</td>
+                    <td class="check-yes">✓ Excellent</td>
+                    <td class="check-yes">✓ Excellent</td>
+                    <td class="check-yes">✓ Hardware</td>
+                    <td class="check-partial">⚠ Heavy</td>
+                    <td class="check-yes">✓ Fast</td>
+                </tr>
+                <tr>
+                    <td>Development Status</td>
+                    <td class="check-yes">✓ Complete</td>
+                    <td class="check-yes">✓ Complete</td>
+                    <td class="check-partial">⚠ Debugging</td>
+                    <td class="check-no">✗ In Progress</td>
+                    <td class="check-yes">✓ Stable</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="comparison-table" style="margin-top: 2rem;">
+        <h3>Recommendations</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+            <div style="padding: 1rem; background: rgba(46, 125, 50, 0.05); border-radius: 8px; border-left: 4px solid #2e7d32;">
+                <h4 style="color: #2e7d32; margin-bottom: 0.5rem;">For Production Use</h4>
+                <p style="color: #6b5b47; font-size: 0.9rem;">
+                    <strong>Enhanced CSS Gloss Gallery</strong> - Best balance of visual appeal, 
+                    performance, and browser compatibility. Ready for immediate deployment.
+                </p>
+            </div>
+            <div style="padding: 1rem; background: rgba(255, 193, 7, 0.05); border-radius: 8px; border-left: 4px solid #f57c00;">
+                <h4 style="color: #f57c00; margin-bottom: 0.5rem;">For Advanced Features</h4>
+                <p style="color: #6b5b47; font-size: 0.9rem;">
+                    <strong>Vanilla WebGL Gallery</strong> - Once LUT issues are resolved, 
+                    offers the most realistic effects with hardware acceleration.
+                </p>
+            </div>
+            <div style="padding: 1rem; background: rgba(74, 60, 40, 0.05); border-radius: 8px; border-left: 4px solid #4a3c28;">
+                <h4 style="color: #4a3c28; margin-bottom: 0.5rem;">For React Projects</h4>
+                <p style="color: #6b5b47; font-size: 0.9rem;">
+                    <strong>GL-React Version</strong> - When completed, will provide 
+                    exact Polaroid dimensions with React component architecture.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Gallery comparison page loaded');
+        
+        // Add some interactive enhancements
+        document.querySelectorAll('.gallery-link').forEach(link => {
+            if (!link.classList.contains('disabled')) {
+                link.addEventListener('click', (e) => {
+                    // Could add analytics or other tracking here
+                    console.log('Navigating to:', link.href);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

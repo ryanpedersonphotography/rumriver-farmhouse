@@ -93,7 +93,17 @@ function PolaroidGallery() {
               style={{
                 '--card-rotation': `${cardRotation}deg`,
                 '--pin-position': `${pinPosition}%`,
-                '--pin-rotation': `${pinRotation}deg`
+                '--pin-rotation': `${pinRotation}deg`,
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                // Dispatch custom event for vanilla JS lightbox
+                window.dispatchEvent(new CustomEvent('openLightbox', {
+                  detail: {
+                    index: index,
+                    images: filteredImages
+                  }
+                }));
               }}
             >
               {/* Pushpin */}

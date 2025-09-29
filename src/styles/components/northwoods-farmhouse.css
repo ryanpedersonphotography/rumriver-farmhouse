@@ -284,7 +284,6 @@ a:hover {
 }
 
 .scrim-hero > * {
-  position: relative;
   z-index: 1;
 }
 

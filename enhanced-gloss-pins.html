@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced WebGL Gloss Gallery with Real Pins - Rum River Farmhouse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/cork.png') center/cover,
+                        linear-gradient(135deg, #f5f1e8 0%, #e8dcc6 100%);
+            min-height: 100vh;
+            padding: 1rem;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(245, 241, 232, 0.3);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            color: #4a3c28;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #6b5b47;
+            font-style: italic;
+            margin-bottom: 0.3rem;
+        }
+
+        .page-description {
+            font-size: 0.95rem;
+            color: #8b7355;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .controls {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            font-size: 0.8rem;
+        }
+
+        .controls h4 {
+            color: #4a3c28;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .controls p {
+            color: #6b5b47;
+            margin: 0.2rem 0;
+        }
+
+        .controls kbd {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            font-family: monospace;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .polaroid-card {
+            position: relative;
+            width: 260px;
+            height: 320px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 
+                0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 
+                0 10px 10px -10px rgba(50, 50, 73, 0.3);
+            cursor: pointer;
+            overflow: visible;
+            opacity: 0;
+            transform: translateY(100px) rotate(0deg);
+            animation: flyIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* After animation completes, apply transition for hover */
+        .polaroid-card.animated {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        z-index 0s;
+        }
+
+        /* Explicit resting states for smooth transitions */
+        .polaroid-card.animated:nth-child(1) {
+            transform: translateY(0) rotate(2.3deg) scale(1);
+        }
+        .polaroid-card.animated:nth-child(2) {
+            transform: translateY(0) rotate(-1.8deg) scale(1);
+        }
+        .polaroid-card.animated:nth-child(3) {
+            transform: translateY(0) rotate(0.9deg) scale(1);
+        }
+        .polaroid-card.animated:nth-child(4) {
+            transform: translateY(0) rotate(-2.1deg) scale(1);
+        }
+
+        .polaroid-card:nth-child(1) { 
+            animation-delay: 0.3s;
+            --final-rotation: 2.3deg;
+            --pin-variant: 0;
+        }
+        .polaroid-card:nth-child(2) { 
+            animation-delay: 0.6s;
+            --final-rotation: -1.8deg;
+            --pin-variant: 1;
+        }
+        .polaroid-card:nth-child(3) { 
+            animation-delay: 0.9s;
+            --final-rotation: 0.9deg;
+            --pin-variant: 2;
+        }
+        .polaroid-card:nth-child(4) { 
+            animation-delay: 1.2s;
+            --final-rotation: -2.1deg;
+            --pin-variant: 3;
+        }
+
+        .polaroid-card.animated:hover {
+            transform: rotate(0deg) scale(1.25) translateY(-20px);
+            z-index: 100;
+            box-shadow: 
+                0 25px 140px -15px rgba(50, 50, 73, 0.6), 
+                0 20px 30px -10px rgba(50, 50, 73, 0.4);
+        }
+
+        @keyframes flyIn {
+            0% {
+                opacity: 0;
+                transform: translateY(200px) rotate(-10deg) scale(0.7);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(50px) rotate(calc(var(--final-rotation, 0deg) * 0.5)) scale(0.9);
+            }
+            75% {
+                opacity: 1;
+                transform: translateY(-10px) rotate(calc(var(--final-rotation, 0deg) * 1.2)) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotate(var(--final-rotation, 0deg)) scale(1);
+            }
+        }
+
+        /* Cover fade-in animation */
+        @keyframes coverFadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Smooth header fade-in */
+        .page-header {
+            animation: coverFadeIn 0.6s ease-out;
+        }
+
+        /* Controls fade-in */
+        .controls {
+            animation: coverFadeIn 0.8s ease-out;
+        }
+
+        .pin {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            background-image: url('/pins.png');
+            background-size: 300% 300%; /* 3x3 grid = 300% */
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+        }
+
+        /* Different pin positions for each card (3x3 grid) */
+        .polaroid-card:nth-child(1) .pin {
+            background-position: 0% 0%; /* Red pin - top left */
+        }
+        .polaroid-card:nth-child(2) .pin {
+            background-position: 50% 0%; /* Blue pin - top center */
+        }
+        .polaroid-card:nth-child(3) .pin {
+            background-position: 100% 0%; /* Black pin - top right */
+        }
+        .polaroid-card:nth-child(4) .pin {
+            background-position: 0% 50%; /* Gold pin - middle left */
+        }
+
+        .webgl-surface {
+            width: calc(100% - 1.4em);
+            height: calc(100% - 3.5em);
+            margin: 0.7em;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .polaroid-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: 
+                sepia(0.2) 
+                saturate(1.1) 
+                contrast(1.05)
+                brightness(0.98);
+        }
+
+        .gloss-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 30%, 
+                    rgba(255, 255, 255, 0.4) 0%, 
+                    rgba(255, 255, 255, 0.1) 30%,
+                    transparent 60%);
+            pointer-events: none;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .polaroid-caption {
+            position: absolute;
+            bottom: 0.7em;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 0.85rem;
+            color: #2c3e50;
+            transform: rotate(-0.5deg);
+            letter-spacing: 0.3px;
+        }
+
+        .feature-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-note h3 {
+            color: #4a3c28;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-note p {
+            color: #6b5b47;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        /* Realistic film grain animation */
+        @keyframes filmGrain {
+            0% { opacity: 0.03; }
+            50% { opacity: 0.06; }
+            100% { opacity: 0.03; }
+        }
+
+        .film-grain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 29%, transparent 30%, transparent),
+                radial-gradient(circle at 80% 20%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 29%, transparent 30%, transparent),
+                radial-gradient(circle at 40% 40%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 29%, transparent 30%, transparent);
+            background-size: 100px 100px, 80px 80px, 60px 60px;
+            animation: filmGrain 0.2s infinite alternate;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h4>Pin Controls</h4>
+        <p>Press <kbd>P</kbd> to cycle pins</p>
+        <p>Current: <span id="pin-indicator">Pin 1</span></p>
+    </div>
+
+    <div class="page-header">
+        <h1 class="page-title">Gallery with Real Pushpins</h1>
+        <p class="page-subtitle">Realistic Polaroid effects with actual pin images</p>
+        <p class="page-description">
+            Experience realistic polaroid photos with authentic pushpins from pins.png. 
+            Press 'P' to cycle through different pin styles!
+        </p>
+    </div>
+
+    <div class="gallery-container">
+        <div class="polaroid-card" data-title="Farmhouse Exterior">
+            <div class="pin" data-pin-index="0"></div>
+            <div class="webgl-surface">
+                <img src="/stills/rum-river-farmhouse-01.jpg" alt="Farmhouse Exterior" class="polaroid-image">
+                <div class="gloss-overlay"></div>
+                <div class="film-grain"></div>
+            </div>
+            <div class="polaroid-caption">Farmhouse Exterior</div>
+        </div>
+
+        <div class="polaroid-card" data-title="Living Room">
+            <div class="pin" data-pin-index="1"></div>
+            <div class="webgl-surface">
+                <img src="/stills/rum-river-farmhouse-02.jpg" alt="Living Room" class="polaroid-image">
+                <div class="gloss-overlay"></div>
+                <div class="film-grain"></div>
+            </div>
+            <div class="polaroid-caption">Living Room</div>
+        </div>
+
+        <div class="polaroid-card" data-title="Kitchen">
+            <div class="pin" data-pin-index="2"></div>
+            <div class="webgl-surface">
+                <img src="/stills/rum-river-farmhouse-03.jpg" alt="Kitchen" class="polaroid-image">
+                <div class="gloss-overlay"></div>
+                <div class="film-grain"></div>
+            </div>
+            <div class="polaroid-caption">Kitchen</div>
+        </div>
+
+        <div class="polaroid-card" data-title="Master Bedroom">
+            <div class="pin" data-pin-index="3"></div>
+            <div class="webgl-surface">
+                <img src="/stills/rum-river-farmhouse-04.jpg" alt="Master Bedroom" class="polaroid-image">
+                <div class="gloss-overlay"></div>
+                <div class="film-grain"></div>
+            </div>
+            <div class="polaroid-caption">Master Bedroom</div>
+        </div>
+    </div>
+
+    <div class="feature-note">
+        <h3>Real Pushpin Integration</h3>
+        <p>
+            This gallery uses the actual pins.png image file for authentic pushpin visuals. 
+            Each card displays a different section of the pins image, and you can cycle through 
+            all available pin styles by pressing the 'P' key. The pins are dynamically sized 
+            based on the polaroid dimensions for perfect proportions.
+        </p>
+    </div>
+
+    <script>
+        // Pin cycling functionality for 3x3 grid (9 pins total)
+        let currentPinSet = 0;
+        const totalPinSets = 9;
+        const pinIndicator = document.getElementById('pin-indicator');
+        
+        // Pin positions in the 3x3 grid
+        const pinPositions = [
+            { x: 0, y: 0, name: "Red" },        // Top left
+            { x: 50, y: 0, name: "Blue" },      // Top center
+            { x: 100, y: 0, name: "Black" },    // Top right
+            { x: 0, y: 50, name: "Gold" },      // Middle left
+            { x: 50, y: 50, name: "Silver" },   // Middle center
+            { x: 100, y: 50, name: "White" },   // Middle right
+            { x: 0, y: 100, name: "Wood 1" },   // Bottom left
+            { x: 50, y: 100, name: "Wood 2" },  // Bottom center
+            { x: 100, y: 100, name: "Teal" }    // Bottom right
+        ];
+        
+        // Initialize from URL parameter
+        const params = new URLSearchParams(window.location.search);
+        const pinParam = params.get('pin');
+        if (pinParam) {
+            const pinIndex = parseInt(pinParam, 10);
+            if (!isNaN(pinIndex) && pinIndex >= 0 && pinIndex < totalPinSets) {
+                currentPinSet = pinIndex;
+            }
+        }
+        
+        function updatePins() {
+            const pins = document.querySelectorAll('.pin');
+            pins.forEach((pin, index) => {
+                // Each card gets a different pin from the current set
+                const pinIndex = (currentPinSet + index) % totalPinSets;
+                const position = pinPositions[pinIndex];
+                pin.style.backgroundPosition = `${position.x}% ${position.y}%`;
+            });
+            
+            // Update indicator
+            const currentPin = pinPositions[currentPinSet];
+            pinIndicator.textContent = `${currentPin.name} Set`;
+            
+            // Update URL
+            const url = new URL(window.location.href);
+            url.searchParams.set('pin', String(currentPinSet));
+            window.history.replaceState({}, '', url.toString());
+        }
+        
+        // Keyboard handler
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'p' || e.key === 'P') {
+                currentPinSet = (currentPinSet + 1) % totalPinSets;
+                updatePins();
+            }
+        });
+        
+        // Initialize pins
+        updatePins();
+        
+        // Add transition class after animations complete
+        const cards = document.querySelectorAll('.polaroid-card');
+        cards.forEach((card, index) => {
+            // Calculate when each card's animation will be done
+            const animationDelay = 0.3 + (index * 0.3); // 0.3s, 0.6s, 0.9s, 1.2s
+            const animationDuration = 0.8; // 0.8s animation
+            const totalTime = (animationDelay + animationDuration) * 1000; // Convert to ms
+            
+            // Add transition class after animation completes
+            setTimeout(() => {
+                card.classList.add('animated');
+            }, totalTime + 100); // Add 100ms buffer
+        });
+        
+        console.log('Real Pushpin Gallery loaded successfully!');
+        console.log('Press "P" to cycle through 9 different pin styles');
+    </script>
+</body>
+</html>

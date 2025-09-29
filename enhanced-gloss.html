@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced WebGL Gloss Gallery - Rum River Farmhouse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            color: #4a3c28;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #6b5b47;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: #8b7355;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Gallery Container */
+        #enhanced-gloss-root {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .enhanced-gloss-gallery {
+            width: 100%;
+        }
+
+        /* Loading state */
+        .loading-message {
+            text-align: center;
+            color: #6b5b47;
+            font-size: 1.2rem;
+            padding: 4rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4a3c28;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .feature-highlight {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(74, 60, 40, 0.05);
+            border-radius: 8px;
+        }
+
+        .feature-item h4 {
+            color: #4a3c28;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-item p {
+            color: #6b5b47;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .webgl-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(74, 60, 40, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1000;
+        }
+
+        .webgl-indicator.supported {
+            background: rgba(46, 125, 50, 0.9);
+        }
+
+        .webgl-indicator.unsupported {
+            background: rgba(211, 47, 47, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- WebGL Support Indicator -->
+    <div id="webgl-indicator" class="webgl-indicator">
+        Checking WebGL support...
+    </div>
+
+    <div class="page-header">
+        <h1 class="page-title">Enhanced WebGL Gloss Gallery</h1>
+        <p class="page-subtitle">Realistic Polaroid effects with dynamic lighting</p>
+        <p class="page-description">
+            Experience ultra-realistic polaroid photos with WebGL-powered gloss effects, 
+            anisotropic streaking, Fresnel edge lighting, film grain, and authentic color grading. 
+            Move your mouse over the cards to interact with the dynamic light reflections!
+        </p>
+    </div>
+
+    <!-- Feature Highlights -->
+    <div class="feature-highlight">
+        <h2 style="text-align: center; color: #4a3c28; margin-bottom: 1rem;">Advanced Visual Effects</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h4>🌟 Dynamic Gloss</h4>
+                <p>Realistic specular highlights that follow your mouse movement</p>
+            </div>
+            <div class="feature-item">
+                <h4>✨ Anisotropic Streaking</h4>
+                <p>Diagonal light streaks that mimic real laminate surfaces</p>
+            </div>
+            <div class="feature-item">
+                <h4>🎨 Film Color Grading</h4>
+                <p>Authentic Polaroid color reproduction using 3D LUTs</p>
+            </div>
+            <div class="feature-item">
+                <h4>🔍 Fresnel Effects</h4>
+                <p>Edge lighting that creates depth and dimensionality</p>
+            </div>
+            <div class="feature-item">
+                <h4>📽️ Film Grain</h4>
+                <p>Temporal noise that eliminates banding and adds texture</p>
+            </div>
+            <div class="feature-item">
+                <h4>💎 Micro Sparkle</h4>
+                <p>Subtle surface variations that catch light naturally</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Gallery Root -->
+    <div id="enhanced-gloss-root">
+        <div class="loading-message">
+            <div class="loading-spinner"></div>
+            <p>Loading Enhanced WebGL Gloss Gallery...</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                Initializing shaders and loading textures
+            </p>
+        </div>
+    </div>
+
+    <script type="module">
+        // Add global polyfill for browser compatibility
+        if (typeof global === 'undefined') {
+            window.global = window;
+        }
+        
+        // Check WebGL support
+        function checkWebGLSupport() {
+            const indicator = document.getElementById('webgl-indicator');
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                if (gl && gl instanceof WebGLRenderingContext) {
+                    indicator.textContent = '✓ WebGL Supported';
+                    indicator.className = 'webgl-indicator supported';
+                    return true;
+                } else {
+                    indicator.textContent = '✗ WebGL Not Supported';
+                    indicator.className = 'webgl-indicator unsupported';
+                    return false;
+                }
+            } catch (e) {
+                indicator.textContent = '✗ WebGL Error';
+                indicator.className = 'webgl-indicator unsupported';
+                return false;
+            }
+        }
+
+        // Initialize the gallery
+        async function initializeGallery() {
+            const webglSupported = checkWebGLSupport();
+            
+            if (!webglSupported) {
+                document.getElementById('enhanced-gloss-root').innerHTML = `
+                    <div class="loading-message" style="background: rgba(211, 47, 47, 0.1); border: 2px solid rgba(211, 47, 47, 0.3);">
+                        <h3 style="color: #d32f2f; margin-bottom: 1rem;">WebGL Not Supported</h3>
+                        <p>Your browser or device doesn't support WebGL, which is required for the enhanced gloss effects.</p>
+                        <p style="margin-top: 1rem;">Please try:</p>
+                        <ul style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                            <li>Updating your browser to the latest version</li>
+                            <li>Enabling hardware acceleration in browser settings</li>
+                            <li>Using a different browser (Chrome, Firefox, Safari)</li>
+                        </ul>
+                        <p style="margin-top: 1.5rem;">
+                            <a href="/enhanced-polaroid.html" style="color: #4a3c28; text-decoration: underline;">
+                                View the standard enhanced gallery instead →
+                            </a>
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                // Dynamic import of React components
+                const { createRoot } = await import('react-dom/client');
+                const React = await import('react');
+                const { default: EnhancedGlossGallery } = await import('/src/react/components/EnhancedGlossGallery.jsx');
+
+                const root = createRoot(document.getElementById('enhanced-gloss-root'));
+                root.render(React.createElement(EnhancedGlossGallery));
+
+            } catch (error) {
+                console.error('Failed to load enhanced gallery:', error);
+                document.getElementById('enhanced-gloss-root').innerHTML = `
+                    <div class="loading-message" style="background: rgba(255, 193, 7, 0.1); border: 2px solid rgba(255, 193, 7, 0.5);">
+                        <h3 style="color: #f57c00; margin-bottom: 1rem;">Loading Error</h3>
+                        <p>Unable to load the enhanced WebGL gallery components.</p>
+                        <p style="margin-top: 1rem;">Error: ${error.message}</p>
+                        <p style="margin-top: 1.5rem;">
+                            <a href="/enhanced-polaroid.html" style="color: #4a3c28; text-decoration: underline;">
+                                View the standard enhanced gallery instead →
+                            </a>
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        // Start initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeGallery);
+        } else {
+            initializeGallery();
+        }
+    </script>
+</body>
+</html>

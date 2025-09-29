@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced WebGL Polaroid Gallery - Rum River Farmhouse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            color: #4a3c28;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #6b5b47;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: #8b7355;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .webgl-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(46, 125, 50, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1000;
+        }
+
+        .webgl-indicator.error {
+            background: rgba(211, 47, 47, 0.9);
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .polaroid-webgl-card {
+            position: relative;
+            width: 360px;
+            height: 450px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 
+                0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 
+                0 10px 10px -10px rgba(50, 50, 73, 0.3);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            padding: 1em;
+            padding-bottom: 4em;
+        }
+
+        .polaroid-webgl-card:nth-child(1) { transform: rotate(2.3deg); }
+        .polaroid-webgl-card:nth-child(2) { transform: rotate(-1.8deg); }
+        .polaroid-webgl-card:nth-child(3) { transform: rotate(0.9deg); }
+        .polaroid-webgl-card:nth-child(4) { transform: rotate(-2.1deg); }
+
+        .polaroid-webgl-card:hover {
+            transform: rotate(0deg) scale(1.05) translateY(-10px) !important;
+            z-index: 100;
+        }
+
+        .webgl-canvas {
+            width: 100%;
+            height: calc(100% - 3em);
+            border-radius: 2px;
+            display: block;
+        }
+
+        .polaroid-caption {
+            position: absolute;
+            bottom: 1em;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            transform: rotate(-0.5deg);
+            letter-spacing: 0.5px;
+        }
+
+        .loading-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .feature-highlight {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(74, 60, 40, 0.05);
+            border-radius: 8px;
+        }
+
+        .feature-item h4 {
+            color: #4a3c28;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .feature-item p {
+            color: #6b5b47;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #666;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="webgl-indicator" class="webgl-indicator">Initializing WebGL...</div>
+
+    <div class="page-header">
+        <h1 class="page-title">Enhanced WebGL Polaroid Gallery</h1>
+        <p class="page-subtitle">Real-time hardware-accelerated film effects</p>
+        <p class="page-description">
+            Experience authentic Polaroid photos with WebGL-powered effects: 
+            3D LUT color grading, Blinn-Phong specular reflections, Fresnel edge lighting, 
+            anisotropic streaking, and temporal film grain. Move your mouse to interact!
+        </p>
+    </div>
+
+    <div class="feature-highlight">
+        <h2 style="text-align: center; color: #4a3c28; margin-bottom: 1rem;">WebGL Film Effects</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h4>🎨 3D LUT Color Grading</h4>
+                <p>Authentic Polaroid color reproduction using real film characteristics</p>
+            </div>
+            <div class="feature-item">
+                <h4>✨ Blinn-Phong Lighting</h4>
+                <p>Physically-based specular reflections with configurable surface properties</p>
+            </div>
+            <div class="feature-item">
+                <h4>🌟 Anisotropic Streaking</h4>
+                <p>Diagonal light streaks that simulate laminate surface imperfections</p>
+            </div>
+            <div class="feature-item">
+                <h4>🔍 Fresnel Edge Effects</h4>
+                <p>Realistic edge lighting based on viewing angle and surface normals</p>
+            </div>
+            <div class="feature-item">
+                <h4>📽️ Temporal Film Grain</h4>
+                <p>Dynamic noise patterns that eliminate banding and add authenticity</p>
+            </div>
+            <div class="feature-item">
+                <h4>⚡ Hardware Accelerated</h4>
+                <p>GPU-powered rendering for smooth 60fps interactive lighting</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-container" id="gallery-container">
+        <!-- WebGL polaroid cards will be inserted here -->
+    </div>
+
+    <script src="/src/js/webgl-polaroid.js"></script>
+    <script>
+        const images = [
+            { src: '/stills/rum-river-farmhouse-01.jpg', title: 'Farmhouse Exterior' },
+            { src: '/stills/rum-river-farmhouse-02.jpg', title: 'Living Room' },
+            { src: '/stills/rum-river-farmhouse-03.jpg', title: 'Kitchen' },
+            { src: '/stills/rum-river-farmhouse-04.jpg', title: 'Master Bedroom' }
+        ];
+
+        const indicator = document.getElementById('webgl-indicator');
+        const container = document.getElementById('gallery-container');
+
+        // Check WebGL support
+        function checkWebGL() {
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                return gl && gl instanceof WebGLRenderingContext;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        if (!checkWebGL()) {
+            indicator.textContent = '✗ WebGL Not Supported';
+            indicator.className = 'webgl-indicator error';
+            container.innerHTML = `
+                <div style="text-align: center; padding: 3rem; background: rgba(255,255,255,0.9); border-radius: 12px; width: 100%;">
+                    <h3 style="color: #d32f2f; margin-bottom: 1rem;">WebGL Not Available</h3>
+                    <p style="color: #6b5b47;">Your browser doesn't support WebGL. Please try:</p>
+                    <ul style="text-align: left; display: inline-block; margin: 1rem 0; color: #6b5b47;">
+                        <li>Enable hardware acceleration</li>
+                        <li>Update your browser</li>
+                        <li>Try Chrome or Firefox</li>
+                    </ul>
+                    <p><a href="/enhanced-gloss-simple.html" style="color: #4a3c28;">View CSS version instead →</a></p>
+                </div>
+            `;
+        } else {
+            indicator.textContent = '✓ WebGL Active';
+            initializeGallery();
+        }
+
+        async function initializeGallery() {
+            const lutSrc = '/luts/polaroid.png';
+            let loadedCount = 0;
+
+            images.forEach((imageData, index) => {
+                // Create card container
+                const card = document.createElement('div');
+                card.className = 'polaroid-webgl-card loading-card';
+                card.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    Loading WebGL effects...
+                `;
+
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                canvas.className = 'webgl-canvas';
+                canvas.width = 320;
+                canvas.height = 320;
+
+                // Create caption
+                const caption = document.createElement('div');
+                caption.className = 'polaroid-caption';
+                caption.textContent = imageData.title;
+
+                container.appendChild(card);
+
+                // Initialize WebGL for this card
+                setTimeout(async () => {
+                    try {
+                        const webgl = new PolaroidWebGL(canvas, imageData.src, lutSrc);
+                        
+                        // Wait for initialization
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        
+                        // Replace loading content with canvas
+                        card.className = 'polaroid-webgl-card';
+                        card.innerHTML = '';
+                        card.appendChild(canvas);
+                        card.appendChild(caption);
+
+                        // Add mouse interaction
+                        let orbitAngle = index * Math.PI / 2;
+                        let isHovering = false;
+
+                        card.addEventListener('mousemove', (e) => {
+                            const rect = card.getBoundingClientRect();
+                            const x = (e.clientX - rect.left) / rect.width;
+                            const y = (e.clientY - rect.top) / rect.height;
+                            webgl.setMouse(x, y);
+                            isHovering = true;
+                        });
+
+                        card.addEventListener('mouseleave', () => {
+                            isHovering = false;
+                        });
+
+                        // Gentle orbital motion when not hovering
+                        setInterval(() => {
+                            if (!isHovering) {
+                                orbitAngle += 0.01;
+                                const x = 0.5 + 0.15 * Math.cos(orbitAngle);
+                                const y = 0.3 + 0.1 * Math.sin(orbitAngle * 1.3);
+                                webgl.setMouse(x, y);
+                            }
+                        }, 50);
+
+                        loadedCount++;
+                        if (loadedCount === images.length) {
+                            indicator.textContent = `✓ WebGL Active - All ${loadedCount} cards loaded`;
+                        } else {
+                            indicator.textContent = `✓ WebGL Active (${loadedCount}/${images.length} loaded)`;
+                        }
+
+                    } catch (error) {
+                        console.error('Failed to initialize WebGL for card:', error);
+                        card.className = 'polaroid-webgl-card';
+                        card.innerHTML = `
+                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #d32f2f;">
+                                WebGL Error: ${error.message}
+                            </div>
+                        `;
+                    }
+                }, index * 500); // Stagger loading
+            });
+        }
+
+        console.log('Enhanced WebGL Gallery initialized');
+    </script>
+</body>
+</html>

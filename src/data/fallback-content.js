@@ -61,7 +61,7 @@ export const fallbackContent = {
     vrbo: "https://t.vrbo.io/S09ELUREbVb"
   },
   virtualTour: {
-    matterport: "https://my.matterport.com/show/?m=TWdSds3vn6p",
+    matterport: "https://my.matterport.com/show/?m=ziu7CSh6RHZ",
     youtube: "https://youtu.be/tjoNyDYm1do"
   },
   socialMedia: {
