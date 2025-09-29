@@ -34,4 +34,33 @@ dist-ssr
 # Analytics Backend
 analytics-backend/node_modules
 analytics-backend/ga4-service-account.json
-analytics-backend/.envga4-service-account.json
+analytics-backend/.env
+ga4-service-account.json
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Large image directories (will deploy but not commit)
+stills/rumriver-barn/
+stills/rumriver-farmhouse/
+public/luts/polaroid_hald16.png
+public/luts/polaroid.png
+
+# Development screenshots and captures
+*screenshot*.png
+capture-*.mjs
+capture-*.js
+
+# Temporary test files
+test-*.html
+pins-debug.html
+gallery-comparison.html
+enhanced-*.html
+polaroid.html
+*.cube
+cork.png
+solhem-picked--*.jpg
