@@ -45,7 +45,7 @@
 }
 
 /* Animated state */
-.animate-in {
+.animate-in:not(.gallery-animate-in) {
   opacity: 1 !important;
   transform: translate(0) scale(1) !important;
 }
@@ -87,8 +87,23 @@
   }
 }
 
-/* Gallery Items - Rustic Reveal */
-/* Removed conflicting gallery-item animations - now handled in gallery.css */
+/* Gallery Items - Flying Polaroid Animation */
+.gallery-item[data-animate="fly-left"] {
+  opacity: 0 !important;
+  transform: translateX(-200px) translateY(20px) rotate(-15deg) scale(0.8) !important;
+  transition: all 1.2s var(--anim-easing-bounce);
+}
+
+.gallery-item[data-animate="fly-right"] {
+  opacity: 0 !important;
+  transform: translateX(200px) translateY(20px) rotate(15deg) scale(0.8) !important;
+  transition: all 1.2s var(--anim-easing-bounce);
+}
+
+.gallery-item[data-animate].animate-in {
+  opacity: 1 !important;
+  transform: translateX(0) translateY(0) rotate(var(--card-rotation, 0deg)) scale(1) !important;
+}
 
 /* Feature Cards - Barn Door Slide */
 .feature-card {
